@@ -98,7 +98,7 @@ Blockly.Verilog.ORDER_BITWISE_OR = 13;       //|
 Blockly.Verilog.ORDER_LOGIC_AND = 14;        //&&
 Blockly.Verilog.ORDER_LOGIC_OR = 15;         //||
 Blockly.Verilog.ORDER_CONDITIONAL = 16;      //?:
-Blockly.Verilog.ORDER_NONE = 50;
+Blockly.Verilog.ORDER_NONE = 99;
 
 Blockly.Verilog.INFINITE_LOOP_TRAP = null;
 
