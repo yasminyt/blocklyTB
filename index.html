@@ -15,22 +15,26 @@
   <script src="blocks/initial/init.js"></script>
   <script src="blocks/values.js"></script>
   <script src="blocks/numbers.js"></script>
+  <script src="blocks/variables.js"></script>
   <script src="blocks/behavior.js"></script>
   <script src="blocks/assignment.js"></script>
   <script src="blocks/operators.js"></script>
   <script src="blocks/loops.js"></script>
   <script src="blocks/functions.js"></script>
+  <script src="blocks/custom.js"></script>
 
   <!-- generators -->
   <script src="generator/verilog.js"></script>
   <script src="generator/verilog/initBlocks.js"></script>
   <script src="generator/verilog/values.js"></script>
   <script src="generator/verilog/numbers.js"></script>
+  <script src="generator/verilog/variables.js"></script>
   <script src="generator/verilog/behavior.js"></script>
   <script src="generator/verilog/assignment.js"></script>
   <script src="generator/verilog/logic.js"></script>
   <script src="generator/verilog/operators.js"></script>
   <script src="generator/verilog/functions.js"></script>
+  <script src="generator/verilog/custom.js"></script>
 
 </head>
 <body>
@@ -48,6 +52,10 @@
   </div>
 
   <xml id="toolbox" style="display: none">
+    <category name="Custom" colour="300">
+      <block type="timescale"></block>
+    </category>
+    <sep gap="40"></sep>
     <category name="Values" colour="165">
       <block type="zero"></block>
       <block type="one"></block>
@@ -64,7 +72,20 @@
       <block type="decimal_hex"></block>
       <block type="decimal_octal"></block>
     </category>
-    <category name="Variables" colour="330" custom="VARIABLE">
+    <category name="Variables" colour="330">
+      <block type="reg_wire"></block>
+      <block type="parameter">
+        <value name="VALUE">
+          <shadow type="math_number">
+            <field name="NUM">10</field>
+          </shadow>
+        </value>
+      </block>
+      <block type="reg_var"></block>
+      <block type="wire_var"></block>
+      <block type="parameter_var"></block>
+      <block type="reg_dut"></block>
+      <block type="wire_dut"></block>
     </category>
     <sep gap="40"></sep>
     <category name="Logic" colour="210">
@@ -77,9 +98,32 @@
     </category>
     <category name="Loops" colour="120">
       <block type="forever_loop"></block>
-      <block type="controls_repeat"></block>
+      <block type="controls_repeat_ext">
+        <value name="TIMES">
+          <shadow type="math_number">
+            <field name="NUM">10</field>
+          </shadow>
+        </value>
+      </block>
       <block type="while_loop"></block>
-      <block type="controls_for"></block>
+      <block type="controls_for">
+        <field name="VAR">i</field>
+        <value name="FROM">
+          <shadow type="math_number">
+            <field name="NUM">1</field>
+          </shadow>
+        </value>
+        <value name="TO">
+          <shadow type="math_number">
+            <field name="NUM">10</field>
+          </shadow>
+        </value>
+        <value name="BY">
+          <shadow type="math_number">
+            <field name="NUM">1</field>
+          </shadow>
+        </value>
+      </block>
     </category>
     <sep gap="40"></sep>
     <category name="Behavior" colour="240">

@@ -1,4 +1,7 @@
-// todo: 下拉变量
+/**
+ * assign 中的变量由用户自行选择，不做下拉处理
+ * todo: 添加延时块
+ */
 
 Blockly.Blocks['assign'] = {
   init: function() {
