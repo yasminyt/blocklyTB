@@ -10,7 +10,7 @@
 Blockly.Verilog['math_number'] = function(block) {
   const code = parseFloat(block.getFieldValue('NUM'));
   const order = code >= 0 ? Blockly.Verilog.ORDER_ATOMIC :
-    Blockly.Verilog.ORDER_NEG;
+    Blockly.Verilog.ORDER_UNARY_MINUS;
   return [code, order];
 };
 

@@ -22,10 +22,18 @@ window.onload = () => {
       },
   });
 
+  // init the workspace
   const xml = generateXML();
   Blockly.Xml.domToWorkspace(Blockly.Xml.textToDom(xml), workspace);
 
+  // realtime generator code
   workspace.addChangeListener(() => realtimeGenerate(null, workspace));
+
+  // 注册自定义的 toolbox-variable
+  if (Blockly.VariablesDynamic && Blockly.VariablesDynamic.variableCategory) {
+    workspace.registerToolboxCategoryCallback("variable_dynamic",
+      () => Blockly.VariablesDynamic.variableCategory(workspace));
+  }
 };
 
 function realtimeGenerate(event, workspace) {

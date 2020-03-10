@@ -30,3 +30,25 @@ Blockly.Verilog['parameter'] = function(block) {
   const code = `parameter ${text_name} = ${value};\n`;
   return code;
 };
+
+/**
+ * [reg variable]
+ * @param block
+ * @returns {[string, number]}
+ */
+Blockly.Verilog['reg_dut'] = function(block) {
+  const dropdown_variable = block.getFieldValue('variable');
+  const code = `${dropdown_variable}`;
+  return [code, Blockly.Verilog.ORDER_NONE];
+};
+
+/**
+ * [wire variable]
+ * @param block
+ * @returns {[string, number]}
+ */
+Blockly.Verilog['wire_dut'] = function(block) {
+  const dropdown_variable = block.getFieldValue('variable');
+  const code = `${dropdown_variable}`;
+  return [code, Blockly.Verilog.ORDER_NONE];
+};

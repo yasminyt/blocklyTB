@@ -15,7 +15,8 @@
   <script src="blocks/initial/init.js"></script>
   <script src="blocks/values.js"></script>
   <script src="blocks/numbers.js"></script>
-  <script src="blocks/variables.js"></script>
+  <script src="blocks/variables_dynamic/core.js"></script>
+  <script src="blocks/variables_dynamic/variables.js"></script>
   <script src="blocks/behavior.js"></script>
   <script src="blocks/assignment.js"></script>
   <script src="blocks/operators.js"></script>
@@ -72,21 +73,7 @@
       <block type="decimal_hex"></block>
       <block type="decimal_octal"></block>
     </category>
-    <category name="Variables" colour="330">
-      <block type="reg_wire"></block>
-      <block type="parameter">
-        <value name="VALUE">
-          <shadow type="math_number">
-            <field name="NUM">10</field>
-          </shadow>
-        </value>
-      </block>
-      <block type="reg_var"></block>
-      <block type="wire_var"></block>
-      <block type="parameter_var"></block>
-      <block type="reg_dut"></block>
-      <block type="wire_dut"></block>
-    </category>
+    <category name="Variables" colour="330" custom="variable_dynamic"></category>
     <sep gap="40"></sep>
     <category name="Logic" colour="210">
       <block type="controls_if"></block>
