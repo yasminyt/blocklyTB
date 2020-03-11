@@ -1,32 +1,38 @@
 // todo: 变量命名检查
+const type = {
+  REGISTER: "Register",
+  WIRE: "Wire",
+  PARAMETER: "Parameter"
+};
+
 Blockly.VariablesDynamic.onCreateVariableButtonClick_Register = function(button) {
   const workspace = button.getTargetWorkspace();
   Blockly.Variables.createVariableButtonHandler(workspace,
-    undefined, 'Register');
+    text => newVariableBlock(text, workspace, type.REGISTER), type.REGISTER);
 };
 Blockly.VariablesDynamic.onCreateVariableButtonClick_Wire = function(button) {
   const workspace = button.getTargetWorkspace();
   Blockly.Variables.createVariableButtonHandler(workspace,
-    undefined, 'Wire');
+    text => newVariableBlock(text, workspace, type.WIRE), type.WIRE);
 };
 Blockly.VariablesDynamic.onCreateVariableButtonClick_Parameter = function(button) {
   const workspace = button.getTargetWorkspace();
   Blockly.Variables.createVariableButtonHandler(workspace,
-    undefined, 'Parameter');
+    text => newVariableBlock(text, workspace, type.PARAMETER), type.PARAMETER);
 };
 
 Blockly.VariablesDynamic.variableCategory = function(workspace) {
   let xmlList = [];
   let button = document.createElement('button');
-  button.setAttribute('text', 'create register...');
+  button.setAttribute('text', 'Create register...');
   button.setAttribute('callbackKey', 'CREATE_VARIABLE_REGISTER');
   xmlList.push(button);
   button = document.createElement('button');
-  button.setAttribute('text', "create wire...");
+  button.setAttribute('text', "Create wire...");
   button.setAttribute('callbackKey', 'CREATE_VARIABLE_WIRE');
   xmlList.push(button);
   button = document.createElement('button');
-  button.setAttribute('text', "create parameter...");
+  button.setAttribute('text', "Create parameter...");
   button.setAttribute('callbackKey', 'CREATE_VARIABLE_PARAMETER');
   xmlList.push(button);
 
@@ -51,25 +57,29 @@ Blockly.VariablesDynamic.variableCategory = function(workspace) {
  * @return {!Array.<!Element>} Array of XML block elements.
  */
 Blockly.VariablesDynamic.variableCategoryBlocks = function(workspace) {
-  const variableModelList = workspace.getAllVariables();
+  const regVariableModelList = workspace.getVariablesOfType(type.REGISTER);
+  const wireVariableModelList = workspace.getVariablesOfType(type.WIRE);
+  const paramVariableModelList = workspace.getVariablesOfType(type.PARAMETER);
+
   const xmlList = [];
-  if (variableModelList.length > 0) {
-    if (Blockly.Blocks['variables_get_dynamic']) {
+
+  const generateBlock = (variableModelList, blockType) => {
+    if (variableModelList.length > 0) {
       variableModelList.sort(Blockly.VariableModel.compareByName);
-      for (let i = 0, variable; (variable = variableModelList[i]); i++) {
-        const block = Blockly.utils.xml.createElement('block');
-        if (variable.type === 'Register')
-          block.setAttribute('type', 'variables_get_reg');
-        if (variable.type === 'Wire')
-          block.setAttribute('type', 'variables_get_wire');
-        if (variable.type === 'Parameter')
-          block.setAttribute('type', 'variables_get_parameter');
-        block.setAttribute('gap', 10);
-        block.appendChild(Blockly.Variables.generateVariableFieldDom(variable));
-        xmlList.push(block);
-      }
+      // Show only one type of variable
+      const variable = variableModelList[0];
+      const block = Blockly.utils.xml.createElement('block');
+      block.setAttribute('type', blockType);
+      block.setAttribute('gap', 20);
+      block.appendChild(Blockly.Variables.generateVariableFieldDom(variable));
+      xmlList.push(block);
     }
-  }
+  };
+
+  generateBlock(regVariableModelList, 'variables_get_reg');
+  generateBlock(wireVariableModelList, 'variables_get_wire');
+  generateBlock(paramVariableModelList, 'variables_get_parameter');
+
   return xmlList;
 };
 
@@ -86,12 +96,23 @@ Blockly.VariablesDynamic.dutCategoryBlocks = function () {
   return xmlList;
 };
 
-function newVariableBlock(text, workspace) {
-  const block = `
-    <block type="reg_new">
-    </block>
+function newVariableBlock(text, workspace, variableType) {
+  const variable = workspace.getVariable(text, variableType);
+  const id = variable.id_;
+  const field = `<field name="VAR" id="${id}" variabletype="${variableType}">${text}</field>`;
+  let blockType = '';
+  switch (variableType) {
+    case type.REGISTER: blockType = 'reg_new'; break;
+    case type.WIRE: blockType = 'wire_new'; break;
+    case type.PARAMETER: blockType = 'parameter_new';
+  }
+  const xml = `
+    <xml>
+      <block type="${blockType}">
+        ${field}
+      </block>
+    </xml>
   `;
-  const xml = Blockly.Xml.textToDom(`<xml>${block}</xml>`);
-  console.log(xml)
-  Blockly.Xml.domToWorkspace(xml, workspace);
+  const dom = Blockly.Xml.textToDom(xml);
+  Blockly.Xml.domToWorkspace(dom, workspace);
 }

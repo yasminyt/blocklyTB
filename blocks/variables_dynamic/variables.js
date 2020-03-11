@@ -83,49 +83,77 @@ Blockly.Blocks['wire_dut'] = {
 };
 
 // generate new variables
-Blockly.Blocks['reg_new'] = {
-  init: function() {
-    this.appendDummyInput()
-        .appendField("new register")
-        .appendField(new Blockly.FieldVariable("", null, ["String"]), "VAR")
-        .appendField("with")
-        .appendField(new Blockly.FieldNumber(1, 1, Infinity, 1), "bits")
-        .appendField("bits");
-    this.setPreviousStatement(true, null);
-    this.setNextStatement(true, null);
-    this.setColour(330);
-    this.setTooltip("Declare a new variable of register type.");
-    this.setHelpUrl("");
+Blockly.defineBlocksWithJsonArray([
+  {
+    "type": "reg_new",
+    "message0": "new register %1 with %2 bits",
+    "args0": [
+      {
+        "type": "field_variable",
+        "name": "VAR",
+        "variable": "",
+        "variableTypes": ["Register"],
+        "defaultType": "Register"
+      },
+      {
+        "type": "field_number",
+        "name": "bits",
+        "value": 1,
+        "min": 1,
+        "precision": 1
+      }
+    ],
+    "previousStatement": null,
+    "nextStatement": null,
+    "colour": 330,
+    "tooltip": "Declare a new variable of wire type.",
+    "helpUrl": ""
+  },
+  {
+    "type": "wire_new",
+    "message0": "new wire %1 with %2 bits",
+    "args0": [
+      {
+        "type": "field_variable",
+        "name": "VAR",
+        "variable": "",
+        "variableTypes": ["Wire"],
+        "defaultType": "Wire"
+      },
+      {
+        "type": "field_number",
+        "name": "bits",
+        "value": 1,
+        "min": 1,
+        "precision": 1
+      }
+    ],
+    "previousStatement": null,
+    "nextStatement": null,
+    "colour": 330,
+    "tooltip": "Declare a new variable of wire type.",
+    "helpUrl": ""
+  },
+  {
+    "type": "parameter_new",
+    "message0": "define parameter %1 to %2",
+    "args0": [
+      {
+        "type": "field_variable",
+        "name": "VAR",
+        "variable": "",
+        "variableTypes": ["Parameter"],
+        "defaultType": "Parameter"
+      },
+      {
+        "type": "input_value",
+        "name": "VALUE"
+      }
+    ],
+    "previousStatement": null,
+    "nextStatement": null,
+    "colour": 330,
+    "tooltip": "Define a new parameter and set value",
+    "helpUrl": ""
   }
-};
-
-Blockly.Blocks['wire_new'] = {
-  init: function() {
-    this.appendDummyInput()
-      .appendField("new wire")
-      .appendField(new Blockly.FieldVariable("item"), "NAME")
-      .appendField("with")
-      .appendField(new Blockly.FieldNumber(1, 1, Infinity, 1), "bits")
-      .appendField("bits");
-    this.setPreviousStatement(true, null);
-    this.setNextStatement(true, null);
-    this.setColour(330);
-    this.setTooltip("Declare a new variable of wire type.");
-    this.setHelpUrl("");
-  }
-};
-
-Blockly.Blocks['parameter_new'] = {
-  init: function() {
-    this.appendValueInput("VALUE")
-      .setCheck(null)
-      .appendField("define parameter")
-      .appendField(new Blockly.FieldVariable("item"), "NAME")
-      .appendField("to");
-    this.setPreviousStatement(true, null);
-    this.setNextStatement(true, null);
-    this.setColour(330);
-    this.setTooltip("Define a new parameter and set value");
-    this.setHelpUrl("");
-  }
-};
+]);
