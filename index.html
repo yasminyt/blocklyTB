@@ -15,12 +15,14 @@
   <script src="blocks/initial/init.js"></script>
   <script src="blocks/values.js"></script>
   <script src="blocks/numbers.js"></script>
-  <script src="blocks/variables_dynamic/core.js"></script>
-  <script src="blocks/variables_dynamic/variables.js"></script>
+  <script src="blocks/variables_dynamic/core.js" type="module"></script>
+  <script src="blocks/variables_dynamic/variables.js" type="module"></script>
   <script src="blocks/behavior.js"></script>
   <script src="blocks/assignment.js"></script>
   <script src="blocks/operators.js"></script>
   <script src="blocks/loops.js"></script>
+  <script src="blocks/task/core.js" type="module"></script>
+  <script src="blocks/task/task.js" type="module"></script>
   <script src="blocks/functions.js"></script>
   <script src="blocks/custom.js"></script>
 
@@ -34,6 +36,7 @@
   <script src="generator/verilog/assignment.js"></script>
   <script src="generator/verilog/logic.js"></script>
   <script src="generator/verilog/operators.js"></script>
+  <script src="generator/verilog/task.js"></script>
   <script src="generator/verilog/functions.js"></script>
   <script src="generator/verilog/custom.js"></script>
 
@@ -55,6 +58,7 @@
   <xml id="toolbox" style="display: none">
     <category name="Custom" colour="300">
       <block type="timescale"></block>
+<!--      <block type="text_join"></block>-->
     </category>
     <sep gap="40"></sep>
     <category name="Values" colour="165">
@@ -133,6 +137,7 @@
       <block type="concat"></block>
     </category>
     <sep gap="40"></sep>
+    <category name="Task" colour="180" custom="create_task"></category>
     <category name="Functions" colour="0">
       <block type="display_sys"></block>
       <block type="monitor_sys"></block>

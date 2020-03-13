@@ -30,9 +30,14 @@ window.onload = () => {
   workspace.addChangeListener(() => realtimeGenerate(null, workspace));
 
   // 注册自定义的 toolbox-variable
-  if (Blockly.VariablesDynamic && Blockly.VariablesDynamic.variableCategory) {
+  if (Blockly.VariablesDynamic && Blockly.VariablesDynamic.CreateVariables) {
     workspace.registerToolboxCategoryCallback("variable_dynamic",
-      () => Blockly.VariablesDynamic.variableCategory(workspace));
+      () => Blockly.VariablesDynamic.CreateVariables.variableCategory(workspace));
+  }
+  // 注册自定义的 toolbox-task
+  if (Blockly.VariablesDynamic && Blockly.VariablesDynamic.CreateTask) {
+    workspace.registerToolboxCategoryCallback("create_task",
+      () => Blockly.VariablesDynamic.CreateTask.taskCategory(workspace));
   }
 };
 

@@ -25,7 +25,7 @@ Blockly.Blocks['input_port'] = {
   init: function() {
     this.appendDummyInput()
       .setAlign(Blockly.ALIGN_CENTRE)
-      .appendField("register type variables")
+      .appendField("register variables")
       .appendField(new Blockly.FieldTextInput("..."), "REG");
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
@@ -43,7 +43,7 @@ Blockly.Blocks['input_port'] = {
 Blockly.Blocks['output_port'] = {
   init: function() {
     this.appendDummyInput()
-      .appendField("wire type variables")
+      .appendField("wire variables")
       .appendField(new Blockly.FieldTextInput("..."), "WIRE");
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);

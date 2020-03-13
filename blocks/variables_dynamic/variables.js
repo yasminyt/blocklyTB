@@ -1,14 +1,16 @@
+import { REGISTER, WIRE, PARAMETER } from "../../js/typeKeys.js";
+
 // creating dynamic variables
 Blockly.defineBlocksWithJsonArray([ // BEGIN JSON EXTRACT
   {
     "type": "variables_get_reg",
-    "message0": "custom register %1",
+    "message0": "register %1",
     "args0": [{
       "type": "field_variable",
       "name": "VAR",
       "variable": "",
-      "variableTypes": ["Register"],
-      "defaultType": "Register"
+      "variableTypes": [REGISTER],
+      "defaultType": REGISTER
     }],
     "output": null,
     "style": "variable_dynamic_blocks",
@@ -17,13 +19,13 @@ Blockly.defineBlocksWithJsonArray([ // BEGIN JSON EXTRACT
   },
   {
     "type": "variables_get_wire",
-    "message0": "custom wire %1",
+    "message0": "wire %1",
     "args0": [{
       "type": "field_variable",
       "name": "VAR",
       "variable": "",
-      "variableTypes": ["Wire"],
-      "defaultType": "Wire"
+      "variableTypes": [WIRE],
+      "defaultType": WIRE
     }],
     "output": null,
     "style": "variable_dynamic_blocks",
@@ -32,13 +34,13 @@ Blockly.defineBlocksWithJsonArray([ // BEGIN JSON EXTRACT
   },
   {
     "type": "variables_get_parameter",
-    "message0": "custom parameter %1",
+    "message0": "parameter %1",
     "args0": [{
       "type": "field_variable",
       "name": "VAR",
       "variable": "",
-      "variableTypes": ["Parameter"],
-      "defaultType": "Parameter"
+      "variableTypes": [PARAMETER],
+      "defaultType": PARAMETER
     }],
     "output": null,
     "style": "variable_dynamic_blocks",
@@ -46,41 +48,6 @@ Blockly.defineBlocksWithJsonArray([ // BEGIN JSON EXTRACT
     "tooltip": "Select a parameter variable",
   },
 ]);
-
-// static dut variables
-Blockly.Blocks['reg_dut'] = {
-  init: function() {
-    this.appendDummyInput()
-        .appendField("dut register")
-        .appendField(new Blockly.FieldDropdown(this.generatedOptions), "variable");
-    this.setOutput(true, null);
-    this.setColour(330);
-    this.setTooltip("Select a register variable after DUT");
-    this.setHelpUrl("");
-  },
-  generatedOptions: function () {
-    const inputObj = JSON.parse(window.sessionStorage.getItem("inputObj"));
-    const params = inputObj['params'];
-    return params.map(e => [e, e]);
-  }
-};
-
-Blockly.Blocks['wire_dut'] = {
-  init: function() {
-    this.appendDummyInput()
-        .appendField("dut wire")
-        .appendField(new Blockly.FieldDropdown(this.generatedOptions), "variable");
-    this.setOutput(true, null);
-    this.setColour(330);
-    this.setTooltip("Select a wire variable after DUT");
-    this.setHelpUrl("");
-  },
-  generatedOptions: function () {
-    const inputObj = JSON.parse(window.sessionStorage.getItem("outputObj"));
-    const params = inputObj['params'];
-    return params.map(e => [e, e]);
-  }
-};
 
 // generate new variables
 Blockly.defineBlocksWithJsonArray([
@@ -92,8 +59,8 @@ Blockly.defineBlocksWithJsonArray([
         "type": "field_variable",
         "name": "VAR",
         "variable": "",
-        "variableTypes": ["Register"],
-        "defaultType": "Register"
+        "variableTypes": [REGISTER],
+        "defaultType": REGISTER
       },
       {
         "type": "field_number",
@@ -117,8 +84,8 @@ Blockly.defineBlocksWithJsonArray([
         "type": "field_variable",
         "name": "VAR",
         "variable": "",
-        "variableTypes": ["Wire"],
-        "defaultType": "Wire"
+        "variableTypes": [WIRE],
+        "defaultType": WIRE
       },
       {
         "type": "field_number",
@@ -142,8 +109,8 @@ Blockly.defineBlocksWithJsonArray([
         "type": "field_variable",
         "name": "VAR",
         "variable": "",
-        "variableTypes": ["Parameter"],
-        "defaultType": "Parameter"
+        "variableTypes": [PARAMETER],
+        "defaultType": PARAMETER
       },
       {
         "type": "input_value",
@@ -157,3 +124,38 @@ Blockly.defineBlocksWithJsonArray([
     "helpUrl": ""
   }
 ]);
+
+// static dut variables
+Blockly.Blocks['reg_dut'] = {
+  init: function() {
+    this.appendDummyInput()
+      .appendField("dut register")
+      .appendField(new Blockly.FieldDropdown(this.generatedOptions), "variable");
+    this.setOutput(true, null);
+    this.setColour(330);
+    this.setTooltip("Select a register variable after DUT");
+    this.setHelpUrl("");
+  },
+  generatedOptions: function () {
+    const inputObj = JSON.parse(window.sessionStorage.getItem("inputObj"));
+    const params = inputObj['params'];
+    return params.map(e => [e, e]);
+  }
+};
+
+Blockly.Blocks['wire_dut'] = {
+  init: function() {
+    this.appendDummyInput()
+      .appendField("dut wire")
+      .appendField(new Blockly.FieldDropdown(this.generatedOptions), "variable");
+    this.setOutput(true, null);
+    this.setColour(330);
+    this.setTooltip("Select a wire variable after DUT");
+    this.setHelpUrl("");
+  },
+  generatedOptions: function () {
+    const inputObj = JSON.parse(window.sessionStorage.getItem("outputObj"));
+    const params = inputObj['params'];
+    return params.map(e => [e, e]);
+  }
+};
