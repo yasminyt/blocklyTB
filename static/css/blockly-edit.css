@@ -35,16 +35,14 @@ h3 {
     text-align: center;
 }
 
-.POps {
-    height: 1px;
-    border: 0;
-    background-color: rgba(0,0,0,.2);
-}
+/*.POps {*/
+/*    height: 1px;*/
+/*    border: 0;*/
+/*    background-color: rgba(0,0,0,.2);*/
+/*}*/
 
 #codeArea {
     margin-top: 15px;
-    margin-left: 15px;
-    margin-right: 10px;
 }
 
 .saveButton {

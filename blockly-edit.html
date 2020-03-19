@@ -5,7 +5,9 @@
   <title>Blockly Testbench</title>
 
   <link href="static/css/blockly-edit.css" rel="stylesheet">
-  <link rel="stylesheet" href="static/css/prettify.css">
+  <link rel="stylesheet" href="static/css/prism.css">
+
+  <script src="js/prism.js"></script>
 
   <script src="blocks/core/blockly_compressed.js"></script>
   <script src="blocks/core/blocks_compressed.js"></script>
@@ -47,7 +49,6 @@
 
     <div id="codeDiv" class="main output-panel">
       <h3>Code View</h3>
-      <hr class="POps">
       <div id="codeArea"></div>
       <button class="saveButton">
         <img src="static/img/save.png" alt="保存到本地">
@@ -147,5 +148,17 @@
 
   <script src="js/inject.js" type="module"></script>
   <script src="js/downloadCode.js"></script>
+
+  <script>
+    Prism.plugins.NormalizeWhitespace.setDefaults({
+      'remove-trailing': true,
+      'remove-indent': true,
+      'left-trim': true,
+      'right-trim': true,
+      // 'break-lines': 40,
+      'tabs-to-spaces': 1
+    });
+  </script>
+
 </body>
 </html>

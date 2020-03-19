@@ -43,5 +43,8 @@ window.onload = () => {
 
 function realtimeGenerate(event, workspace) {
   const code = Blockly.Verilog.workspaceToCode(workspace);
-  document.getElementById('codeArea').innerText = code;
+  const htmlCode = `<pre data-src="test.v" data-download-link><code class="language-verilog">${code}</code></pre>`;
+  document.getElementById('codeArea').innerHTML = htmlCode;
+  Prism.highlightElement(document.querySelector('code'));
+  // Prism.highlight(htmlCode, Prism.languages['verilog'], 'verilog')
 }

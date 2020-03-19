@@ -26,12 +26,12 @@ function generateCodes(objName, type) {
     if (pairs.hasOwnProperty(params)) {
       const bits = pairs[params];
       if (bits.length)
-        code.push(`${type} ${bits} ${params};\n`);
+        code.push(`\t${type} ${bits} ${params.trim()};\n`);
       else
-        code.push(`${type} ${params};\n`);
+        code.push(`\t${type} ${params.trim()};\n`);
     }
   }
-  return code.join(' ');
+  return code.join('');
 }
 
 // 实例调用
@@ -39,13 +39,16 @@ Blockly.Verilog['instance'] = function(block) {
   const text_name = block.getFieldValue('NAME');
   const moduleName = window.sessionStorage.getItem('moduleName');
   const params = `${generateParams('inputObj')}, ${generateParams('outputObj')}`;
-  const code = `${moduleName} ${text_name} (${params});\n`;
+  const code = `\t${moduleName} ${text_name} (${params});\n`;
   return code;
 };
 
 function generateParams(objName) {
   const obj = JSON.parse(window.sessionStorage.getItem(objName));
   const params = obj.params;
-  const change = params.map(e => `.${e}(${e})`);
+  const change = params.map(e => {
+    const trimE = e.trim();
+    return `.${trimE}(${trimE})`;
+  });
   return change.join(', ');
 }
