@@ -29,7 +29,7 @@ function getExpressions(contents) {
   window.sessionStorage.setItem("moduleName", moduleName);
   window.sessionStorage.setItem("inputObj", JSON.stringify(inputObj));
   window.sessionStorage.setItem("outputObj", JSON.stringify(outputObj));
-  window.location.href = "index.html";
+  window.location.href = "blockly-edit.html";
 }
 
 function getParameters(express, obj) {

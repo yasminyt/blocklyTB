@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Blockly Testbench</title>
+
+  <link href="static/css/blockly-edit.css" rel="stylesheet">
+  <link rel="stylesheet" href="static/css/prettify.css">
+
+  <script src="blocks/core/blockly_compressed.js"></script>
+  <script src="blocks/core/blocks_compressed.js"></script>
+  <script src="static/msg/js/en.js"></script>
+
+  <!-- blocks -->
+  <script src="blocks/initial/init.js"></script>
+  <script src="blocks/values.js"></script>
+  <script src="blocks/numbers.js"></script>
+  <script src="blocks/variables_dynamic/core.js" type="module"></script>
+  <script src="blocks/variables_dynamic/variables.js" type="module"></script>
+  <script src="blocks/behavior.js"></script>
+  <script src="blocks/assignment.js"></script>
+  <script src="blocks/operators.js"></script>
+  <script src="blocks/loops.js"></script>
+  <script src="blocks/task/core.js" type="module"></script>
+  <script src="blocks/task/task.js" type="module"></script>
+  <script src="blocks/functions.js"></script>
+  <script src="blocks/custom.js"></script>
+
+  <!-- generators -->
+  <script src="generator/verilog.js"></script>
+  <script src="generator/verilog/initBlocks.js"></script>
+  <script src="generator/verilog/values.js"></script>
+  <script src="generator/verilog/numbers.js"></script>
+  <script src="generator/verilog/variables.js"></script>
+  <script src="generator/verilog/behavior.js"></script>
+  <script src="generator/verilog/assignment.js"></script>
+  <script src="generator/verilog/logic.js"></script>
+  <script src="generator/verilog/operators.js"></script>
+  <script src="generator/verilog/task.js"></script>
+  <script src="generator/verilog/functions.js"></script>
+  <script src="generator/verilog/custom.js"></script>
+
+</head>
+<body>
+  <div class="app-container">
+    <div id="blocklyDiv" class="main blockly-panel"></div>
+
+    <div id="codeDiv" class="main output-panel">
+      <h3>Code View</h3>
+      <hr class="POps">
+      <div id="codeArea"></div>
+      <button class="saveButton">
+        <img src="static/img/save.png" alt="保存到本地">
+      </button>
+    </div>
+  </div>
+
+  <xml id="toolbox" style="display: none">
+    <category name="Custom" colour="300">
+      <block type="timescale"></block>
+<!--      <block type="text_join"></block>-->
+    </category>
+    <sep gap="40"></sep>
+    <category name="Values" colour="165">
+      <block type="zero"></block>
+      <block type="one"></block>
+      <block type="high_impedance"></block>
+      <block type="uncertainty"></block>
+      <block type="text"></block>
+    </category>
+    <category name="Numbers" colour="280">
+      <block type="math_number"></block>
+      <block type="decimal_binary_return"></block>
+      <block type="decimal_hex_return"></block>
+      <block type="decimal_octal_return"></block>
+      <block type="decimal_binary"></block>
+      <block type="decimal_hex"></block>
+      <block type="decimal_octal"></block>
+    </category>
+    <category name="Variables" colour="330" custom="variable_dynamic"></category>
+    <sep gap="40"></sep>
+    <category name="Logic" colour="210">
+      <block type="controls_if"></block>
+      <block type="logic_boolean"></block>
+      <block type="logic_negate"></block>
+      <block type="logic_operation"></block>
+      <block type="logic_compare"></block>
+      <block type="logic_ternary"></block>
+    </category>
+    <category name="Loops" colour="120">
+      <block type="forever_loop"></block>
+      <block type="controls_repeat_ext">
+        <value name="TIMES">
+          <shadow type="math_number">
+            <field name="NUM">10</field>
+          </shadow>
+        </value>
+      </block>
+      <block type="while_loop"></block>
+      <block type="controls_for">
+        <field name="VAR">i</field>
+        <value name="FROM">
+          <shadow type="math_number">
+            <field name="NUM">1</field>
+          </shadow>
+        </value>
+        <value name="TO">
+          <shadow type="math_number">
+            <field name="NUM">10</field>
+          </shadow>
+        </value>
+        <value name="BY">
+          <shadow type="math_number">
+            <field name="NUM">1</field>
+          </shadow>
+        </value>
+      </block>
+    </category>
+    <sep gap="40"></sep>
+    <category name="Behavior" colour="240">
+      <block type="initial"></block>
+      <block type="initial_par"></block>
+      <block type="always_at"></block>
+      <block type="always_delay"></block>
+      <block type="delay"></block>
+<!--  <block type="logic_operation_2"></block>  todo: or 语句-->
+    </category>
+    <category name="Assignment" colour="20">
+      <block type="assign"></block>
+      <block type="assign_parallel"></block>
+    </category>
+    <category name="Operators" colour="225">
+      <block type="math_arithmetic"></block>
+      <block type="bit_select"></block>
+      <block type="pos_edge"></block>
+      <block type="neg_edge"></block>
+      <block type="concat"></block>
+    </category>
+    <sep gap="40"></sep>
+    <category name="Task" colour="180" custom="create_task"></category>
+    <category name="Functions" colour="0">
+      <block type="display_sys"></block>
+      <block type="monitor_sys"></block>
+      <block type="finish_sys"></block>
+    </category>
+  </xml>
+
+  <script src="js/inject.js" type="module"></script>
+  <script src="js/downloadCode.js"></script>
+</body>
+</html>
