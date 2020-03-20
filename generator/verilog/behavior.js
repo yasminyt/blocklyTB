@@ -9,47 +9,35 @@
  */
 Blockly.Verilog['initial'] = function(block) {
   const statements_body = Blockly.Verilog.statementToCode(block, 'body');
-  const code = 'initial begin\n' + statements_body + 'end\n';
+  const code = '\tinitial begin\n' + statements_body + '\tend\n';
   return code;
 };
 
 /**
- * initial-fork-join
+ * fork-join
  * @param block
  * @returns {string}
  */
-Blockly.Verilog['initial_par'] = function(block) {
+Blockly.Verilog['fork-join'] = function(block) {
   const statements_body = Blockly.Verilog.statementToCode(block, 'body');
-  const code = 'initial fork\n' + statements_body + 'join\n';
+  const code = '\tfork\n' + statements_body + '\tjoin\n';
   return code;
 };
 
 /**
- * always @
+ * always @ todo: always at
  * @param block
  * @returns {string}
  */
 Blockly.Verilog['always_at'] = function(block) {
   const value_condition = Blockly.Verilog.valueToCode(block, 'condition', Blockly.Verilog.ORDER_ATOMIC);
   const statements_body = Blockly.Verilog.statementToCode(block, 'body');
-  const code = 'always @ (' + value_condition + ')\n' + 'begin\n' + statements_body + '\n' + 'end\n';
+  const code = '\talways @ (' + value_condition + ') begin\n' + statements_body + '\n' + '\tend\n';
   return code;
 };
 
 /**
- * always #
- * @param block
- * @returns {string}
- */
-Blockly.Verilog['always_delay'] = function(block) {
-  const value_delay = Blockly.Verilog.valueToCode(block, 'delay', Blockly.Verilog.ORDER_ATOMIC);
-  const statements_code = Blockly.Verilog.statementToCode(block, 'code');
-  const code = 'always #' + value_delay + ' ' + statements_code + '\n';
-  return code;
-};
-
-/**
- * #time
+ * #time [do something];  // Single delay statement
  * @param block
  * @returns {string}
  */
@@ -58,6 +46,18 @@ Blockly.Verilog['delay'] = function(block) {
   const statements_body = Blockly.Verilog.statementToCode(block, 'body');
   if (value_time === '')
     value_time = '1';
-  const code = `#${value_time}\n ${statements_body}\n`;
+  const code = `\t#${value_time} ${statements_body};\n`;
   return code;
+};
+
+/**
+ * #time [do something]  // as the statement
+ * @param block
+ * @returns {[string, number]}
+ */
+Blockly.Verilog['delay_output'] = function(block) {
+  const time = Blockly.Verilog.valueToCode(block, 'time', Blockly.Verilog.ORDER_ATOMIC);
+  const statement = Blockly.Verilog.valueToCode(block, 'statement', Blockly.Verilog.ORDER_ATOMIC);
+  const code = `#${time} ${statement}`;
+  return [code, Blockly.Verilog.ORDER_NONE];
 };

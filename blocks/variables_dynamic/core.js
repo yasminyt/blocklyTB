@@ -1,5 +1,5 @@
 // todo: 变量命名检查
-import { REGISTER, WIRE, PARAMETER } from "../../js/typeKeys.js";
+import { REGISTER, WIRE, PARAMETER, INTEGER } from "../../js/typeKeys.js";
 
 Blockly.VariablesDynamic.CreateVariables = {
   onCreateVariableButtonClick: null,
@@ -15,7 +15,8 @@ Blockly.VariablesDynamic.CreateVariables = {
  * Handle the clicking events
  * @type {{REGISTER: Blockly.VariablesDynamic.CreateVariables.onCreateVariableButtonClick.REGISTER,
  *  WIRE: Blockly.VariablesDynamic.CreateVariables.onCreateVariableButtonClick.WIRE,
- *  PARAMETER: Blockly.VariablesDynamic.CreateVariables.onCreateVariableButtonClick.PARAMETER}}
+ *  PARAMETER: Blockly.VariablesDynamic.CreateVariables.onCreateVariableButtonClick.PARAMETER,
+ *  INTEGER: Blockly.VariablesDynamic.CreateVariables.onCreateVariableButtonClick.INTEGER}}
  */
 Blockly.VariablesDynamic.CreateVariables.onCreateVariableButtonClick = {
   REGISTER: function (button) {
@@ -35,6 +36,12 @@ Blockly.VariablesDynamic.CreateVariables.onCreateVariableButtonClick = {
     const this_ = Blockly.VariablesDynamic.CreateVariables;
     Blockly.Variables.createVariableButtonHandler(workspace,
       text => this_.newVariableBlock(text, workspace, PARAMETER), PARAMETER);
+  },
+  INTEGER: function (button) {
+    const workspace = button.getTargetWorkspace();
+    const this_ = Blockly.VariablesDynamic.CreateVariables;
+    Blockly.Variables.createVariableButtonHandler(workspace,
+      text => this_.newVariableBlock(text, workspace, INTEGER), INTEGER);
   }
 };
 
@@ -57,6 +64,10 @@ Blockly.VariablesDynamic.CreateVariables.variableCategory = function(workspace) 
   button.setAttribute('text', "New parameter...");
   button.setAttribute('callbackKey', 'CREATE_VARIABLE_PARAMETER');
   xmlList.push(button);
+  button = document.createElement('button');
+  button.setAttribute('text', "New integer...");
+  button.setAttribute('callbackKey', 'CREATE_VARIABLE_INTEGER');
+  xmlList.push(button);
 
   workspace.registerButtonCallback('CREATE_VARIABLE_REGISTER',
     this.onCreateVariableButtonClick.REGISTER);
@@ -64,6 +75,8 @@ Blockly.VariablesDynamic.CreateVariables.variableCategory = function(workspace) 
     this.onCreateVariableButtonClick.WIRE);
   workspace.registerButtonCallback('CREATE_VARIABLE_PARAMETER',
     this.onCreateVariableButtonClick.PARAMETER);
+  workspace.registerButtonCallback('CREATE_VARIABLE_INTEGER',
+    this.onCreateVariableButtonClick.INTEGER);
 
 
   const blockList = this.variableCategoryBlocks(workspace);
@@ -82,12 +95,14 @@ Blockly.VariablesDynamic.CreateVariables.variableCategoryBlocks = function(works
   const regVariableModelList = workspace.getVariablesOfType(REGISTER);
   const wireVariableModelList = workspace.getVariablesOfType(WIRE);
   const paramVariableModelList = workspace.getVariablesOfType(PARAMETER);
+  const intVariableModelList = workspace.getVariablesOfType(INTEGER);
 
   const xmlList = [];
 
   this.generateBlocks2Category(regVariableModelList, 'variables_get_reg', xmlList);
   this.generateBlocks2Category(wireVariableModelList, 'variables_get_wire', xmlList);
   this.generateBlocks2Category(paramVariableModelList, 'variables_get_parameter', xmlList);
+  this.generateBlocks2Category(intVariableModelList, 'variables_get_integer', xmlList);
 
   return xmlList;
 };
@@ -123,7 +138,8 @@ Blockly.VariablesDynamic.CreateVariables.newVariableBlock = function(text, works
   switch (variableType) {
     case REGISTER: blockType = 'reg_new'; break;
     case WIRE: blockType = 'wire_new'; break;
-    case PARAMETER: blockType = 'parameter_new';
+    case PARAMETER: blockType = 'parameter_new'; break;
+    case INTEGER: blockType = 'integer_new'; break;
   }
   const xml = `
     <xml>
@@ -147,4 +163,4 @@ Blockly.VariablesDynamic.CreateVariables.generateBlocks2Category = function (var
     block.appendChild(Blockly.Variables.generateVariableFieldDom(variable));
     xmlList.push(block);
   }
-}
+};

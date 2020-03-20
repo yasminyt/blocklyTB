@@ -7,21 +7,21 @@
  * @param block
  * @returns {string}
  */
-Blockly.Verilog['controls_if'] = function(block) {    // todo: if-else
+Blockly.Verilog['controls_if'] = function(block) {
   let n = 0;
   let code = '', branchCode, conditionCode;
   do {
     conditionCode = Blockly.Verilog.valueToCode(block, 'IF' + n,
       Blockly.Verilog.ORDER_NONE) || '0';
     branchCode = Blockly.Verilog.statementToCode(block, 'DO' + n);
-    code += (n > 0 ? ' else ' : '') +
-      'if (' + conditionCode + ') ' + '\tbegin\n' + branchCode+ ' end ';
+    code += (n > 0 ? '\n\telse' : '') +
+      '\tif (' + conditionCode + ') ' + '\tbegin\n' + branchCode+ '\tend';
     ++n;
   } while (block.getInput('IF' + n));
 
   if (block.getInput('ELSE')) {
     branchCode = Blockly.Verilog.statementToCode(block, 'ELSE');
-    code += ' else ' + '\tbegin\n ' + branchCode + ' end ';
+    code += '\n\telse ' + '\tbegin\n' + branchCode + '\tend';
   }
   return code + '\n';
 };

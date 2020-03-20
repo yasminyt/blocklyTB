@@ -10,11 +10,7 @@
 Blockly.Verilog['task_content'] = function(block) {
   const variable = Blockly.Verilog.variableDB_.getName(block.getFieldValue('VAR'), Blockly.Variables.NAME_TYPE);
   const content = Blockly.Verilog.statementToCode(block, 'CONTENT');
-  const code = `
-    task ${variable};
-      ${content}
-    endtask\n  
-  `;
+  const code = `\ttask ${variable};\n${content}\tendtask\n`;
   return code;
 };
 
@@ -46,9 +42,9 @@ Blockly.Verilog['input_new'] = function(block) {
   const bits = block.getFieldValue('bits');
   let code = '';
   if (bits === 1)
-    code = `input ${variable_name};\n`;
+    code = `\tinput ${variable_name};\n`;
   else
-    code = `input [${bits - 1}:0] ${variable_name};\n`;
+    code = `\tinput [${bits - 1}:0] ${variable_name};\n`;
   return code;
 };
 

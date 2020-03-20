@@ -11,11 +11,41 @@ Blockly.Blocks['display_sys'] = {
   }
 };
 
+Blockly.Blocks['readmemb'] = {
+  init: function() {
+    this.appendValueInput("readmemb")
+      .setCheck(null)
+      .appendField("Read binary file")
+      .appendField(new Blockly.FieldTextInput("fileName"), "fileName")
+      .appendField("to");
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+    this.setColour(0);
+    this.setTooltip("The system task reads binary data from file, and saves to the memory.");
+    this.setHelpUrl("");
+  }
+};
+
+Blockly.Blocks['readmemh'] = {
+  init: function() {
+    this.appendValueInput("readmemh")
+      .setCheck(null)
+      .appendField("Read hexadecimal file")
+      .appendField(new Blockly.FieldTextInput("fileName"), "fileName")
+      .appendField("to");
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+    this.setColour(0);
+    this.setTooltip("The system task reads hexadecimal data from file, and saves to the memory.");
+    this.setHelpUrl("");
+  }
+};
+
 Blockly.Blocks['monitor_sys'] = {
   init: function() {
-    this.appendDummyInput()
-        .appendField("Monitor variables ")    // todo: 修改为下拉框选择变量
-        .appendField(new Blockly.FieldTextInput("variables"), "names");
+    this.appendValueInput("NAME")
+        .setCheck(null)
+        .appendField("Monitor variables");
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
     this.setColour(0);

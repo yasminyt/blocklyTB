@@ -9,7 +9,7 @@
  */
 Blockly.Verilog['variables_get_reg'] = function(block) {
   const code = Blockly.Verilog.variableDB_.getName(block.getFieldValue('VAR'), Blockly.Variables.NAME_TYPE);
-  return code;
+  return [code, Blockly.Verilog.ORDER_NONE];
 };
 
 /**
@@ -33,6 +33,16 @@ Blockly.Verilog['variables_get_parameter'] = function(block) {
 };
 
 /**
+ * [integer variable]
+ * @param block
+ * @returns {[string, number]}
+ */
+Blockly.Verilog['variables_get_integer'] = function(block) {
+  const code = Blockly.Verilog.variableDB_.getName(block.getFieldValue('VAR'), Blockly.Variables.NAME_TYPE);
+  return [code, Blockly.Verilog.ORDER_NONE];
+};
+
+/**
  * reg [bits] [varName];
  * @param block
  * @returns {string}
@@ -42,9 +52,9 @@ Blockly.Verilog['reg_new'] = function(block) {
   const bits = block.getFieldValue('bits');
   let code = '';
   if (bits === 1)
-    code = `reg ${variable_name};\n`;
+    code = `\treg ${variable_name};\n`;
   else
-    code = `reg [${bits - 1}:0] ${variable_name};\n`;
+    code = `\treg [${bits - 1}:0] ${variable_name};\n`;
   return code;
 };
 
@@ -58,14 +68,14 @@ Blockly.Verilog['wire_new'] = function(block) {
   const bits = block.getFieldValue('bits');
   let code = '';
   if (bits === 1)
-    code = `wire ${variable_name};\n`;
+    code = `\twire ${variable_name};\n`;
   else
-    code = `wire [${bits - 1}:0] ${variable_name};\n`;
+    code = `\twire [${bits - 1}:0] ${variable_name};\n`;
   return code;
 };
 
 /**
- *
+ * parameter var = value;
  * @param block
  * @returns {string}
  */
@@ -74,9 +84,20 @@ Blockly.Verilog['parameter_new'] = function(block) {
   const value = Blockly.Verilog.valueToCode(block, 'VALUE', Blockly.Verilog.ORDER_ATOMIC);
   let code = '';
   if (value === '')
-    code = `parameter ${variable_name} = 0;\n`;
+    code = `\tparameter ${variable_name} = 0;\n`;
   else
-    code = `parameter ${variable_name} = ${value};\n`;
+    code = `\tparameter ${variable_name} = ${value};\n`;
+  return code;
+};
+
+/**
+ * integer var;
+ * @param block
+ * @returns {string}
+ */
+Blockly.Verilog['integer_new'] = function(block) {
+  const variable_name = Blockly.Verilog.variableDB_.getName(block.getFieldValue('VAR'), Blockly.Variables.NAME_TYPE);
+  const code = `\tinteger ${variable_name};\n`;
   return code;
 };
 

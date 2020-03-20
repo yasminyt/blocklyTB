@@ -56,7 +56,7 @@ body {
 }
 .sign-in-logo img {
     display: inline-block;
-    height: 100px;
+    /*height: 100px;*/
 }
 
 .sign-in-form {
@@ -71,7 +71,7 @@ body {
 }
 
 .owl-item {
-    width: 300px;
+    width: 100%;
     margin: auto;
 }
 
@@ -151,6 +151,7 @@ a, button, input, .btn {
     }
     .sign-in-detail {
         height: 100%;
+        padding-bottom: 20px;
     }
     .sign-in-page .sign-in-page-bg::after{right: 0;}
     .sign-in-form{
@@ -158,3 +159,8 @@ a, button, input, .btn {
     }
 }
 
+@media(max-width: 450px) {
+    h1 {
+        font-size: 2em;
+    }
+}

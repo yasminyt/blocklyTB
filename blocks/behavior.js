@@ -1,7 +1,7 @@
 Blockly.Blocks['initial'] = {
   init: function() {
     this.appendDummyInput("condition")
-        .appendField("Execute at t=0");
+        .appendField("Sequential execute");
     this.appendStatementInput("body")
         .setCheck(null)
         .appendField("do");
@@ -13,10 +13,10 @@ Blockly.Blocks['initial'] = {
   }
 };
 
-Blockly.Blocks['initial_par'] = {
+Blockly.Blocks['fork-join'] = {
   init: function() {
     this.appendDummyInput("condition")
-        .appendField("Execute the following all at t=0");
+        .appendField("Parallel execute");
     this.appendStatementInput("body")
         .setCheck(null)
         .appendField("do");
@@ -28,6 +28,7 @@ Blockly.Blocks['initial_par'] = {
   }
 };
 
+// todo: always at
 Blockly.Blocks['always_at'] = {
   init: function() {
     this.appendValueInput("condition")
@@ -44,27 +45,10 @@ Blockly.Blocks['always_at'] = {
   }
 };
 
-Blockly.Blocks['always_delay'] = {
-  init: function() {
-    this.appendValueInput("delay")
-        .setCheck("Number")
-        .appendField("Always delay");
-    this.appendStatementInput("code")
-        .setCheck(null)
-        .appendField("do");
-    this.setPreviousStatement(true, null);
-    this.setNextStatement(true, null);
-    this.setColour(240);
-    this.setTooltip("");
-    this.setHelpUrl("");
-  }
-};
-
-// todo: delay
 Blockly.Blocks['delay'] = {
   init: function() {
     this.appendValueInput("time")
-        .setCheck(null)
+        .setCheck("Number")
         .appendField("delay time");
     this.appendStatementInput("body")
         .setCheck(null)
@@ -77,5 +61,18 @@ Blockly.Blocks['delay'] = {
   }
 };
 
-
-// 缺 logic_operation_2
+Blockly.Blocks['delay_output'] = {
+  init: function() {
+    this.appendValueInput("time")
+        .setCheck("Number")
+        .appendField("delay time");
+    this.appendValueInput("statement")
+        .setCheck(null)
+        .appendField("to");
+    this.setInputsInline(true);
+    this.setOutput(true, null);
+    this.setColour(240);
+    this.setTooltip("");
+    this.setHelpUrl("");
+  }
+};

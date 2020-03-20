@@ -13,3 +13,14 @@ Blockly.Blocks['timescale'] = {
     this.setHelpUrl("");
   }
 };
+
+Blockly.Blocks['end_module'] = {
+  init: function() {
+    this.appendDummyInput()
+        .appendField("endmodule");
+    this.setPreviousStatement(true, null);
+    this.setColour(345);
+    this.setTooltip("");
+    this.setHelpUrl("");
+  }
+};

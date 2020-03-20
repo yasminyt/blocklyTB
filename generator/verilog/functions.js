@@ -9,7 +9,31 @@
  */
 Blockly.Verilog['display_sys'] = function(block) {
   const text_text = block.getFieldValue('text');
-  const code = '$display (' + '"' + text_text + '")' + ';\n';
+  const code = '\t$display (' + '"' + text_text + '")' + ';\n';
+  return code;
+};
+
+/**
+ * $readmemb([fileName], [memory]);
+ * @param block
+ * @returns {string}
+ */
+Blockly.Verilog['readmemb'] = function(block) {
+  const fileName = block.getFieldValue('fileName');
+  const memory = Blockly.Verilog.valueToCode(block, 'readmemb', Blockly.Verilog.ORDER_ATOMIC);
+  const code = `\t$readmemb("${fileName}", ${memory || 'null'});\n`;
+  return code;
+};
+
+/**
+ * $readmemh([fileName], [memory]);
+ * @param block
+ * @returns {string}
+ */
+Blockly.Verilog['readmemh'] = function(block) {
+  const fileName = block.getFieldValue('fileName');
+  const memory = Blockly.Verilog.valueToCode(block, 'readmemh', Blockly.Verilog.ORDER_ATOMIC);
+  const code = `\t$readmemh("${fileName}", ${memory || 'null'});\n`;
   return code;
 };
 
@@ -20,7 +44,7 @@ Blockly.Verilog['display_sys'] = function(block) {
  */
 Blockly.Verilog['monitor_sys'] = function(block) {
   const text_names = block.getFieldValue('names');    // todo: monitor
-  const code = '$monitor ( ' + text_names + ' );\n';
+  const code = '\t$monitor ( ' + text_names + ' );\n';
   return code;
 };
 
@@ -30,6 +54,6 @@ Blockly.Verilog['monitor_sys'] = function(block) {
  * @returns {string}
  */
 Blockly.Verilog['finish_sys'] = function(block) {
-  const code = '$finish;\n';
+  const code = '\t$finish;\n';
   return code;
 };

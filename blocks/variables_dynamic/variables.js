@@ -1,4 +1,4 @@
-import { REGISTER, WIRE, PARAMETER } from "../../js/typeKeys.js";
+import { REGISTER, WIRE, PARAMETER, INTEGER } from "../../js/typeKeys.js";
 
 // creating dynamic variables
 Blockly.defineBlocksWithJsonArray([ // BEGIN JSON EXTRACT
@@ -47,6 +47,21 @@ Blockly.defineBlocksWithJsonArray([ // BEGIN JSON EXTRACT
     "helpUrl": "%{BKY_VARIABLES_GET_HELPURL}",
     "tooltip": "Select a parameter variable",
   },
+  {
+    "type": "variables_get_integer",
+    "message0": "integer %1",
+    "args0": [{
+      "type": "field_variable",
+      "name": "VAR",
+      "variable": "",
+      "variableTypes": [INTEGER],
+      "defaultType": INTEGER
+    }],
+    "output": null,
+    "style": "variable_dynamic_blocks",
+    "helpUrl": "%{BKY_VARIABLES_GET_HELPURL}",
+    "tooltip": "Select a integer variable",
+  }
 ]);
 
 // generate new variables
@@ -122,6 +137,28 @@ Blockly.defineBlocksWithJsonArray([
     "colour": 330,
     "tooltip": "Define a new parameter and set value",
     "helpUrl": ""
+  },
+  {
+    "type": "integer_new",
+    "message0": "new integer %1",
+    "args0": [
+      {
+        "type": "field_variable",
+        "name": "VAR",
+        "variable": "",
+        "variableTypes": [INTEGER],
+        "defaultType": INTEGER
+      },
+      // {  先去掉赋值，默认只是声明
+      //   "type": "input_value",
+      //   "name": "VALUE"
+      // }
+    ],
+    "previousStatement": null,
+    "nextStatement": null,
+    "colour": 330,
+    "tooltip": "Define a new integer and set value. Remove to trash if not needed.",
+    "helpUrl": ""
   }
 ]);
 
@@ -139,7 +176,7 @@ Blockly.Blocks['reg_dut'] = {
   generatedOptions: function () {
     const inputObj = JSON.parse(window.sessionStorage.getItem("inputObj"));
     const params = inputObj['params'];
-    return params.map(e => [e, e]);
+    return params.map(e => [e.trim(), e.trim()]);
   }
 };
 
@@ -154,8 +191,8 @@ Blockly.Blocks['wire_dut'] = {
     this.setHelpUrl("");
   },
   generatedOptions: function () {
-    const inputObj = JSON.parse(window.sessionStorage.getItem("outputObj"));
-    const params = inputObj['params'];
-    return params.map(e => [e, e]);
+    const outputObj = JSON.parse(window.sessionStorage.getItem("outputObj"));
+    const params = outputObj['params'];
+    return params.map(e => [e.trim(), e.trim()]);
   }
 };

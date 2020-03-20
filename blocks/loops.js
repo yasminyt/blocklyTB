@@ -29,4 +29,33 @@ Blockly.Blocks['while_loop'] = {
   }
 };
 
+Blockly.Blocks['for_loop'] = {
+  init: function() {
+    this.appendValueInput("VAR")
+        .setCheck(null)
+        .appendField("count with");
+    this.appendValueInput("FROM")
+        .setCheck("Number")
+        .setAlign(Blockly.ALIGN_RIGHT)
+        .appendField("from");
+    this.appendValueInput("TO")
+        .setCheck("Number")
+        .setAlign(Blockly.ALIGN_RIGHT)
+        .appendField("to");
+    this.appendValueInput("BY")
+        .setCheck("Number")
+        .setAlign(Blockly.ALIGN_RIGHT)
+        .appendField("by");
+    this.appendStatementInput("DO")
+        .setCheck(null)
+        .appendField("do");
+    this.setInputsInline(true);
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+    this.setColour(120);
+    this.setTooltip("");
+    this.setHelpUrl("");
+  }
+};
+
 // notes: 其余未添加的即使用 blockly 原生提供的

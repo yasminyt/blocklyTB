@@ -26,7 +26,7 @@
   <script src="blocks/task/core.js" type="module"></script>
   <script src="blocks/task/task.js" type="module"></script>
   <script src="blocks/functions.js"></script>
-  <script src="blocks/custom.js"></script>
+  <script src="blocks/module.js"></script>
 
   <!-- generators -->
   <script src="generator/verilog.js"></script>
@@ -37,10 +37,11 @@
   <script src="generator/verilog/behavior.js"></script>
   <script src="generator/verilog/assignment.js"></script>
   <script src="generator/verilog/logic.js"></script>
+  <script src="generator/verilog/loops.js"></script>
   <script src="generator/verilog/operators.js"></script>
   <script src="generator/verilog/task.js"></script>
   <script src="generator/verilog/functions.js"></script>
-  <script src="generator/verilog/custom.js"></script>
+  <script src="generator/verilog/module.js"></script>
 
 </head>
 <body>
@@ -57,17 +58,21 @@
   </div>
 
   <xml id="toolbox" style="display: none">
-    <category name="Custom" colour="300">
+    <category name="Module" colour="345">
       <block type="timescale"></block>
+      <block type="end_module"></block>
 <!--      <block type="text_join"></block>-->
     </category>
     <sep gap="40"></sep>
-    <category name="Values" colour="165">
+    <category name="Values" colour="260">
       <block type="zero"></block>
       <block type="one"></block>
       <block type="high_impedance"></block>
       <block type="uncertainty"></block>
       <block type="text"></block>
+      <block type="lists_create_with">
+        <mutation items="2"></mutation>
+      </block>
     </category>
     <category name="Numbers" colour="280">
       <block type="math_number"></block>
@@ -98,8 +103,7 @@
         </value>
       </block>
       <block type="while_loop"></block>
-      <block type="controls_for">
-        <field name="VAR">i</field>
+      <block type="for_loop">
         <value name="FROM">
           <shadow type="math_number">
             <field name="NUM">1</field>
@@ -120,15 +124,29 @@
     <sep gap="40"></sep>
     <category name="Behavior" colour="240">
       <block type="initial"></block>
-      <block type="initial_par"></block>
+      <block type="fork-join"></block>
       <block type="always_at"></block>
-      <block type="always_delay"></block>
-      <block type="delay"></block>
-<!--  <block type="logic_operation_2"></block>  todo: or 语句-->
+      <block type="delay">
+        <value name="time">
+          <shadow type="math_number">
+            <field name="NUM">1</field>
+          </shadow>
+        </value>
+      </block>
+      <block type="delay_output">
+        <value name="time">
+          <shadow type="math_number">
+            <field name="NUM">1</field>
+          </shadow>
+        </value>
+      </block>
     </category>
     <category name="Assignment" colour="20">
+      <block type="none_block_assign"></block>
+      <block type="block_assign"></block>
       <block type="assign"></block>
-      <block type="assign_parallel"></block>
+      <block type="none_block_assign_output"></block>
+      <block type="block_assign_output"></block>
     </category>
     <category name="Operators" colour="225">
       <block type="math_arithmetic"></block>
@@ -141,6 +159,8 @@
     <category name="Task" colour="180" custom="create_task"></category>
     <category name="Functions" colour="0">
       <block type="display_sys"></block>
+      <block type="readmemb"></block>
+      <block type="readmemh"></block>
       <block type="monitor_sys"></block>
       <block type="finish_sys"></block>
     </category>
@@ -156,7 +176,7 @@
       'left-trim': true,
       'right-trim': true,
       // 'break-lines': 40,
-      'tabs-to-spaces': 1
+      'tabs-to-spaces': 1,
     });
   </script>
 

@@ -1,33 +1,63 @@
 /**
- * Generator Verilog codes for data flow blocks.
+ * Generator Verilog codes for assignment blocks.
  */
 
-// todo: 下拉变量
+/**
+ * variable <= value;
+ * @param block
+ * @returns {string}
+ */
+Blockly.Verilog['none_block_assign'] = function(block) {
+  const variable = Blockly.Verilog.valueToCode(block, 'var', Blockly.Verilog.ORDER_ATOMIC);
+  const value = Blockly.Verilog.valueToCode(block, 'value', Blockly.Verilog.ORDER_ATOMIC);
+
+  const code = `\t${variable || 'null'} <= ${value || 'null'};\n`;
+  return code;
+};
 
 /**
- * Assign values = X;
+ * variable = value;
+ * @param block
+ * @returns {string}
+ */
+Blockly.Verilog['block_assign'] = function(block) {
+  const variable = Blockly.Verilog.valueToCode(block, 'var', Blockly.Verilog.ORDER_ATOMIC);
+  const value = Blockly.Verilog.valueToCode(block, 'value', Blockly.Verilog.ORDER_ATOMIC);
+  const code = `\t${variable || 'null'} = ${value || 'null'};\n`;
+  return code;
+};
+
+/**
+ * assign statement;
  * @param block
  * @returns {string}
  */
 Blockly.Verilog['assign'] = function(block) {
-  const variable_var = Blockly.Verilog.variableDB_.getName(block.getFieldValue('var'), Blockly.Variables.NAME_TYPE);
-  const value_name = Blockly.Verilog.valueToCode(block, 'NAME', Blockly.Verilog.ORDER_ATOMIC);
-  return generateAssign(variable_var, value_name, '=');
+  const statement = Blockly.Verilog.valueToCode(block, 'statement', Blockly.Verilog.ORDER_ATOMIC);
+  const code = `\tassign ${statement || '[statement]'};\n`;
+  return code;
 };
 
 /**
- * Assign values <= X;
+ * (return) variable <= value
  * @param block
- * @returns {string}
+ * @returns {[string, number]}
  */
-Blockly.Verilog['assign_parallel'] = function(block) {
-  const variable_var = Blockly.Verilog.variableDB_.getName(block.getFieldValue('var'), Blockly.Variables.NAME_TYPE);
-  const value_name = Blockly.Verilog.valueToCode(block, 'NAME', Blockly.Verilog.ORDER_ATOMIC);
-  return generateAssign(variable_var, value_name, '<=');
+Blockly.Verilog['none_block_assign_output'] = function(block) {
+  const variable = Blockly.Verilog.valueToCode(block, 'var', Blockly.Verilog.ORDER_ATOMIC);
+  const value = Blockly.Verilog.valueToCode(block, 'value', Blockly.Verilog.ORDER_ATOMIC);
+  const code = `${variable || 'null'} <= ${value || 'null'}`;
+  return [code, Blockly.Verilog.ORDER_NONE];
 };
 
-function generateAssign(variable, value, assignOperate) {
-  if(value === '')
-    return  `assign ${variable} ${assignOperate} X;\n`;
-  return  `assign ${variable} ${assignOperate} ${value};\n`;
-}
+/**
+ * (return) variable = value
+ * @param block
+ * @returns {[string, number]}
+ */
+Blockly.Verilog['block_assign_output'] = function(block) {
+  const variable = Blockly.Verilog.valueToCode(block, 'var', Blockly.Verilog.ORDER_ATOMIC);
+  const value = Blockly.Verilog.valueToCode(block, 'value', Blockly.Verilog.ORDER_ATOMIC);
+  const code = `${variable || 'null'} = ${value || 'null'}`;
+  return [code, Blockly.Verilog.ORDER_NONE];
+};
