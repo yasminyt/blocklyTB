@@ -201,6 +201,7 @@ Blockly.Msg["MATH_ARITHMETIC_HELPURL"] = "https://he.wikipedia.org/wiki/ארבע
 Blockly.Msg["MATH_ARITHMETIC_TOOLTIP_ADD"] = "תחזיר את סכום שני המספרים.";
 Blockly.Msg["MATH_ARITHMETIC_TOOLTIP_DIVIDE"] = "החזרת המנה של שני המספרים.";
 Blockly.Msg["MATH_ARITHMETIC_TOOLTIP_MINUS"] = "החזרת ההפרש בין שני מספרים.";
+Blockly.Msg["MATH_ARITHMETIC_TOOLTIP_MODULUS"] = "Return the remainder from division of two numbers.";  // untranslated
 Blockly.Msg["MATH_ARITHMETIC_TOOLTIP_MULTIPLY"] = "החזרת תוצאת הכפל בין שני מספרים.";
 Blockly.Msg["MATH_ARITHMETIC_TOOLTIP_POWER"] = "החזרת המספר הראשון בחזקת המספר השני.";
 Blockly.Msg["MATH_ATAN2_HELPURL"] = "https://en.wikipedia.org/wiki/Atan2";  // untranslated

@@ -201,6 +201,7 @@ Blockly.Msg["MATH_ARITHMETIC_HELPURL"] = "https://en.wikipedia.org/wiki/Arithmet
 Blockly.Msg["MATH_ARITHMETIC_TOOLTIP_ADD"] = "A smon la soma ëd doi nùmer.";
 Blockly.Msg["MATH_ARITHMETIC_TOOLTIP_DIVIDE"] = "A smon ël cossient dij doi nùmer.";
 Blockly.Msg["MATH_ARITHMETIC_TOOLTIP_MINUS"] = "A smon la diferensa dij doi nùmer.";
+Blockly.Msg["MATH_ARITHMETIC_TOOLTIP_MODULUS"] = "Return the remainder from division of two numbers.";  // untranslated
 Blockly.Msg["MATH_ARITHMETIC_TOOLTIP_MULTIPLY"] = "A smon ël prodot dij doi nùmer.";
 Blockly.Msg["MATH_ARITHMETIC_TOOLTIP_POWER"] = "A smon ël prim nùmer alvà a la potensa dël second.";
 Blockly.Msg["MATH_ATAN2_HELPURL"] = "https://en.wikipedia.org/wiki/Atan2";

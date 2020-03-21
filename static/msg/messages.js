@@ -563,6 +563,9 @@ Blockly.Msg.MATH_ARITHMETIC_TOOLTIP_MULTIPLY = 'Return the product of the two nu
 /// tooltip - See [https://en.wikipedia.org/wiki/Division_(mathematics) https://en.wikipedia.org/wiki/Division_(mathematics)].
 Blockly.Msg.MATH_ARITHMETIC_TOOLTIP_DIVIDE = 'Return the quotient of the two numbers.';
 /** @type {string} */
+/// tooltip - See [https://en.wikipedia.org/wiki/Modular_arithmetic https://en.wikipedia.org/wiki/Modular_arithmetic].
+Blockly.Msg.MATH_ARITHMETIC_TOOLTIP_MODULUS = 'Return the remainder from division of two numbers.';
+/** @type {string} */
 /// tooltip - See [https://en.wikipedia.org/wiki/Exponentiation https://en.wikipedia.org/wiki/Exponentiation].
 Blockly.Msg.MATH_ARITHMETIC_TOOLTIP_POWER = 'Return the first number raised to the power of the second number.';
 

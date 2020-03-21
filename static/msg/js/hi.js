@@ -201,6 +201,7 @@ Blockly.Msg["MATH_ARITHMETIC_HELPURL"] = "https://en.wikipedia.org/wiki/Arithmet
 Blockly.Msg["MATH_ARITHMETIC_TOOLTIP_ADD"] = "दो संख्याओं का योग रिटर्न करें।";
 Blockly.Msg["MATH_ARITHMETIC_TOOLTIP_DIVIDE"] = "दो संख्याओं का भागफल रिटर्न करें।";
 Blockly.Msg["MATH_ARITHMETIC_TOOLTIP_MINUS"] = "दो संख्याओं का अंतर रिटर्न करें।";
+Blockly.Msg["MATH_ARITHMETIC_TOOLTIP_MODULUS"] = "Return the remainder from division of two numbers.";  // untranslated
 Blockly.Msg["MATH_ARITHMETIC_TOOLTIP_MULTIPLY"] = "दो संख्याओं का गुणन रिटर्न करें।";
 Blockly.Msg["MATH_ARITHMETIC_TOOLTIP_POWER"] = "दूसरे नंबर की शक्ति को उठाए गए पहले नंबर पर लौटें";
 Blockly.Msg["MATH_ATAN2_HELPURL"] = "https://en.wikipedia.org/wiki/Atan2";  // untranslated

@@ -201,6 +201,7 @@ Blockly.Msg["MATH_ARITHMETIC_HELPURL"] = "https://en.wikipedia.org/wiki/ပၢ�
 Blockly.Msg["MATH_ARITHMETIC_TOOLTIP_ADD"] = "လဵဝ်ၶိုၼ်း တၢင်းၼမ် ၼႂ်းမၢႆၼပ်ႉ သွင်";
 Blockly.Msg["MATH_ARITHMETIC_TOOLTIP_DIVIDE"] = "လဵဝ်ၶိုၼ်း ပမႃႇၼ ၼႂ်းမၢႆၼပ်ႉ သွင်";
 Blockly.Msg["MATH_ARITHMETIC_TOOLTIP_MINUS"] = "လဵဝ်ၶိုၼ်း ဢၼ်ပႅၵ်ႇပိူင်ႈ ၼႂ်းမၢႆၼပ်ႉ သွင်";
+Blockly.Msg["MATH_ARITHMETIC_TOOLTIP_MODULUS"] = "Return the remainder from division of two numbers.";  // untranslated
 Blockly.Msg["MATH_ARITHMETIC_TOOLTIP_MULTIPLY"] = "လဵဝ်ၶိုၼ်း ဢၼ်ဢဝ်ဢွၵ်ႇ ၼႂ်းမၢႆၼပ်ႉ သွင်";
 Blockly.Msg["MATH_ARITHMETIC_TOOLTIP_POWER"] = "လဵဝ်ၶိုၼ်း တူဝ်ၼပ်ႉမၢႆၼိုင်ႈၼႆႉ ၸွႆႈႁႅင်းပၼ် တူဝ်ၼပ်ႉမၢႆသွင်";
 Blockly.Msg["MATH_ATAN2_HELPURL"] = "https://en.wikipedia.org/wiki/Atan2";  // untranslated

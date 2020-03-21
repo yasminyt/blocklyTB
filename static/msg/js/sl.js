@@ -201,6 +201,7 @@ Blockly.Msg["MATH_ARITHMETIC_HELPURL"] = "https://en.wikipedia.org/wiki/Arithmet
 Blockly.Msg["MATH_ARITHMETIC_TOOLTIP_ADD"] = "Vrne vsoto dveh števil.";
 Blockly.Msg["MATH_ARITHMETIC_TOOLTIP_DIVIDE"] = "Vrne kvocient dveh števil.";
 Blockly.Msg["MATH_ARITHMETIC_TOOLTIP_MINUS"] = "Vrne razliko dveh števil.";
+Blockly.Msg["MATH_ARITHMETIC_TOOLTIP_MODULUS"] = "Return the remainder from division of two numbers.";  // untranslated
 Blockly.Msg["MATH_ARITHMETIC_TOOLTIP_MULTIPLY"] = "Vrne zmnožek dveh števil.";
 Blockly.Msg["MATH_ARITHMETIC_TOOLTIP_POWER"] = "Vrne prvo število na potenco drugega števila.";
 Blockly.Msg["MATH_ATAN2_HELPURL"] = "https://en.wikipedia.org/wiki/Atan2";

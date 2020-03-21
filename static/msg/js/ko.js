@@ -201,6 +201,7 @@ Blockly.Msg["MATH_ARITHMETIC_HELPURL"] = "https://ko.wikipedia.org/wiki/산술";
 Blockly.Msg["MATH_ARITHMETIC_TOOLTIP_ADD"] = "두 수의 합을 반환합니다.";
 Blockly.Msg["MATH_ARITHMETIC_TOOLTIP_DIVIDE"] = "두 수의 나눈 결과를 반환합니다.";
 Blockly.Msg["MATH_ARITHMETIC_TOOLTIP_MINUS"] = "두 수간의 차이를 반환합니다.";
+Blockly.Msg["MATH_ARITHMETIC_TOOLTIP_MODULUS"] = "Return the remainder from division of two numbers.";  // untranslated
 Blockly.Msg["MATH_ARITHMETIC_TOOLTIP_MULTIPLY"] = "두 수의 곱을 반환합니다.";
 Blockly.Msg["MATH_ARITHMETIC_TOOLTIP_POWER"] = "첫 번째 수를 두 번째 수 만큼, 거듭제곱 한 결과값을 돌려줍니다.";
 Blockly.Msg["MATH_ATAN2_HELPURL"] = "https://en.wikipedia.org/wiki/Atan2";

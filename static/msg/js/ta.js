@@ -201,6 +201,7 @@ Blockly.Msg["MATH_ARITHMETIC_HELPURL"] = "https://ta.wikipedia.org/wiki/%E0%AE%8
 Blockly.Msg["MATH_ARITHMETIC_TOOLTIP_ADD"] = "இரு எண்களின் கூட்டை பின்கொடு";
 Blockly.Msg["MATH_ARITHMETIC_TOOLTIP_DIVIDE"] = "இரு எண்களின் வகுத்தல் பின்கொடு";
 Blockly.Msg["MATH_ARITHMETIC_TOOLTIP_MINUS"] = "இரு எண்களின் கழிப்பை பின்கொடு";
+Blockly.Msg["MATH_ARITHMETIC_TOOLTIP_MODULUS"] = "Return the remainder from division of two numbers.";  // untranslated
 Blockly.Msg["MATH_ARITHMETIC_TOOLTIP_MULTIPLY"] = "இரு எண்களின் பெருக்கலை பின்கொடு";
 Blockly.Msg["MATH_ARITHMETIC_TOOLTIP_POWER"] = "முதல் உள்ளீடு இரண்டாவது எண் அளவான அடுக்கு பெருக்கை கணித்து பின்கொடு.";
 Blockly.Msg["MATH_ATAN2_HELPURL"] = "https://en.wikipedia.org/wiki/Atan2";  // untranslated

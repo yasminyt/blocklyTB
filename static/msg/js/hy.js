@@ -201,6 +201,7 @@ Blockly.Msg["MATH_ARITHMETIC_HELPURL"] = "https://hy.wikipedia.org/wiki/Թվաբ
 Blockly.Msg["MATH_ARITHMETIC_TOOLTIP_ADD"] = "Վերադարձնում է երկու թվերի գումարը:";
 Blockly.Msg["MATH_ARITHMETIC_TOOLTIP_DIVIDE"] = "Վերադարձնում է քանորդը";
 Blockly.Msg["MATH_ARITHMETIC_TOOLTIP_MINUS"] = "Վերադարձնում է երկու թվերի տարբերությունը:";
+Blockly.Msg["MATH_ARITHMETIC_TOOLTIP_MODULUS"] = "Return the remainder from division of two numbers.";  // untranslated
 Blockly.Msg["MATH_ARITHMETIC_TOOLTIP_MULTIPLY"] = "Վերադարձնում է երկու թվերի արտադրյալը";
 Blockly.Msg["MATH_ARITHMETIC_TOOLTIP_POWER"] = "Վերադարձնում է առաջին թիվի աստիճանը";
 Blockly.Msg["MATH_ATAN2_HELPURL"] = "https://en.wikipedia.org/wiki/Atan2";  // untranslated

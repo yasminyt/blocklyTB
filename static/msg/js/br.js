@@ -201,6 +201,7 @@ Blockly.Msg["MATH_ARITHMETIC_HELPURL"] = "https://br.wikipedia.org/wiki/Aritmeti
 Blockly.Msg["MATH_ARITHMETIC_TOOLTIP_ADD"] = "Distreiñ sammad daou niver.";
 Blockly.Msg["MATH_ARITHMETIC_TOOLTIP_DIVIDE"] = "Distreiñ rannad daou niver.";
 Blockly.Msg["MATH_ARITHMETIC_TOOLTIP_MINUS"] = "Distreiñ diforc'h daou niver";
+Blockly.Msg["MATH_ARITHMETIC_TOOLTIP_MODULUS"] = "Return the remainder from division of two numbers.";  // untranslated
 Blockly.Msg["MATH_ARITHMETIC_TOOLTIP_MULTIPLY"] = "Distreiñ liesad daou niver.";
 Blockly.Msg["MATH_ARITHMETIC_TOOLTIP_POWER"] = "Distreiñ an niver kentañ lakaet dindan gallouter an eil niver.";
 Blockly.Msg["MATH_ATAN2_HELPURL"] = "https://fr.wikipedia.org/wiki/Atan2";

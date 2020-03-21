@@ -201,6 +201,7 @@ Blockly.Msg["MATH_ARITHMETIC_HELPURL"] = "https://ia.wikipedia.org/wiki/Arithmet
 Blockly.Msg["MATH_ARITHMETIC_TOOLTIP_ADD"] = "Retornar le summa del duo numeros.";
 Blockly.Msg["MATH_ARITHMETIC_TOOLTIP_DIVIDE"] = "Retornar le quotiente del duo numeros.";
 Blockly.Msg["MATH_ARITHMETIC_TOOLTIP_MINUS"] = "Retornar le differentia del duo numeros.";
+Blockly.Msg["MATH_ARITHMETIC_TOOLTIP_MODULUS"] = "Return the remainder from division of two numbers.";  // untranslated
 Blockly.Msg["MATH_ARITHMETIC_TOOLTIP_MULTIPLY"] = "Retornar le producto del duo numeros.";
 Blockly.Msg["MATH_ARITHMETIC_TOOLTIP_POWER"] = "Retornar le prime numero elevate al potentia del secunde numero.";
 Blockly.Msg["MATH_ATAN2_HELPURL"] = "https://en.wikipedia.org/wiki/Atan2";  // untranslated

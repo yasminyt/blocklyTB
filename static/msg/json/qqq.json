@@ -142,6 +142,7 @@
 	"MATH_ARITHMETIC_TOOLTIP_MINUS": "tooltip - See [https://en.wikipedia.org/wiki/Subtraction https://en.wikipedia.org/wiki/Subtraction].",
 	"MATH_ARITHMETIC_TOOLTIP_MULTIPLY": "tooltip - See [https://en.wikipedia.org/wiki/Multiplication https://en.wikipedia.org/wiki/Multiplication].",
 	"MATH_ARITHMETIC_TOOLTIP_DIVIDE": "tooltip - See [https://en.wikipedia.org/wiki/Division_(mathematics) https://en.wikipedia.org/wiki/Division_(mathematics)].",
+	"MATH_ARITHMETIC_TOOLTIP_MODULUS": "tooltip - See [https://en.wikipedia.org/wiki/Modular_arithmetic https://en.wikipedia.org/wiki/Modular_arithmetic].",
 	"MATH_ARITHMETIC_TOOLTIP_POWER": "tooltip - See [https://en.wikipedia.org/wiki/Exponentiation https://en.wikipedia.org/wiki/Exponentiation].",
 	"MATH_SINGLE_HELPURL": "{{Optional}} url - Information about the square root operation.",
 	"MATH_SINGLE_OP_ROOT": "dropdown - This computes the positive [https://en.wikipedia.org/wiki/Square_root square root] of its input.  For example, the square root of 16 is 4.",

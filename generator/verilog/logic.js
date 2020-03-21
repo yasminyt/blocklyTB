@@ -44,10 +44,10 @@ Blockly.Verilog['logic_boolean'] = function(block) {
  */
 Blockly.Verilog['logic_negate'] = function(block) {
   // Negation.
-  const argument0 = Blockly.Verilog.valueToCode(block, 'BOOL',
-    Blockly.Verilog.ORDER_NEG) || '1';
+  const order = Blockly.Verilog.ORDER_LOGICAL_NEGATION;
+  const argument0 = Blockly.Verilog.valueToCode(block, 'BOOL', order) || '1';
   const code = '!' + argument0;
-  return [code, Blockly.Verilog.ORDER_NEG];
+  return [code, order];
 };
 
 /**
@@ -58,8 +58,8 @@ Blockly.Verilog['logic_negate'] = function(block) {
 Blockly.Verilog['logic_operation'] = function(block) {
   // Operations 'and', 'or'.
   const operator = (block.getFieldValue('OP') === 'AND') ? '&&' : '||';
-  const order = (operator === '&&') ? Blockly.Verilog.ORDER_LOGIC_AND :
-    Blockly.Verilog.ORDER_LOGIC_OR;
+  const order = (operator === '&&') ? Blockly.Verilog.ORDER_LOGICAL_AND :
+    Blockly.Verilog.ORDER_LOGICAL_OR;
   let argument0 = Blockly.Verilog.valueToCode(block, 'A', order);
   let argument1 = Blockly.Verilog.valueToCode(block, 'B', order);
   if (!argument0 && !argument1) {
@@ -96,7 +96,8 @@ Blockly.Verilog['logic_compare'] = function(block) {
     'GTE': '>='
   };
   const operator = OPERATORS[block.getFieldValue('OP')];
-  const order = Blockly.Verilog.ORDER_ATOMIC;
+  const order = (operator === '==' || operator === '!=') ?
+    Blockly.Verilog.ORDER_LOGICAL_EQUALITY : Blockly.Verilog.ORDER_RELATIONAL;
   const argument0 = Blockly.Verilog.valueToCode(block, 'A', order) || '0';
   const argument1 = Blockly.Verilog.valueToCode(block, 'B', order) || '0';
   const code = argument0 + ' ' + operator + ' ' + argument1;
@@ -117,5 +118,5 @@ Blockly.Verilog['logic_ternary'] = function(block) {
   const value_else = Blockly.Verilog.valueToCode(block, 'ELSE',
     Blockly.Verilog.ORDER_CONDITIONAL) || 'X';
   const code = '(' + value_if + ')' + ' ? ' + value_then + ' : ' + value_else;
-  return [code, Blockly.Verilog.ORDER_ATOMIC];
+  return [code, Blockly.Verilog.ORDER_CONDITIONAL];
 };

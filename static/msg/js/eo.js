@@ -201,6 +201,7 @@ Blockly.Msg["MATH_ARITHMETIC_HELPURL"] = "https://eo.wikipedia.org/wiki/Aritmeti
 Blockly.Msg["MATH_ARITHMETIC_TOOLTIP_ADD"] = "Liveri la sumon de la du nombroj.";
 Blockly.Msg["MATH_ARITHMETIC_TOOLTIP_DIVIDE"] = "Liveri la kvocienton de la du nombroj.";
 Blockly.Msg["MATH_ARITHMETIC_TOOLTIP_MINUS"] = "Liveri la diferencon inter la du nombroj.";
+Blockly.Msg["MATH_ARITHMETIC_TOOLTIP_MODULUS"] = "Return the remainder from division of two numbers.";  // untranslated
 Blockly.Msg["MATH_ARITHMETIC_TOOLTIP_MULTIPLY"] = "La produto de la du numeroj estos liverita.";
 Blockly.Msg["MATH_ARITHMETIC_TOOLTIP_POWER"] = "Livero la tian potencon de la unua nombro, kia la dua nombro estas";
 Blockly.Msg["MATH_ATAN2_HELPURL"] = "https://eo.wikipedia.org/wiki/Inversa_trigonometria_funkcio#Duargumenta_varianto_de_tangentarko";

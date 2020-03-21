@@ -201,6 +201,7 @@ Blockly.Msg["MATH_ARITHMETIC_HELPURL"] = "https://zh.wikipedia.org/wiki/算術";
 Blockly.Msg["MATH_ARITHMETIC_TOOLTIP_ADD"] = "返回兩個數字的總和。";
 Blockly.Msg["MATH_ARITHMETIC_TOOLTIP_DIVIDE"] = "返回兩個數字的商。";
 Blockly.Msg["MATH_ARITHMETIC_TOOLTIP_MINUS"] = "返回兩個數字的差。";
+Blockly.Msg["MATH_ARITHMETIC_TOOLTIP_MODULUS"] = "Return the remainder from division of two numbers.";  // untranslated
 Blockly.Msg["MATH_ARITHMETIC_TOOLTIP_MULTIPLY"] = "返回兩個數字的乘積。";
 Blockly.Msg["MATH_ARITHMETIC_TOOLTIP_POWER"] = "返回第二個數字的指數的第一個數字。";
 Blockly.Msg["MATH_ATAN2_HELPURL"] = "https://zh.wikipedia.org/wiki/Atan2";

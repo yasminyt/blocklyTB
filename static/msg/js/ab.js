@@ -201,6 +201,7 @@ Blockly.Msg["MATH_ARITHMETIC_HELPURL"] = "https://ru.wikipedia.org/wiki/Ариф
 Blockly.Msg["MATH_ARITHMETIC_TOOLTIP_ADD"] = "Иҳанаҭоит ҩ-хыҧхьаӡарак реицҵалыҵ.";
 Blockly.Msg["MATH_ARITHMETIC_TOOLTIP_DIVIDE"] = "Иҳанаҭоит ҩ-хыҧхьаӡарак ршалыҵ.";
 Blockly.Msg["MATH_ARITHMETIC_TOOLTIP_MINUS"] = "Иҳанаҭоит ҩ-хыҧхьаӡарак реигырхалыҵ.";
+Blockly.Msg["MATH_ARITHMETIC_TOOLTIP_MODULUS"] = "Return the remainder from division of two numbers.";  // untranslated
 Blockly.Msg["MATH_ARITHMETIC_TOOLTIP_MULTIPLY"] = "Иҳанаҭоит ҩ-хыҧхьаӡарак рышьҭыхлыҵ.";
 Blockly.Msg["MATH_ARITHMETIC_TOOLTIP_POWER"] = "Return the first number raised to the power of the second number.";  // untranslated
 Blockly.Msg["MATH_ATAN2_HELPURL"] = "https://en.wikipedia.org/wiki/Atan2";  // untranslated

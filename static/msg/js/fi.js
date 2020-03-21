@@ -201,6 +201,7 @@ Blockly.Msg["MATH_ARITHMETIC_HELPURL"] = "http://fi.wikipedia.org/wiki/Aritmetii
 Blockly.Msg["MATH_ARITHMETIC_TOOLTIP_ADD"] = "Palauttaa kahden luvun summan.";
 Blockly.Msg["MATH_ARITHMETIC_TOOLTIP_DIVIDE"] = "Palauttaa jakolaskun osamäärän.";
 Blockly.Msg["MATH_ARITHMETIC_TOOLTIP_MINUS"] = "Palauttaa kahden luvun erotuksen.";
+Blockly.Msg["MATH_ARITHMETIC_TOOLTIP_MODULUS"] = "Return the remainder from division of two numbers.";  // untranslated
 Blockly.Msg["MATH_ARITHMETIC_TOOLTIP_MULTIPLY"] = "Palauttaa kertolaskun tulon.";
 Blockly.Msg["MATH_ARITHMETIC_TOOLTIP_POWER"] = "Palauttaa ensimmäisen luvun korotettuna toisen luvun potenssiin.";
 Blockly.Msg["MATH_ATAN2_HELPURL"] = "https://en.wikipedia.org/wiki/Atan2";

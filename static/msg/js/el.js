@@ -201,6 +201,7 @@ Blockly.Msg["MATH_ARITHMETIC_HELPURL"] = "https://el.wikipedia.org/wiki/%CE%91%C
 Blockly.Msg["MATH_ARITHMETIC_TOOLTIP_ADD"] = "Επιστρέφει το άθροισμα των δύο αριθμών.";
 Blockly.Msg["MATH_ARITHMETIC_TOOLTIP_DIVIDE"] = "Επιστρέφει το πηλίκο των δύο αριθμών.";
 Blockly.Msg["MATH_ARITHMETIC_TOOLTIP_MINUS"] = "Επιστρέφει τη διαφορά των δύο αριθμών.";
+Blockly.Msg["MATH_ARITHMETIC_TOOLTIP_MODULUS"] = "Return the remainder from division of two numbers.";  // untranslated
 Blockly.Msg["MATH_ARITHMETIC_TOOLTIP_MULTIPLY"] = "Επιστρέφει το γινόμενο των δύο αριθμών.";
 Blockly.Msg["MATH_ARITHMETIC_TOOLTIP_POWER"] = "Επιστρέφει τον πρώτο αριθμό υψωμένο στη δύναμη του δεύτερου αριθμού.";
 Blockly.Msg["MATH_ATAN2_HELPURL"] = "https://en.wikipedia.org/wiki/Atan2";  // untranslated

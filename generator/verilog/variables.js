@@ -9,7 +9,7 @@
  */
 Blockly.Verilog['variables_get_reg'] = function(block) {
   const code = Blockly.Verilog.variableDB_.getName(block.getFieldValue('VAR'), Blockly.Variables.NAME_TYPE);
-  return [code, Blockly.Verilog.ORDER_NONE];
+  return [code, Blockly.Verilog.ORDER_ATOMIC];
 };
 
 /**
@@ -19,7 +19,7 @@ Blockly.Verilog['variables_get_reg'] = function(block) {
  */
 Blockly.Verilog['variables_get_wire'] = function(block) {
   const code = Blockly.Verilog.variableDB_.getName(block.getFieldValue('VAR'), Blockly.Variables.NAME_TYPE);
-  return [code, Blockly.Verilog.ORDER_NONE];
+  return [code, Blockly.Verilog.ORDER_ATOMIC];
 };
 
 /**
@@ -29,7 +29,17 @@ Blockly.Verilog['variables_get_wire'] = function(block) {
  */
 Blockly.Verilog['variables_get_parameter'] = function(block) {
   const code = Blockly.Verilog.variableDB_.getName(block.getFieldValue('VAR'), Blockly.Variables.NAME_TYPE);
-  return [code, Blockly.Verilog.ORDER_NONE];
+  return [code, Blockly.Verilog.ORDER_ATOMIC];
+};
+
+/**
+ * [localparam variable]
+ * @param block
+ * @returns {[string, number]}
+ */
+Blockly.Verilog['variables_get_localparam'] = function(block) {
+  const code = Blockly.Verilog.variableDB_.getName(block.getFieldValue('VAR'), Blockly.Variables.NAME_TYPE);
+  return [code, Blockly.Verilog.ORDER_ATOMIC];
 };
 
 /**
@@ -39,7 +49,7 @@ Blockly.Verilog['variables_get_parameter'] = function(block) {
  */
 Blockly.Verilog['variables_get_integer'] = function(block) {
   const code = Blockly.Verilog.variableDB_.getName(block.getFieldValue('VAR'), Blockly.Variables.NAME_TYPE);
-  return [code, Blockly.Verilog.ORDER_NONE];
+  return [code, Blockly.Verilog.ORDER_ATOMIC];
 };
 
 /**
@@ -81,12 +91,20 @@ Blockly.Verilog['wire_new'] = function(block) {
  */
 Blockly.Verilog['parameter_new'] = function(block) {
   const variable_name = Blockly.Verilog.variableDB_.getName(block.getFieldValue('VAR'), Blockly.Variables.NAME_TYPE);
-  const value = Blockly.Verilog.valueToCode(block, 'VALUE', Blockly.Verilog.ORDER_ATOMIC);
-  let code = '';
-  if (value === '')
-    code = `\tparameter ${variable_name} = 0;\n`;
-  else
-    code = `\tparameter ${variable_name} = ${value};\n`;
+  const value = Blockly.Verilog.valueToCode(block, 'VALUE', Blockly.Verilog.ORDER_ATOMIC) || '0';
+  const code = `\tparameter ${variable_name} = ${value};\n`;
+  return code;
+};
+
+/**
+ * localparam var = value;
+ * @param block
+ * @returns {string}
+ */
+Blockly.Verilog['localparam_new'] = function(block) {
+  const variable_name = Blockly.Verilog.variableDB_.getName(block.getFieldValue('VAR'), Blockly.Variables.NAME_TYPE);
+  const value = Blockly.Verilog.valueToCode(block, 'VALUE', Blockly.Verilog.ORDER_ATOMIC) || '0';
+  const code = `\tlocalparam ${variable_name} = ${value};\n`;
   return code;
 };
 
@@ -109,7 +127,7 @@ Blockly.Verilog['integer_new'] = function(block) {
 Blockly.Verilog['reg_dut'] = function(block) {
   const dropdown_variable = block.getFieldValue('variable');
   const code = `${dropdown_variable}`;
-  return [code, Blockly.Verilog.ORDER_NONE];
+  return [code, Blockly.Verilog.ORDER_ATOMIC];
 };
 
 /**
@@ -120,5 +138,5 @@ Blockly.Verilog['reg_dut'] = function(block) {
 Blockly.Verilog['wire_dut'] = function(block) {
   const dropdown_variable = block.getFieldValue('variable');
   const code = `${dropdown_variable}`;
-  return [code, Blockly.Verilog.ORDER_NONE];
+  return [code, Blockly.Verilog.ORDER_ATOMIC];
 };

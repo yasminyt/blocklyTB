@@ -201,6 +201,7 @@ Blockly.Msg["MATH_ARITHMETIC_HELPURL"] = "https://uk.wikipedia.org/wiki/Ариф
 Blockly.Msg["MATH_ARITHMETIC_TOOLTIP_ADD"] = "Повертає суму двох чисел.";
 Blockly.Msg["MATH_ARITHMETIC_TOOLTIP_DIVIDE"] = "Повертає частку двох чисел.";
 Blockly.Msg["MATH_ARITHMETIC_TOOLTIP_MINUS"] = "Повертає різницю двох чисел.";
+Blockly.Msg["MATH_ARITHMETIC_TOOLTIP_MODULUS"] = "Return the remainder from division of two numbers.";  // untranslated
 Blockly.Msg["MATH_ARITHMETIC_TOOLTIP_MULTIPLY"] = "Повертає добуток двох чисел.";
 Blockly.Msg["MATH_ARITHMETIC_TOOLTIP_POWER"] = "Повертає перше число, піднесене до степеня, вираженого другим числом.";
 Blockly.Msg["MATH_ATAN2_HELPURL"] = "https://en.wikipedia.org/wiki/Atan2";

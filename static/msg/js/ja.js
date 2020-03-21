@@ -201,6 +201,7 @@ Blockly.Msg["MATH_ARITHMETIC_HELPURL"] = "https://ja.wikipedia.org/wiki/算術";
 Blockly.Msg["MATH_ARITHMETIC_TOOLTIP_ADD"] = "2 つの数の合計を返します。";
 Blockly.Msg["MATH_ARITHMETIC_TOOLTIP_DIVIDE"] = "2 つの数の商を返します。";
 Blockly.Msg["MATH_ARITHMETIC_TOOLTIP_MINUS"] = "2 つの数の差を返します。";
+Blockly.Msg["MATH_ARITHMETIC_TOOLTIP_MODULUS"] = "Return the remainder from division of two numbers.";  // untranslated
 Blockly.Msg["MATH_ARITHMETIC_TOOLTIP_MULTIPLY"] = "2 つの数の積を返します。";
 Blockly.Msg["MATH_ARITHMETIC_TOOLTIP_POWER"] = "最初の数を2 番目の値で累乗した結果を返します。";
 Blockly.Msg["MATH_ATAN2_HELPURL"] = "https://en.wikipedia.org/wiki/Atan2";  // untranslated

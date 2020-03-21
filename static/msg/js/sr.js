@@ -201,6 +201,7 @@ Blockly.Msg["MATH_ARITHMETIC_HELPURL"] = "https://sr.wikipedia.org/wiki/Арит
 Blockly.Msg["MATH_ARITHMETIC_TOOLTIP_ADD"] = "Враћа збир два броја.";
 Blockly.Msg["MATH_ARITHMETIC_TOOLTIP_DIVIDE"] = "Враћа количник два броја.";
 Blockly.Msg["MATH_ARITHMETIC_TOOLTIP_MINUS"] = "Враћа разлику два броја.";
+Blockly.Msg["MATH_ARITHMETIC_TOOLTIP_MODULUS"] = "Return the remainder from division of two numbers.";  // untranslated
 Blockly.Msg["MATH_ARITHMETIC_TOOLTIP_MULTIPLY"] = "Враћа производ два броја.";
 Blockly.Msg["MATH_ARITHMETIC_TOOLTIP_POWER"] = "Враћа први број степенован другим.";
 Blockly.Msg["MATH_ATAN2_HELPURL"] = "https://en.wikipedia.org/wiki/Atan2";

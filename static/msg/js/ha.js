@@ -201,6 +201,7 @@ Blockly.Msg["MATH_ARITHMETIC_HELPURL"] = "https://en.wikipedia.org/wiki/Arithmet
 Blockly.Msg["MATH_ARITHMETIC_TOOLTIP_ADD"] = "Dawo da jumlar lambobin guda biyu.";
 Blockly.Msg["MATH_ARITHMETIC_TOOLTIP_DIVIDE"] = "Dawo da sakamakon lambobin guda biyu bayan an raba su da juna.";
 Blockly.Msg["MATH_ARITHMETIC_TOOLTIP_MINUS"] = "Dawo da bambancin lambobin guda biyu.";
+Blockly.Msg["MATH_ARITHMETIC_TOOLTIP_MODULUS"] = "Return the remainder from division of two numbers.";  // untranslated
 Blockly.Msg["MATH_ARITHMETIC_TOOLTIP_MULTIPLY"] = "Dawo da ruɓin lambobin guda biyu.";
 Blockly.Msg["MATH_ARITHMETIC_TOOLTIP_POWER"] = "Dawo da lambar farko wadda aka ɗaga ta zuwa ƙarfin lamba ta biyu.";
 Blockly.Msg["MATH_ATAN2_HELPURL"] = "https://en.wikipedia.org/wiki/Atan2";

@@ -201,6 +201,7 @@ Blockly.Msg["MATH_ARITHMETIC_HELPURL"] = "https://yo.wikipedia.org/wiki/Ìṣír
 Blockly.Msg["MATH_ARITHMETIC_TOOLTIP_ADD"] = "Da apapo awọn nọmba meji pada.";
 Blockly.Msg["MATH_ARITHMETIC_TOOLTIP_DIVIDE"] = "Da adarọ iye ti awọn nọmba meji pada.";
 Blockly.Msg["MATH_ARITHMETIC_TOOLTIP_MINUS"] = "Da iyatọ awọn nọmba meji naa pada.";
+Blockly.Msg["MATH_ARITHMETIC_TOOLTIP_MODULUS"] = "Return the remainder from division of two numbers.";  // untranslated
 Blockly.Msg["MATH_ARITHMETIC_TOOLTIP_MULTIPLY"] = "Da abajade awọn nọmba meji naa pada.";
 Blockly.Msg["MATH_ARITHMETIC_TOOLTIP_POWER"] = "Da nọmba akọkọ ti a gbe si agbara ti nọmba keji pada.";
 Blockly.Msg["MATH_ATAN2_HELPURL"] = "https://en.wikipedia.org/wiki/Atan2";

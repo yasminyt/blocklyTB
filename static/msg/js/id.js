@@ -201,6 +201,7 @@ Blockly.Msg["MATH_ARITHMETIC_HELPURL"] = "https://id.wikipedia.org/wiki/Aritmeti
 Blockly.Msg["MATH_ARITHMETIC_TOOLTIP_ADD"] = "Kembalikan jumlah dari kedua angka.";
 Blockly.Msg["MATH_ARITHMETIC_TOOLTIP_DIVIDE"] = "Kembalikan hasil bagi dari kedua angka.";
 Blockly.Msg["MATH_ARITHMETIC_TOOLTIP_MINUS"] = "Kembalikan selisih dari kedua angka.";
+Blockly.Msg["MATH_ARITHMETIC_TOOLTIP_MODULUS"] = "Return the remainder from division of two numbers.";  // untranslated
 Blockly.Msg["MATH_ARITHMETIC_TOOLTIP_MULTIPLY"] = "Kembalikan perkalian dari kedua angka.";
 Blockly.Msg["MATH_ARITHMETIC_TOOLTIP_POWER"] = "Kembalikan angka pertama pangkat angka kedua.";
 Blockly.Msg["MATH_ATAN2_HELPURL"] = "https://en.wikipedia.org/wiki/Atan2";  // untranslated

@@ -201,6 +201,7 @@ Blockly.Msg["MATH_ARITHMETIC_HELPURL"] = "https://en.wikipedia.org/wiki/Arithmet
 Blockly.Msg["MATH_ARITHMETIC_TOOLTIP_ADD"] = "Torrat sa summa de is duus nùmerus.";
 Blockly.Msg["MATH_ARITHMETIC_TOOLTIP_DIVIDE"] = "Torrat su cuotzienti de is duus nùmerus.";
 Blockly.Msg["MATH_ARITHMETIC_TOOLTIP_MINUS"] = "Torrat sa diferèntzia de is duus nùmerus.";
+Blockly.Msg["MATH_ARITHMETIC_TOOLTIP_MODULUS"] = "Return the remainder from division of two numbers.";  // untranslated
 Blockly.Msg["MATH_ARITHMETIC_TOOLTIP_MULTIPLY"] = "Torrat su produtu de is duus nùmerus.";
 Blockly.Msg["MATH_ARITHMETIC_TOOLTIP_POWER"] = "Torrat su primu numeru artziau a sa potenza de su segundu nùmeru.";
 Blockly.Msg["MATH_ATAN2_HELPURL"] = "https://en.wikipedia.org/wiki/Atan2";  // untranslated

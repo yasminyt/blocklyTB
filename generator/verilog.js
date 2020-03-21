@@ -36,7 +36,6 @@
  */
 Blockly.Verilog = new Blockly.Generator('Verilog');
 
-
 /**
  * List of illegal variable names.
  * This is not intended to be a security feature.  Blockly is 100% client-side,
@@ -56,52 +55,63 @@ Blockly.Verilog.addReservedWords(
   'trireg,vectored,wait,wand,weak0,weak1,while,wire,wor,xor,xnor'
 );
 
-
-
 /**
  * Order of operation ENUMs.
- * http://php.net/manual/en/language.operators.precedence.php
+ * https://class.ece.uw.edu/cadta/verilog/operators.html
  */
 Blockly.Verilog.ORDER_ATOMIC = 0;
-Blockly.Verilog.ORDER_MEMBER = 1;            //[]
-Blockly.Verilog.ORDER_BRACKET = 1.1;         //()
-Blockly.Verilog.ORDER_LOGICNEG = 1.2;        //!
-Blockly.Verilog.ORDER_NEG = 1.2;             //~
-Blockly.Verilog.ORDER_AND = 1.2;             //&
-Blockly.Verilog.ORDER_OR = 1.2;              //|
-Blockly.Verilog.ORDER_NAND = 1.2;            //~&
-Blockly.Verilog.ORDER_NOR = 1.2;             //~|
-Blockly.Verilog.ORDER_XOR = 1.2;             //~^ or ^~
-Blockly.Verilog.ORDER_UNARY_PLUS = 2;        //+
-Blockly.Verilog.ORDER_UNARY_MINUS = 2;       //-
-Blockly.Verilog.ORDER_CONCAT = 3;            //{}
-Blockly.Verilog.ORDER_REPLICA = 4;           //{{}}
-Blockly.Verilog.ORDER_MULT = 5;              //*
-Blockly.Verilog.ORDER_DIV = 5;               // /
-Blockly.Verilog.ORDER_MOD = 5;               //%
-Blockly.Verilog.ORDER_BINARY_PLUS = 6;       //+
-Blockly.Verilog.ORDER_BINARY_MINUS = 6;      //-
-Blockly.Verilog.ORDER_SHIFT_LEFT = 7;        //<<
-Blockly.Verilog.ORDER_SHIFT_RIGHT = 7;       //>>
-Blockly.Verilog.ORDER_GREATER_THAN = 8;      //>
-Blockly.Verilog.ORDER_GREATER_THAN_EQ = 8;   //>=
-Blockly.Verilog.ORDER_LESS_THAN = 8;         //<
-Blockly.Verilog.ORDER_LESS_THAN_EQ = 8;      //<=
-Blockly.Verilog.ORDER_LOGIC_EQ = 9;          //==
-Blockly.Verilog.ORDER_LOGIC_INEQ = 9;        //!=
-Blockly.Verilog.ORDER_CASE_EQ = 10;          //===
-Blockly.Verilog.ORDER_CASE_INEQ = 10;        //!==
-Blockly.Verilog.ORDER_BITWISE_AND = 11;      //&
-Blockly.Verilog.ORDER_BITWISE_XOR = 12;      //^
-Blockly.Verilog.ORDER_BITWISE_XNOR = 12;     //^~ or ~^
-Blockly.Verilog.ORDER_BITWISE_OR = 13;       //|
-Blockly.Verilog.ORDER_LOGIC_AND = 14;        //&&
-Blockly.Verilog.ORDER_LOGIC_OR = 15;         //||
-Blockly.Verilog.ORDER_CONDITIONAL = 16;      //?:
+Blockly.Verilog.ORDER_BIT_SELECT = 1;             //[]
+Blockly.Verilog.ORDER_PARENTHESIS = 2;            //()
+Blockly.Verilog.ORDER_LOGICAL_NEGATION = 3.1;     //!
+Blockly.Verilog.ORDER_BITWISE_NEGATION = 3.2;     //~
+Blockly.Verilog.ORDER_REDUCTION_AND = 3.3;        // &
+Blockly.Verilog.ORDER_REDUCTION_OR = 3.4;         // |
+Blockly.Verilog.ORDER_REDUCTION_NAND = 3.5;       // ~&
+Blockly.Verilog.ORDER_REDUCTION_NOR = 3.6;        // ~|
+Blockly.Verilog.ORDER_REDUCTION_XOR = 3.7;        // ^
+Blockly.Verilog.ORDER_REDUCTION_XNOR = 3.8;       // ~^ or ^~
+Blockly.Verilog.ORDER_UNARY_PLUS = 4.1;           // +
+Blockly.Verilog.ORDER_UNARY_MINUS = 4.2;          // -
+Blockly.Verilog.ORDER_CONCATENATION = 5;          // {}
+Blockly.Verilog.ORDER_REPLICATION = 6;            // {{}}
+Blockly.Verilog.ORDER_MULTIPLY = 7.1;             // *
+Blockly.Verilog.ORDER_DIVIDE = 7.2;               // /
+Blockly.Verilog.ORDER_MODULUS = 7.3;              // %
+Blockly.Verilog.ORDER_BINARY_PLUS = 8.1;          // +
+Blockly.Verilog.ORDER_BINARY_MINUS = 8.2;         // -
+Blockly.Verilog.ORDER_BITWISE_SHIFT = 9;          // << >>
+Blockly.Verilog.ORDER_RELATIONAL = 10;            // < <= > >=
+Blockly.Verilog.ORDER_LOGICAL_EQUALITY = 11;      // == !=
+Blockly.Verilog.ORDER_CASE_EQUALITY = 12;         // === !==
+Blockly.Verilog.ORDER_BITWISE_AND = 13;           // &
+Blockly.Verilog.ORDER_BITWISE_XOR = 14;           // ^
+Blockly.Verilog.ORDER_BITWISE_XNOR = 14;          // ~^ or ^~
+Blockly.Verilog.ORDER_BITWISE_OR = 15;            // |
+Blockly.Verilog.ORDER_LOGICAL_AND = 16;           // &&
+Blockly.Verilog.ORDER_LOGICAL_OR = 17;            // ||
+Blockly.Verilog.ORDER_CONDITIONAL = 18;           // ? :
+Blockly.Verilog.ORDER_ASSIGNMENT = 19;            // = <=
+Blockly.Verilog.ORDER_COMMA = 18;                 // ,
 Blockly.Verilog.ORDER_NONE = 99;
 
-Blockly.Verilog.INFINITE_LOOP_TRAP = null;
+// Blockly.Verilog.INFINITE_LOOP_TRAP = null;
 
+/**
+ * List of outer-inner pairings that do NOT require parentheses.
+ * @type {!Array.<!Array.<number>>}
+ */
+Blockly.Verilog.ORDER_OVERRIDES = [
+  // a * (b * c) -> a * b * c
+  [Blockly.Verilog.ORDER_MULTIPLY, Blockly.Verilog.ORDER_MULTIPLY],
+  // a + (b + c) -> a + b + c
+  [Blockly.Verilog.ORDER_BINARY_PLUS, Blockly.Verilog.ORDER_BINARY_PLUS],
+  // !(!foo) -> !!foo
+  [Blockly.Verilog.ORDER_LOGICAL_NEGATION, Blockly.Verilog.ORDER_LOGICAL_NEGATION],
+  // a && (b && c) -> a && b && c
+  [Blockly.Verilog.ORDER_LOGICAL_AND, Blockly.Verilog.ORDER_LOGICAL_AND],
+  // a || (b || c) -> a || b || c
+  [Blockly.Verilog.ORDER_LOGICAL_OR, Blockly.Verilog.ORDER_LOGICAL_OR]
+];
 
 /**
  * Initialise the database of variable names.
@@ -132,15 +142,14 @@ Blockly.Verilog.init = function(workspace){
       Blockly.Names.DEVELOPER_VARIABLE_TYPE));
   }
 
-
   // Add user variables, but only ones that are being used.
   const variables = Blockly.Variables.allUsedVarModels(workspace);
   for (let i = 0; i < variables.length; i++) {
     defvars.push(Blockly.Verilog.variableDB_.getName(variables[i].getId(),
       Blockly.Variables.NAME_TYPE));
   }
-};
 
+};
 
 /**
  * Prepend the generated code with the variable definitions.
@@ -161,7 +170,6 @@ Blockly.Verilog.finish = function(code) {
   return definitions.join('\n\n') + '\n\n\n' + code;
 };
 
-
 /**
  * Naked values are top-level blocks with outputs that aren't plugged into
  * anything.  A trailing semicolon is needed to make this legal.
@@ -172,20 +180,30 @@ Blockly.Verilog.scrubNakedValue = function(line) {
   return line + ';\n';
 };
 
-
-
 /**
  * Encode a string as a properly escaped Verilog string, complete with
  * quotes.
  * @param {string} string Text to encode.
  * @return {string} Verilog string.
- * @private
+ * @protected
  */
 Blockly.Verilog.quote_ = function(string) {
   string = string.replace(/\\/g, '\\\\')
     .replace(/\n/g, '\\\n')
     .replace(/'/g, '\\\'');
   return '\"' + string + '\"';
+};
+
+/**
+ * Encode a string as a properly escaped multiline JavaScript string, complete
+ * with quotes.
+ * @param {string} string Text to encode.
+ * @return {string} JavaScript string.
+ * @private
+ */
+Blockly.Verilog.multiline_quote_ = function(string) {
+  const lines = string.split(/\n/g).map(Blockly.Verilog.quote_);
+  return lines.join(' + \'\\n\' +\n');
 };
 
 /**

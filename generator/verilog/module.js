@@ -1,4 +1,8 @@
 /**
+ * Generator Verilog codes for module blocks.
+ */
+
+/**
  * `timescale [time_unit]/[time_precision]
  * @param block
  * @returns {string}

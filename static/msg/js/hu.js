@@ -201,6 +201,7 @@ Blockly.Msg["MATH_ARITHMETIC_HELPURL"] = "https://hu.wikipedia.org/wiki/Matemati
 Blockly.Msg["MATH_ARITHMETIC_TOOLTIP_ADD"] = "Két szám összege.";
 Blockly.Msg["MATH_ARITHMETIC_TOOLTIP_DIVIDE"] = "Két szám hányadosa.";
 Blockly.Msg["MATH_ARITHMETIC_TOOLTIP_MINUS"] = "Két szám különbsége.";
+Blockly.Msg["MATH_ARITHMETIC_TOOLTIP_MODULUS"] = "Return the remainder from division of two numbers.";  // untranslated
 Blockly.Msg["MATH_ARITHMETIC_TOOLTIP_MULTIPLY"] = "Két szám szorzata.";
 Blockly.Msg["MATH_ARITHMETIC_TOOLTIP_POWER"] = "Az első számnak a második számmal megegyező hatványa.";
 Blockly.Msg["MATH_ATAN2_HELPURL"] = "https://en.wikipedia.org/wiki/Atan2";  // untranslated

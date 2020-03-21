@@ -201,6 +201,7 @@ Blockly.Msg["MATH_ARITHMETIC_HELPURL"] = "https://ba.wikipedia.org/wiki/Ариф
 Blockly.Msg["MATH_ARITHMETIC_TOOLTIP_ADD"] = "Ике һандың суммаһын ҡайтара.";
 Blockly.Msg["MATH_ARITHMETIC_TOOLTIP_DIVIDE"] = "Ике һандың бүлендеген ҡайтара.";
 Blockly.Msg["MATH_ARITHMETIC_TOOLTIP_MINUS"] = "Ике һандың айырмаһын ҡайтара.";
+Blockly.Msg["MATH_ARITHMETIC_TOOLTIP_MODULUS"] = "Return the remainder from division of two numbers.";  // untranslated
 Blockly.Msg["MATH_ARITHMETIC_TOOLTIP_MULTIPLY"] = "Ике һандың ҡабатландығын ҡайтара.";
 Blockly.Msg["MATH_ARITHMETIC_TOOLTIP_POWER"] = "Дәрәжәгә күтәрелгән икенсе һандан тәүгеһенә ҡайтара.";
 Blockly.Msg["MATH_ATAN2_HELPURL"] = "https://en.wikipedia.org/wiki/Atan2";  // untranslated

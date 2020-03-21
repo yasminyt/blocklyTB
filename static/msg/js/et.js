@@ -201,6 +201,7 @@ Blockly.Msg["MATH_ARITHMETIC_HELPURL"] = "https://et.wikipedia.org/wiki/Aritmeet
 Blockly.Msg["MATH_ARITHMETIC_TOOLTIP_ADD"] = "Tagastab kahe arvu summa.";
 Blockly.Msg["MATH_ARITHMETIC_TOOLTIP_DIVIDE"] = "Tagastab kahe arvu jagatise.";
 Blockly.Msg["MATH_ARITHMETIC_TOOLTIP_MINUS"] = "Tagastab kahe arvu vahe.";
+Blockly.Msg["MATH_ARITHMETIC_TOOLTIP_MODULUS"] = "Return the remainder from division of two numbers.";  // untranslated
 Blockly.Msg["MATH_ARITHMETIC_TOOLTIP_MULTIPLY"] = "Tagastab kahe arvu korrutise.";
 Blockly.Msg["MATH_ARITHMETIC_TOOLTIP_POWER"] = "Tagastab esimese arvu teise arvu astmes.";
 Blockly.Msg["MATH_ATAN2_HELPURL"] = "https://en.wikipedia.org/wiki/Atan2";

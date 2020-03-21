@@ -201,6 +201,7 @@ Blockly.Msg["MATH_ARITHMETIC_HELPURL"] = "https://nl.wikipedia.org/wiki/Rekenen"
 Blockly.Msg["MATH_ARITHMETIC_TOOLTIP_ADD"] = "Geeft de som van 2 getallen.";
 Blockly.Msg["MATH_ARITHMETIC_TOOLTIP_DIVIDE"] = "Geeft de gedeelde waarde van twee getallen.";
 Blockly.Msg["MATH_ARITHMETIC_TOOLTIP_MINUS"] = "Geeft het verschil van de twee getallen.";
+Blockly.Msg["MATH_ARITHMETIC_TOOLTIP_MODULUS"] = "Return the remainder from division of two numbers.";  // untranslated
 Blockly.Msg["MATH_ARITHMETIC_TOOLTIP_MULTIPLY"] = "Geeft het product terug van de twee getallen.";
 Blockly.Msg["MATH_ARITHMETIC_TOOLTIP_POWER"] = "Geeft het eerste getal tot de macht van het tweede getal.";
 Blockly.Msg["MATH_ATAN2_HELPURL"] = "https://en.wikipedia.org/wiki/Atan2";

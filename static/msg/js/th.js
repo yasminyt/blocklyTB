@@ -201,6 +201,7 @@ Blockly.Msg["MATH_ARITHMETIC_HELPURL"] = "https://th.wikipedia.org/wiki/เล�
 Blockly.Msg["MATH_ARITHMETIC_TOOLTIP_ADD"] = "คืนค่าผลรวมของตัวเลขทั้งสองจำนวน";
 Blockly.Msg["MATH_ARITHMETIC_TOOLTIP_DIVIDE"] = "คืนค่าผลหารของตัวเลขทั้งสองจำนวน";
 Blockly.Msg["MATH_ARITHMETIC_TOOLTIP_MINUS"] = "คืนค่าผลต่างของตัวเลขทั้งสองจำนวน";
+Blockly.Msg["MATH_ARITHMETIC_TOOLTIP_MODULUS"] = "Return the remainder from division of two numbers.";  // untranslated
 Blockly.Msg["MATH_ARITHMETIC_TOOLTIP_MULTIPLY"] = "คืนค่าผลคูณของตัวเลขทั้งสองจำนวน";
 Blockly.Msg["MATH_ARITHMETIC_TOOLTIP_POWER"] = "คืนค่าผลการยกกำลัง โดยตัวเลขแรกเป็นฐาน และตัวเลขที่สองเป็นเลขชี้กำลัง";
 Blockly.Msg["MATH_ATAN2_HELPURL"] = "https://en.wikipedia.org/wiki/Atan2";  // untranslated

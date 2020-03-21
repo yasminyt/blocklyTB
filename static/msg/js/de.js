@@ -201,6 +201,7 @@ Blockly.Msg["MATH_ARITHMETIC_HELPURL"] = "https://de.wikipedia.org/wiki/Grundrec
 Blockly.Msg["MATH_ARITHMETIC_TOOLTIP_ADD"] = "Ist die Summe zweier Zahlen.";
 Blockly.Msg["MATH_ARITHMETIC_TOOLTIP_DIVIDE"] = "Ist der Quotient zweier Zahlen.";
 Blockly.Msg["MATH_ARITHMETIC_TOOLTIP_MINUS"] = "Ist die Differenz zweier Zahlen.";
+Blockly.Msg["MATH_ARITHMETIC_TOOLTIP_MODULUS"] = "Return the remainder from division of two numbers.";  // untranslated
 Blockly.Msg["MATH_ARITHMETIC_TOOLTIP_MULTIPLY"] = "Ist das Produkt zweier Zahlen.";
 Blockly.Msg["MATH_ARITHMETIC_TOOLTIP_POWER"] = "Ist die erste Zahl potenziert mit der zweiten Zahl.";
 Blockly.Msg["MATH_ATAN2_HELPURL"] = "https://de.wikipedia.org/wiki/Arctan2";

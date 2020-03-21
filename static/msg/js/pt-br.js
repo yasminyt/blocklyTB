@@ -201,6 +201,7 @@ Blockly.Msg["MATH_ARITHMETIC_HELPURL"] = "https://pt.wikipedia.org/wiki/Aritm%C3
 Blockly.Msg["MATH_ARITHMETIC_TOOLTIP_ADD"] = "Retorna a soma dos dois números.";
 Blockly.Msg["MATH_ARITHMETIC_TOOLTIP_DIVIDE"] = "Retorna o quociente da divisão dos dois números.";
 Blockly.Msg["MATH_ARITHMETIC_TOOLTIP_MINUS"] = "Retorna a diferença entre os dois números.";
+Blockly.Msg["MATH_ARITHMETIC_TOOLTIP_MODULUS"] = "Return the remainder from division of two numbers.";  // untranslated
 Blockly.Msg["MATH_ARITHMETIC_TOOLTIP_MULTIPLY"] = "Retorna o produto dos dois números.";
 Blockly.Msg["MATH_ARITHMETIC_TOOLTIP_POWER"] = "Retorna o primeiro número elevado à potência do segundo número.";
 Blockly.Msg["MATH_ATAN2_HELPURL"] = "https://en.wikipedia.org/wiki/Atan2";

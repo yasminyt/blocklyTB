@@ -9,7 +9,7 @@
  */
 Blockly.Verilog['zero'] = function(block) {
   const code = '0';
-  return [code, Blockly.Verilog.ORDER_NONE];
+  return [code, Blockly.Verilog.ORDER_ATOMIC];
 };
 
 /**
@@ -19,7 +19,7 @@ Blockly.Verilog['zero'] = function(block) {
  */
 Blockly.Verilog['one'] = function(block) {
   const code = '1';
-  return [code, Blockly.Verilog.ORDER_NONE];
+  return [code, Blockly.Verilog.ORDER_ATOMIC];
 };
 
 /**
@@ -29,7 +29,7 @@ Blockly.Verilog['one'] = function(block) {
  */
 Blockly.Verilog['high_impedance'] = function(block) {
   const code = 'Z';
-  return [code, Blockly.Verilog.ORDER_NONE];
+  return [code, Blockly.Verilog.ORDER_ATOMIC];
 };
 
 /**
@@ -39,7 +39,7 @@ Blockly.Verilog['high_impedance'] = function(block) {
  */
 Blockly.Verilog['uncertainty'] = function(block) {
   const code = 'X';
-  return [code, Blockly.Verilog.ORDER_NONE];
+  return [code, Blockly.Verilog.ORDER_ATOMIC];
 };
 
 /**
@@ -63,7 +63,7 @@ Blockly.Verilog['lists_create_with'] = function(block) {
   const elements = new Array(block.itemCount_);
   for (let i = 0; i < block.itemCount_; i++) {
     elements[i] = Blockly.Verilog.valueToCode(block, 'ADD' + i,
-      Blockly.Verilog.ORDER_ATOMIC) || 'null';    // todo: ORDER_ATOMIC to ORDER_COMMA
+      Blockly.Verilog.ORDER_COMMA) || 'null';
   }
   const code = elements.join(', ');
   return [code, Blockly.Verilog.ORDER_ATOMIC];

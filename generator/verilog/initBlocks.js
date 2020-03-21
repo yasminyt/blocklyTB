@@ -1,23 +1,42 @@
 /**
- ** 生成初始化块的 verilog 代码
+ * Generator Verilog codes for initial blocks.
  */
 
+/**
+ * module [moduleName];
+ * @param block
+ * @returns {string}
+ */
 Blockly.Verilog['module_name'] = function(block) {
   const text_name = block.getFieldValue('NAME');
   let code = `module ${text_name}();\n`;
   return code;
 };
 
-// 例化后的 input 变量的 verilog
+/**
+ * reg [bits] [variable];  // after DUT
+ * @param block
+ * @returns {string}
+ */
 Blockly.Verilog['input_port'] = function(block) {
   return generateCodes('inputObj', 'reg');
 };
 
-// 例化后的 output 变量的 verilog
+/**
+ * wire [bits] [variable];  // after DUT
+ * @param block
+ * @returns {string}
+ */
 Blockly.Verilog['output_port'] = function (block) {
   return generateCodes('outputObj', 'wire');
 };
 
+/**
+ * Generate codes.
+ * @param objName
+ * @param type
+ * @returns {string}
+ */
 function generateCodes(objName, type) {
   const obj = JSON.parse(window.sessionStorage.getItem(objName));
   const pairs = obj.pairs;
@@ -34,7 +53,11 @@ function generateCodes(objName, type) {
   return code.join('');
 }
 
-// 实例调用
+/**
+ * [moduleName] [instanceName] (...variables list...);
+ * @param block
+ * @returns {string}
+ */
 Blockly.Verilog['instance'] = function(block) {
   const text_name = block.getFieldValue('NAME');
   const moduleName = window.sessionStorage.getItem('moduleName');
@@ -43,6 +66,11 @@ Blockly.Verilog['instance'] = function(block) {
   return code;
 };
 
+/**
+ * Generate parameters for calling module.
+ * @param objName
+ * @returns {string}
+ */
 function generateParams(objName) {
   const obj = JSON.parse(window.sessionStorage.getItem(objName));
   const params = obj.params;

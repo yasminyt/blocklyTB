@@ -201,6 +201,7 @@ Blockly.Msg["MATH_ARITHMETIC_HELPURL"] = "https://en.wikipedia.org/wiki/Arithmet
 Blockly.Msg["MATH_ARITHMETIC_TOOLTIP_ADD"] = "Grąžina dviejų skaičių sumą.";
 Blockly.Msg["MATH_ARITHMETIC_TOOLTIP_DIVIDE"] = "Grąžina dviejų skaičių dalmenį.";
 Blockly.Msg["MATH_ARITHMETIC_TOOLTIP_MINUS"] = "Grąžina dviejų skaičių skirtumą.";
+Blockly.Msg["MATH_ARITHMETIC_TOOLTIP_MODULUS"] = "Return the remainder from division of two numbers.";  // untranslated
 Blockly.Msg["MATH_ARITHMETIC_TOOLTIP_MULTIPLY"] = "Grąžina dviejų skaičių sandaugą.";
 Blockly.Msg["MATH_ARITHMETIC_TOOLTIP_POWER"] = "Grąžina pirmą skaičių pakeltą laipsniu pagal antrą skaičių.";
 Blockly.Msg["MATH_ATAN2_HELPURL"] = "https://en.wikipedia.org/wiki/Atan2";  // untranslated

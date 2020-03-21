@@ -201,6 +201,7 @@ Blockly.Msg["MATH_ARITHMETIC_HELPURL"] = "https://be-x-old.wikipedia.org/wiki/%D
 Blockly.Msg["MATH_ARITHMETIC_TOOLTIP_ADD"] = "Вяртае суму двух лікаў.";
 Blockly.Msg["MATH_ARITHMETIC_TOOLTIP_DIVIDE"] = "Вяртае дзель двух лікаў.";
 Blockly.Msg["MATH_ARITHMETIC_TOOLTIP_MINUS"] = "Вяртае рознасьць двух лікаў.";
+Blockly.Msg["MATH_ARITHMETIC_TOOLTIP_MODULUS"] = "Return the remainder from division of two numbers.";  // untranslated
 Blockly.Msg["MATH_ARITHMETIC_TOOLTIP_MULTIPLY"] = "Вяртае здабытак двух лікаў.";
 Blockly.Msg["MATH_ARITHMETIC_TOOLTIP_POWER"] = "Вяртае першы лік у ступені другога ліку.";
 Blockly.Msg["MATH_ATAN2_HELPURL"] = "https://en.wikipedia.org/wiki/Atan2";

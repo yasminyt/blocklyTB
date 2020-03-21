@@ -201,6 +201,7 @@ Blockly.Msg["MATH_ARITHMETIC_HELPURL"] = "https://ro.wikipedia.org/wiki/Aritmeti
 Blockly.Msg["MATH_ARITHMETIC_TOOLTIP_ADD"] = "Returnează suma a două numere.";
 Blockly.Msg["MATH_ARITHMETIC_TOOLTIP_DIVIDE"] = "Returnează câtul celor două numere.";
 Blockly.Msg["MATH_ARITHMETIC_TOOLTIP_MINUS"] = "Returneaza diferenţa dintre cele două numere.";
+Blockly.Msg["MATH_ARITHMETIC_TOOLTIP_MODULUS"] = "Return the remainder from division of two numbers.";  // untranslated
 Blockly.Msg["MATH_ARITHMETIC_TOOLTIP_MULTIPLY"] = "Returnează produsul celor două numere.";
 Blockly.Msg["MATH_ARITHMETIC_TOOLTIP_POWER"] = "Returneaza numărul rezultat prin ridicarea primului număr la puterea celui de-al doilea.";
 Blockly.Msg["MATH_ATAN2_HELPURL"] = "https://en.wikipedia.org/wiki/Atan2";

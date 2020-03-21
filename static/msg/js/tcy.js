@@ -201,6 +201,7 @@ Blockly.Msg["MATH_ARITHMETIC_HELPURL"] = "https://en.wikipedia.org/wiki/ಅಂ�
 Blockly.Msg["MATH_ARITHMETIC_TOOLTIP_ADD"] = "ರಡ್ಡ್ ಸಂಖ್ಯೆದ ಮೊತ್ತನ್ ಪಿರಕೊರು.";
 Blockly.Msg["MATH_ARITHMETIC_TOOLTIP_DIVIDE"] = "ಸಂಖ್ಯೆದ ಭಾಗಲಬ್ದೊನು ಪಿರಕೊರು.";
 Blockly.Msg["MATH_ARITHMETIC_TOOLTIP_MINUS"] = "ರಡ್ಡ ಸ್ಂಖ್ಯೆದ ವ್ಯತ್ಯಾಸೊನು ಪಿರಕೊರು.";
+Blockly.Msg["MATH_ARITHMETIC_TOOLTIP_MODULUS"] = "Return the remainder from division of two numbers.";  // untranslated
 Blockly.Msg["MATH_ARITHMETIC_TOOLTIP_MULTIPLY"] = "ಸಂಖ್ಯೆದ ಗುಣಲಬ್ಧೊನು ಪಿರಕೊರು.";
 Blockly.Msg["MATH_ARITHMETIC_TOOLTIP_POWER"] = "ಸುರುತ್ತ ಸಂಖ್ಯೆದ ಘಾತೊನು ರಡ್ಡನೆ ಸಂಖ್ಯೆಗ್ ಏರ್ಪಾದ್ ಪಿರಕೊರು.";
 Blockly.Msg["MATH_ATAN2_HELPURL"] = "https://en.wikipedia.org/wiki/Atan2";

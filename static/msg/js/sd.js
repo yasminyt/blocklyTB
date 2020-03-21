@@ -201,6 +201,7 @@ Blockly.Msg["MATH_ARITHMETIC_HELPURL"] = "https://en.wikipedia.org/wiki/Arithmet
 Blockly.Msg["MATH_ARITHMETIC_TOOLTIP_ADD"] = "ٻن انگن جي جوڙ اپت ڏيو.";
 Blockly.Msg["MATH_ARITHMETIC_TOOLTIP_DIVIDE"] = "ٻنهي انگن جي ونڊ ڏيو.";
 Blockly.Msg["MATH_ARITHMETIC_TOOLTIP_MINUS"] = "ٻنهي انگن جو تفاوت ڏيو.";
+Blockly.Msg["MATH_ARITHMETIC_TOOLTIP_MODULUS"] = "Return the remainder from division of two numbers.";  // untranslated
 Blockly.Msg["MATH_ARITHMETIC_TOOLTIP_MULTIPLY"] = "ٻنهي انگن جي ضرب اُپت ڏيو.";
 Blockly.Msg["MATH_ARITHMETIC_TOOLTIP_POWER"] = "Return the first number raised to the power of the second number.";  // untranslated
 Blockly.Msg["MATH_ATAN2_HELPURL"] = "https://en.wikipedia.org/wiki/Atan2";  // untranslated

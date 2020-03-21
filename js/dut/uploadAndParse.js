@@ -18,6 +18,7 @@ function getExpressions(contents) {
   const inputReg = /input[\[:\]\s\w$_,]+(?=;)/g;
   const outputReg = /output[\[:\]\s\w$_,]+(?=;)/g;
 
+  // todo: check if exists module
   const moduleName = contents.match(moduleReg)[0].split(' ')[1];
   const inputs = contents.match(inputReg);
   const outputs = contents.match(outputReg);

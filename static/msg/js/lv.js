@@ -201,6 +201,7 @@ Blockly.Msg["MATH_ARITHMETIC_HELPURL"] = "https://lv.wikipedia.org/wiki/Aritm%C4
 Blockly.Msg["MATH_ARITHMETIC_TOOLTIP_ADD"] = "Atgriež divu skaitļu summu.";
 Blockly.Msg["MATH_ARITHMETIC_TOOLTIP_DIVIDE"] = "Atgriež divu skaitļu dalījumu.";
 Blockly.Msg["MATH_ARITHMETIC_TOOLTIP_MINUS"] = "Atgriež divu skaitļu starpību.";
+Blockly.Msg["MATH_ARITHMETIC_TOOLTIP_MODULUS"] = "Return the remainder from division of two numbers.";  // untranslated
 Blockly.Msg["MATH_ARITHMETIC_TOOLTIP_MULTIPLY"] = "Atgriež divu skaitļu reizinājumu.";
 Blockly.Msg["MATH_ARITHMETIC_TOOLTIP_POWER"] = "Atgriež pirmo skaitli kāpinātu pakāpē otrais skaitlis.";
 Blockly.Msg["MATH_ATAN2_HELPURL"] = "https://en.wikipedia.org/wiki/Atan2";  // untranslated

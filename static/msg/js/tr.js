@@ -201,6 +201,7 @@ Blockly.Msg["MATH_ARITHMETIC_HELPURL"] = "https://tr.wikipedia.org/wiki/Aritmeti
 Blockly.Msg["MATH_ARITHMETIC_TOOLTIP_ADD"] = "İki sayının toplamını döndürün.";
 Blockly.Msg["MATH_ARITHMETIC_TOOLTIP_DIVIDE"] = "İki sayının bölümünü döndürün.";
 Blockly.Msg["MATH_ARITHMETIC_TOOLTIP_MINUS"] = "İki sayının farkını döndürün.";
+Blockly.Msg["MATH_ARITHMETIC_TOOLTIP_MODULUS"] = "Return the remainder from division of two numbers.";  // untranslated
 Blockly.Msg["MATH_ARITHMETIC_TOOLTIP_MULTIPLY"] = "İki sayının çarpımını döndürün.";
 Blockly.Msg["MATH_ARITHMETIC_TOOLTIP_POWER"] = "Yükseltilen ilk sayıyı ikinci sayının gücüne döndürün.";
 Blockly.Msg["MATH_ATAN2_HELPURL"] = "https://tr.wikipedia.org/wiki/Atan2";

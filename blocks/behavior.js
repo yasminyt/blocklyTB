@@ -1,4 +1,4 @@
-Blockly.Blocks['initial'] = {
+Blockly.Blocks['begin_end'] = {
   init: function() {
     this.appendDummyInput("condition")
         .appendField("Sequential execute");
@@ -13,7 +13,7 @@ Blockly.Blocks['initial'] = {
   }
 };
 
-Blockly.Blocks['fork-join'] = {
+Blockly.Blocks['fork_join'] = {
   init: function() {
     this.appendDummyInput("condition")
         .appendField("Parallel execute");
@@ -28,51 +28,38 @@ Blockly.Blocks['fork-join'] = {
   }
 };
 
-// todo: always at
+Blockly.Blocks['initial_blocks'] = {
+  init: function() {
+    this.appendDummyInput()
+        .appendField("do initial");
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+    this.setColour(240);
+    this.setTooltip("Initial blocks execute only once at time zero (start execution at time zero).");
+    this.setHelpUrl("http://www.asic-world.com/verilog/vbehave1.html");
+  }
+};
+
 Blockly.Blocks['always_at'] = {
   init: function() {
     this.appendValueInput("condition")
         .setCheck(null)
-        .appendField("Always at");
-    this.appendStatementInput("body")
-        .setCheck(null)
-        .appendField("do");
+        .appendField("always at");
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
     this.setColour(240);
-    this.setTooltip("Always Block to keep looping forever");
-    this.setHelpUrl("http://referencedesigner.com/tutorials/verilog/verilog_16.php");
+    this.setTooltip("It is used to describe events that should happen under certain conditions.");
+    this.setHelpUrl("https://class.ece.uw.edu/371/peckol/doc/Always@.pdf");
   }
 };
 
-Blockly.Blocks['delay'] = {
+Blockly.Blocks['asterisk'] = {
   init: function() {
-    this.appendValueInput("time")
-        .setCheck("Number")
-        .appendField("delay time");
-    this.appendStatementInput("body")
-        .setCheck(null)
-        .appendField("do");
-    this.setPreviousStatement(true, null);
-    this.setNextStatement(true, null);
-    this.setColour(240);
-    this.setTooltip("After few seconds, code inside will be executed");
-    this.setHelpUrl("");
-  }
-};
-
-Blockly.Blocks['delay_output'] = {
-  init: function() {
-    this.appendValueInput("time")
-        .setCheck("Number")
-        .appendField("delay time");
-    this.appendValueInput("statement")
-        .setCheck(null)
-        .appendField("to");
-    this.setInputsInline(true);
+    this.appendDummyInput()
+        .appendField("*");
     this.setOutput(true, null);
-    this.setColour(240);
-    this.setTooltip("");
+    this.setColour(355);
+    this.setTooltip("It means all the inputs included, so it is equivalent to writing all the inputs.");
     this.setHelpUrl("");
   }
 };

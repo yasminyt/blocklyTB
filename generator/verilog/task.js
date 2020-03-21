@@ -55,6 +55,6 @@ Blockly.Verilog['input_new'] = function(block) {
  */
 Blockly.Verilog['variables_get_input'] = function(block) {
   const code = Blockly.Verilog.variableDB_.getName(block.getFieldValue('VAR'), Blockly.Variables.NAME_TYPE);
-  return code;
+  return [code, Blockly.Verilog.ORDER_ATOMIC];
 };
 

@@ -1,4 +1,4 @@
-import { REGISTER, WIRE, PARAMETER, INTEGER } from "../../js/typeKeys.js";
+import { REGISTER, WIRE, LOCALPARAM, PARAMETER, INTEGER } from "../../js/typeKeys.js";
 
 // creating dynamic variables
 Blockly.defineBlocksWithJsonArray([ // BEGIN JSON EXTRACT
@@ -46,6 +46,21 @@ Blockly.defineBlocksWithJsonArray([ // BEGIN JSON EXTRACT
     "style": "variable_dynamic_blocks",
     "helpUrl": "%{BKY_VARIABLES_GET_HELPURL}",
     "tooltip": "Select a parameter variable",
+  },
+  {
+    "type": "variables_get_localparam",
+    "message0": "localparam %1",
+    "args0": [{
+      "type": "field_variable",
+      "name": "VAR",
+      "variable": "",
+      "variableTypes": [LOCALPARAM],
+      "defaultType": LOCALPARAM
+    }],
+    "output": null,
+    "style": "variable_dynamic_blocks",
+    "helpUrl": "%{BKY_VARIABLES_GET_HELPURL}",
+    "tooltip": "Select a variable of localparam type.",
   },
   {
     "type": "variables_get_integer",
@@ -136,6 +151,28 @@ Blockly.defineBlocksWithJsonArray([
     "nextStatement": null,
     "colour": 330,
     "tooltip": "Define a new parameter and set value",
+    "helpUrl": ""
+  },
+  {
+    "type": "localparam_new",
+    "message0": "define localparam %1 to %2",
+    "args0": [
+      {
+        "type": "field_variable",
+        "name": "VAR",
+        "variable": "",
+        "variableTypes": [LOCALPARAM],
+        "defaultType": LOCALPARAM
+      },
+      {
+        "type": "input_value",
+        "name": "VALUE"
+      }
+    ],
+    "previousStatement": null,
+    "nextStatement": null,
+    "colour": 330,
+    "tooltip": "Define a new variable of localparam type and set value.",
     "helpUrl": ""
   },
   {

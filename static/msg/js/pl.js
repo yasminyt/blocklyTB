@@ -201,6 +201,7 @@ Blockly.Msg["MATH_ARITHMETIC_HELPURL"] = "https://pl.wikipedia.org/wiki/Arytmety
 Blockly.Msg["MATH_ARITHMETIC_TOOLTIP_ADD"] = "Zwróć sumę dwóch liczb.";
 Blockly.Msg["MATH_ARITHMETIC_TOOLTIP_DIVIDE"] = "Zwróć iloraz dwóch liczb.";
 Blockly.Msg["MATH_ARITHMETIC_TOOLTIP_MINUS"] = "Zwróć różnicę dwóch liczb.";
+Blockly.Msg["MATH_ARITHMETIC_TOOLTIP_MODULUS"] = "Return the remainder from division of two numbers.";  // untranslated
 Blockly.Msg["MATH_ARITHMETIC_TOOLTIP_MULTIPLY"] = "Zwróć iloczyn dwóch liczb.";
 Blockly.Msg["MATH_ARITHMETIC_TOOLTIP_POWER"] = "Zwróć pierwszą liczbę podniesioną do potęgi o wykładniku drugiej liczby.";
 Blockly.Msg["MATH_ATAN2_HELPURL"] = "https://en.wikipedia.org/wiki/Atan2";  // untranslated

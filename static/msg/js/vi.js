@@ -201,6 +201,7 @@ Blockly.Msg["MATH_ARITHMETIC_HELPURL"] = "https://vi.wikipedia.org/wiki/S%E1%BB%
 Blockly.Msg["MATH_ARITHMETIC_TOOLTIP_ADD"] = "Hoàn trả tổng của hai con số.";
 Blockly.Msg["MATH_ARITHMETIC_TOOLTIP_DIVIDE"] = "Hoàn trả thương của hai con số.";
 Blockly.Msg["MATH_ARITHMETIC_TOOLTIP_MINUS"] = "Hoàn trả hiệu của hai con số.";
+Blockly.Msg["MATH_ARITHMETIC_TOOLTIP_MODULUS"] = "Return the remainder from division of two numbers.";  // untranslated
 Blockly.Msg["MATH_ARITHMETIC_TOOLTIP_MULTIPLY"] = "Hoàn trả tích của hai con số.";
 Blockly.Msg["MATH_ARITHMETIC_TOOLTIP_POWER"] = "Hoàn trả số lũy thừa với số thứ nhất là cơ số và số thứ hai là số mũ.";
 Blockly.Msg["MATH_ATAN2_HELPURL"] = "https://en.wikipedia.org/wiki/Atan2";

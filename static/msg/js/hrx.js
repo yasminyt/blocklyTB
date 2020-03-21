@@ -201,6 +201,7 @@ Blockly.Msg["MATH_ARITHMETIC_HELPURL"] = "https://hrx.wikipedia.org/wiki/Grundre
 Blockly.Msg["MATH_ARITHMETIC_TOOLTIP_ADD"] = "Ist die Summe zwooier Wearte.";
 Blockly.Msg["MATH_ARITHMETIC_TOOLTIP_DIVIDE"] = "Ist der Quotient zwooier Wearte.";
 Blockly.Msg["MATH_ARITHMETIC_TOOLTIP_MINUS"] = "Ist die Differenz zwooier Wearte.";
+Blockly.Msg["MATH_ARITHMETIC_TOOLTIP_MODULUS"] = "Return the remainder from division of two numbers.";  // untranslated
 Blockly.Msg["MATH_ARITHMETIC_TOOLTIP_MULTIPLY"] = "Ist das Produkt zwooier Wearte.";
 Blockly.Msg["MATH_ARITHMETIC_TOOLTIP_POWER"] = "Ist der earschte Weart potenziert mit dem zoiten Weart.";
 Blockly.Msg["MATH_ATAN2_HELPURL"] = "https://en.wikipedia.org/wiki/Atan2";  // untranslated

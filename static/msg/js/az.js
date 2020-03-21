@@ -201,6 +201,7 @@ Blockly.Msg["MATH_ARITHMETIC_HELPURL"] = "https://az.wikipedia.org/wiki/Hesab";
 Blockly.Msg["MATH_ARITHMETIC_TOOLTIP_ADD"] = "İki ədədin cəmini qaytarır.";
 Blockly.Msg["MATH_ARITHMETIC_TOOLTIP_DIVIDE"] = "İki ədədin nisbətini qaytarır.";
 Blockly.Msg["MATH_ARITHMETIC_TOOLTIP_MINUS"] = "İki ədədin fərqini qaytarır.";
+Blockly.Msg["MATH_ARITHMETIC_TOOLTIP_MODULUS"] = "Return the remainder from division of two numbers.";  // untranslated
 Blockly.Msg["MATH_ARITHMETIC_TOOLTIP_MULTIPLY"] = "İki ədədin hasilini verir.";
 Blockly.Msg["MATH_ARITHMETIC_TOOLTIP_POWER"] = "Birinci ədədin ikinci ədəd dərəcəsindən qüvvətini qaytarır.";
 Blockly.Msg["MATH_ATAN2_HELPURL"] = "https://en.wikipedia.org/wiki/Atan2";

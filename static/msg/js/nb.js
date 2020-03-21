@@ -201,6 +201,7 @@ Blockly.Msg["MATH_ARITHMETIC_HELPURL"] = "https://no.wikipedia.org/wiki/Aritmeti
 Blockly.Msg["MATH_ARITHMETIC_TOOLTIP_ADD"] = "Returnerer summen av to tall.";
 Blockly.Msg["MATH_ARITHMETIC_TOOLTIP_DIVIDE"] = "Returner kvotienten av to tall.";
 Blockly.Msg["MATH_ARITHMETIC_TOOLTIP_MINUS"] = "Returner differansen mellom to tall.";
+Blockly.Msg["MATH_ARITHMETIC_TOOLTIP_MODULUS"] = "Return the remainder from division of two numbers.";  // untranslated
 Blockly.Msg["MATH_ARITHMETIC_TOOLTIP_MULTIPLY"] = "Returner produktet av to tall.";
 Blockly.Msg["MATH_ARITHMETIC_TOOLTIP_POWER"] = "Returner det første tallet opphøyd i den andre tallet.";
 Blockly.Msg["MATH_ATAN2_HELPURL"] = "https://en.wikipedia.org/wiki/Atan2";

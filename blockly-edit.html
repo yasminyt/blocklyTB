@@ -21,8 +21,10 @@
   <script src="blocks/variables_dynamic/variables.js" type="module"></script>
   <script src="blocks/behavior.js"></script>
   <script src="blocks/assignment.js"></script>
+  <script src="blocks/timing.js"></script>
   <script src="blocks/operators.js"></script>
   <script src="blocks/loops.js"></script>
+  <script src="blocks/math.js"></script>
   <script src="blocks/task/core.js" type="module"></script>
   <script src="blocks/task/task.js" type="module"></script>
   <script src="blocks/functions.js"></script>
@@ -36,8 +38,10 @@
   <script src="generator/verilog/variables.js"></script>
   <script src="generator/verilog/behavior.js"></script>
   <script src="generator/verilog/assignment.js"></script>
+  <script src="generator/verilog/timing.js"></script>
   <script src="generator/verilog/logic.js"></script>
   <script src="generator/verilog/loops.js"></script>
+  <script src="generator/verilog/math.js"></script>
   <script src="generator/verilog/operators.js"></script>
   <script src="generator/verilog/task.js"></script>
   <script src="generator/verilog/functions.js"></script>
@@ -79,9 +83,6 @@
       <block type="decimal_binary_return"></block>
       <block type="decimal_hex_return"></block>
       <block type="decimal_octal_return"></block>
-      <block type="decimal_binary"></block>
-      <block type="decimal_hex"></block>
-      <block type="decimal_octal"></block>
     </category>
     <category name="Variables" colour="330" custom="variable_dynamic"></category>
     <sep gap="40"></sep>
@@ -121,32 +122,52 @@
         </value>
       </block>
     </category>
+    <category name="Math" colour="75">
+      <block type="arithmetic"></block>
+    </category>
     <sep gap="40"></sep>
     <category name="Behavior" colour="240">
-      <block type="initial"></block>
-      <block type="fork-join"></block>
-      <block type="always_at"></block>
+      <block type="begin_end"></block>
+      <block type="fork_join"></block>
+      <block type="initial_blocks"></block>
+      <block type="always_at">
+        <value name="condition">
+          <shadow type="asterisk">
+          </shadow>
+        </value>
+      </block>
+    </category>
+    <category name="Assignment" colour="20">
+      <block type="block_assign"></block>
+      <block type="none_block_assign"></block>
+      <block type="assign"></block>
+      <block type="block_assign_output"></block>
+      <block type="none_block_assign_output"></block>
+    </category>
+    <category name="Timing" colour="195">
+      <block type="delay_single">
+        <value name="time">
+          <shadow type="math_number">
+            <field name="NUM">0</field>
+          </shadow>
+        </value>
+      </block>
       <block type="delay">
         <value name="time">
           <shadow type="math_number">
-            <field name="NUM">1</field>
+            <field name="NUM">0</field>
           </shadow>
         </value>
       </block>
       <block type="delay_output">
         <value name="time">
           <shadow type="math_number">
-            <field name="NUM">1</field>
+            <field name="NUM">0</field>
           </shadow>
         </value>
       </block>
-    </category>
-    <category name="Assignment" colour="20">
-      <block type="none_block_assign"></block>
-      <block type="block_assign"></block>
-      <block type="assign"></block>
-      <block type="none_block_assign_output"></block>
-      <block type="block_assign_output"></block>
+      <block type="timing_at"></block>
+      <block type="timing_wait"></block>
     </category>
     <category name="Operators" colour="225">
       <block type="math_arithmetic"></block>

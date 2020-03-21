@@ -20,9 +20,9 @@ Blockly.Verilog['math_number'] = function(block) {
  * @returns {[string, number]}
  */
 Blockly.Verilog['decimal_binary_return'] = function(block) {
-  const value = Blockly.Verilog.valueToCode(block, 'number', Blockly.Verilog.ORDER_NONE);
+  const value = Blockly.Verilog.valueToCode(block, 'number', Blockly.Verilog.ORDER_ATOMIC);
   const code = convertBase(value, 'b', 2);
-  return [code, Blockly.Verilog.ORDER_NONE];
+  return [code, Blockly.Verilog.ORDER_ATOMIC];
 };
 
 /**
@@ -31,9 +31,9 @@ Blockly.Verilog['decimal_binary_return'] = function(block) {
  * @returns {[string, number]}
  */
 Blockly.Verilog['decimal_hex_return'] = function(block) {
-  const value = Blockly.Verilog.valueToCode(block, 'number', Blockly.Verilog.ORDER_NONE);
+  const value = Blockly.Verilog.valueToCode(block, 'number', Blockly.Verilog.ORDER_ATOMIC);
   const code = convertBase(value, 'h', 16);
-  return [code, Blockly.Verilog.ORDER_NONE];
+  return [code, Blockly.Verilog.ORDER_ATOMIC];
 };
 
 /**
@@ -42,9 +42,9 @@ Blockly.Verilog['decimal_hex_return'] = function(block) {
  * @returns {[string, number]}
  */
 Blockly.Verilog['decimal_octal_return'] = function(block) {
-  const value = Blockly.Verilog.valueToCode(block, 'number', Blockly.Verilog.ORDER_NONE);
+  const value = Blockly.Verilog.valueToCode(block, 'number', Blockly.Verilog.ORDER_ATOMIC);
   const code = convertBase(value, 'o', 8);
-  return [code, Blockly.Verilog.ORDER_NONE];
+  return [code, Blockly.Verilog.ORDER_ATOMIC];
 };
 
 Blockly.Verilog['decimal_binary'] = function(block) {

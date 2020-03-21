@@ -201,6 +201,7 @@ Blockly.Msg["MATH_ARITHMETIC_HELPURL"] = "https://en.wikipedia.org/wiki/Arithmet
 Blockly.Msg["MATH_ARITHMETIC_TOOLTIP_ADD"] = "Skila summu talnanna tveggja.";
 Blockly.Msg["MATH_ARITHMETIC_TOOLTIP_DIVIDE"] = "Skila deilingu talnanna.";
 Blockly.Msg["MATH_ARITHMETIC_TOOLTIP_MINUS"] = "Skila mismun talnanna.";
+Blockly.Msg["MATH_ARITHMETIC_TOOLTIP_MODULUS"] = "Return the remainder from division of two numbers.";  // untranslated
 Blockly.Msg["MATH_ARITHMETIC_TOOLTIP_MULTIPLY"] = "Skila margfeldi talnanna.";
 Blockly.Msg["MATH_ARITHMETIC_TOOLTIP_POWER"] = "Skila fyrri tölunni í veldinu seinni talan.";
 Blockly.Msg["MATH_ATAN2_HELPURL"] = "https://en.wikipedia.org/wiki/Atan2";  // untranslated
