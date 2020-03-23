@@ -68,8 +68,12 @@ Blockly.VariablesDynamic.CreateTask = {
   newBlock2Workspace: function(text, workspace, type) {
     const variable = workspace.getVariable(text, type);
     const id = variable.id_;
-    const field = `<field name="VAR" id="${id}" variabletype="${type}">${text}</field>`;
-    const blockType = (type === TASK) ? 'task_content' : 'input_new';
+    let field = `<field name="VAR" id="${id}" variabletype="${type}">${text}</field>`;
+    let blockType = 'task_content';
+    if (type === INPUT) {
+      blockType = 'input_new';
+      field += `<value name="bits_range"><shadow type="math_number"><field name="NUM">1</field></shadow></value>`
+    }
     const xml = `
       <xml>
         <block type="${blockType}">

@@ -23,6 +23,7 @@
   <script src="blocks/assignment.js"></script>
   <script src="blocks/timing.js"></script>
   <script src="blocks/operators.js"></script>
+  <script src="blocks/logic.js"></script>
   <script src="blocks/loops.js"></script>
   <script src="blocks/math.js"></script>
   <script src="blocks/task/core.js" type="module"></script>
@@ -74,15 +75,22 @@
       <block type="high_impedance"></block>
       <block type="uncertainty"></block>
       <block type="text"></block>
+      <block type="bits_range"></block>
       <block type="lists_create_with">
         <mutation items="2"></mutation>
+      </block>
+      <block type="repeat_concat">
+        <value name="concatenation">
+          <block type="lists_create_with">
+            <mutation items="2"></mutation>
+          </block>
+        </value>
       </block>
     </category>
     <category name="Numbers" colour="280">
       <block type="math_number"></block>
-      <block type="decimal_binary_return"></block>
-      <block type="decimal_hex_return"></block>
-      <block type="decimal_octal_return"></block>
+      <block type="constants"></block>
+      <block type="decimal_change"></block>
     </category>
     <category name="Variables" colour="330" custom="variable_dynamic"></category>
     <sep gap="40"></sep>
@@ -93,6 +101,10 @@
       <block type="logic_operation"></block>
       <block type="logic_compare"></block>
       <block type="logic_ternary"></block>
+      <category name="Bitwise" colour="215">
+        <block type="bitwise_negate"></block>
+        <block type="bitwise"></block>
+      </category>
     </category>
     <category name="Loops" colour="120">
       <block type="forever_loop"></block>
@@ -124,6 +136,7 @@
     </category>
     <category name="Math" colour="75">
       <block type="arithmetic"></block>
+      <block type="random"></block>
     </category>
     <sep gap="40"></sep>
     <category name="Behavior" colour="240">
@@ -170,20 +183,33 @@
       <block type="timing_wait"></block>
     </category>
     <category name="Operators" colour="225">
-      <block type="math_arithmetic"></block>
       <block type="bit_select"></block>
       <block type="pos_edge"></block>
       <block type="neg_edge"></block>
-      <block type="concat"></block>
+      <block type="concatenation">
+        <value name="expressions">
+          <shadow type="lists_create_with">
+            <mutation items="2"></mutation>
+          </shadow>
+        </value>
+      </block>
     </category>
     <sep gap="40"></sep>
     <category name="Task" colour="180" custom="create_task"></category>
     <category name="Functions" colour="0">
+      <block type="write_sys"></block>
       <block type="display_sys"></block>
+      <block type="monitor_sys">
+        <value name="variables">
+          <block type="lists_create_with">
+            <mutation items="2"></mutation>
+          </block>
+        </value>
+      </block>
       <block type="readmemb"></block>
       <block type="readmemh"></block>
-      <block type="monitor_sys"></block>
       <block type="finish_sys"></block>
+      <block type="stop_sys"></block>
     </category>
   </xml>
 

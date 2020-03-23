@@ -26,3 +26,13 @@ Blockly.Verilog['arithmetic'] = function(block) {
   const code = argument0 + operator + argument1;
   return [code, order];
 };
+
+/**
+ * $random
+ * @param block
+ * @returns {[string, number]}
+ */
+Blockly.Verilog['random'] = function(block) {
+  const code = `$random`;
+  return [code, Blockly.Verilog.ORDER_ATOMIC];
+};

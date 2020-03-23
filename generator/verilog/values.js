@@ -54,6 +54,18 @@ Blockly.Verilog['text'] = function(block) {
 };
 
 /**
+ * [high : low]
+ * @param block
+ * @returns {[string, number]}
+ */
+Blockly.Verilog['bits_range'] = function(block) {
+  const high_bit = Blockly.Verilog.valueToCode(block, 'high_bit', Blockly.Verilog.ORDER_ATOMIC) || 'null';
+  const low_bit = Blockly.Verilog.valueToCode(block, 'low_bit', Blockly.Verilog.ORDER_ATOMIC) || '0';
+  const code = `${high_bit}:${low_bit}`;
+  return [code, Blockly.Verilog.ORDER_ATOMIC];
+};
+
+/**
  * return a custom variables list
  * @param block
  * @returns {[string, number]}
@@ -66,5 +78,17 @@ Blockly.Verilog['lists_create_with'] = function(block) {
       Blockly.Verilog.ORDER_COMMA) || 'null';
   }
   const code = elements.join(', ');
+  return [code, Blockly.Verilog.ORDER_ATOMIC];
+};
+
+/**
+ * {multiplier{expression}}
+ * @param block
+ * @returns {[string, number]}
+ */
+Blockly.Verilog['repeat_concat'] = function(block) {
+  const number_times = block.getFieldValue('times');
+  const concatenation = Blockly.Verilog.valueToCode(block, 'concatenation', Blockly.Verilog.ORDER_ATOMIC);
+  const code = `{${number_times}{${concatenation}}}`;
   return [code, Blockly.Verilog.ORDER_ATOMIC];
 };

@@ -58,13 +58,17 @@ Blockly.Verilog['variables_get_integer'] = function(block) {
  * @returns {string}
  */
 Blockly.Verilog['reg_new'] = function(block) {
-  const variable_name = Blockly.Verilog.variableDB_.getName(block.getFieldValue('VAR'), Blockly.Variables.NAME_TYPE);
-  const bits = block.getFieldValue('bits');
+  const variable = Blockly.Verilog.variableDB_.getName(block.getFieldValue('VAR'), Blockly.Variables.NAME_TYPE);
+  const bits_range = Blockly.Verilog.valueToCode(block, 'bits_range', Blockly.Verilog.ORDER_ATOMIC) || '1';
   let code = '';
-  if (bits === 1)
-    code = `\treg ${variable_name};\n`;
+  const numberBit = Number(bits_range);
+  if (!isNaN(numberBit))
+    if (numberBit <= 1)
+      code = `\treg ${variable};\n`;
+    else
+      code = `\treg [${bits_range}:0] ${variable};\n`;
   else
-    code = `\treg [${bits - 1}:0] ${variable_name};\n`;
+    code = `\treg [${bits_range}] ${variable};\n`;
   return code;
 };
 
@@ -74,13 +78,17 @@ Blockly.Verilog['reg_new'] = function(block) {
  * @returns {string}
  */
 Blockly.Verilog['wire_new'] = function(block) {
-  const variable_name = Blockly.Verilog.variableDB_.getName(block.getFieldValue('VAR'), Blockly.Variables.NAME_TYPE);
-  const bits = block.getFieldValue('bits');
+  const variable = Blockly.Verilog.variableDB_.getName(block.getFieldValue('VAR'), Blockly.Variables.NAME_TYPE);
+  const bits_range = Blockly.Verilog.valueToCode(block, 'bits_range', Blockly.Verilog.ORDER_ATOMIC) || '1';
   let code = '';
-  if (bits === 1)
-    code = `\twire ${variable_name};\n`;
+  const numberBit = Number(bits_range);
+  if (!isNaN(numberBit))
+    if (numberBit <= 1)
+      code = `\twire ${variable};\n`;
+    else
+      code = `\twire [${bits_range}:0] ${variable};\n`;
   else
-    code = `\twire [${bits - 1}:0] ${variable_name};\n`;
+    code = `\twire [${bits_range}] ${variable};\n`;
   return code;
 };
 

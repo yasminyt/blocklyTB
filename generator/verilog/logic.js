@@ -120,3 +120,39 @@ Blockly.Verilog['logic_ternary'] = function(block) {
   const code = '(' + value_if + ')' + ' ? ' + value_then + ' : ' + value_else;
   return [code, Blockly.Verilog.ORDER_CONDITIONAL];
 };
+
+/**
+ * bitwise operators
+ */
+
+/**
+ * ~
+ * @param block
+ * @returns {[string, number]}
+ */
+Blockly.Verilog['bitwise_negate'] = function(block) {
+  const order = Blockly.Verilog.ORDER_BITWISE_XOR;
+  const result = Blockly.Verilog.valueToCode(block, 'result', order) || '1';
+  const code = `~${result}`;
+  return [code, order];
+};
+
+/**
+ * &, |, ^, ~^
+ * @param block
+ * @returns {[string, number]}
+ */
+Blockly.Verilog['bitwise'] = function(block) {
+  const OPERATORS = {
+    "and": [' & ', Blockly.Verilog.ORDER_BITWISE_AND],
+    "or": [' | ', Blockly.Verilog.ORDER_BITWISE_OR],
+    "xor": [' ^ ', Blockly.Verilog.ORDER_BITWISE_XOR],
+    "xnor": [' ~^ ', Blockly.Verilog.ORDER_BITWISE_XNOR],
+  };
+  const tuple = OPERATORS[block.getFieldValue('OP')];
+  const [operator, order] = tuple;
+  const argument0 = Blockly.Verilog.valueToCode(block, 'A', order) || '0';
+  const argument1 = Blockly.Verilog.valueToCode(block, 'B', order) || '0';
+  const code = argument0 + operator + argument1
+  return [code, order];
+};

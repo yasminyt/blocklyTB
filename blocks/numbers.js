@@ -9,42 +9,33 @@ Blockly.Blocks['math_number'] = {
   }
 };
 
-Blockly.Blocks['decimal_binary_return'] = {
+Blockly.Blocks['constants'] = {
   init: function() {
-    this.appendValueInput("number")
-        .setCheck("Number")
-        .appendField("decimal to binary");
-    this.setInputsInline(false);
+    this.appendDummyInput()
+        .appendField("constant: (signed) number")
+        .appendField(new Blockly.FieldTextInput("x"), "number")
+        .appendField("with")
+        .appendField(new Blockly.FieldTextInput("default"), "bits")
+        .appendField("bits based")
+        .appendField(new Blockly.FieldDropdown([["binary","b"], ["octal","o"], ["decimal","d"], ["hex","h"]]), "base");
     this.setOutput(true, null);
     this.setColour(280);
-    this.setTooltip('Return the value of decimal to binary');
-    this.setHelpUrl('');
+    this.setTooltip("");
+    this.setHelpUrl("http://verilog.renerta.com/source/vrg00020.htm");
   }
 };
 
-Blockly.Blocks['decimal_hex_return'] = {
+Blockly.Blocks['decimal_change'] = {
   init: function() {
-    this.appendValueInput("number")
-        .setCheck("Number")
-        .appendField("decimal to hex");
-    this.setInputsInline(false);
+    this.appendDummyInput()
+      .appendField("decimal")
+      .appendField(new Blockly.FieldNumber(0, 0, Infinity, 1), "number")
+      .appendField("to")
+      .appendField(new Blockly.FieldDropdown([["binary","b"], ["octal","o"], ["hex","h"]]), "base");
     this.setOutput(true, null);
     this.setColour(280);
-    this.setTooltip('Return the value of decimal to hex');
-    this.setHelpUrl('');
-  }
-};
-
-Blockly.Blocks['decimal_octal_return'] = {
-  init: function() {
-    this.appendValueInput("number")
-        .setCheck("Number")
-        .appendField("decimal to octal");
-    this.setInputsInline(false);
-    this.setOutput(true, null);
-    this.setColour(280);
-    this.setTooltip('Return the value of decimal to octal');
-    this.setHelpUrl('');
+    this.setTooltip("Returns decimal to binary / octal / hexadecimal results.");
+    this.setHelpUrl("");
   }
 };
 

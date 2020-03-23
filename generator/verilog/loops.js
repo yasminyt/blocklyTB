@@ -9,7 +9,7 @@
  */
 Blockly.Verilog['forever_loop'] = function(block) {
   const statements_body = Blockly.Verilog.statementToCode(block, 'body');
-  const code = '\tforever\n' + statements_body + '\n';
+  const code = '\tforever\n' + statements_body;
   return code;
 };
 

@@ -39,19 +39,14 @@ Blockly.Blocks['neg_edge'] = {
   }
 };
 
-Blockly.Blocks['concat'] = {
+Blockly.Blocks['concatenation'] = {
   init: function() {
-    this.appendValueInput("arg1")
+    this.appendValueInput("expressions")
         .setCheck(null)
-        .appendField("");
-    this.appendDummyInput()
-        .appendField("concatenate with");
-    this.appendValueInput("arg2")
-        .setCheck(null)
-        .appendField("");
+        .appendField("concatenation");
     this.setOutput(true, null);
     this.setColour(225);
-    this.setTooltip('');
-    this.setHelpUrl('http://www.example.com/');
+    this.setTooltip("The concatenation is the combination of two or more expressions. You can create a list of expressions.");
+    this.setHelpUrl("http://verilog.renerta.com/source/vrg00009.htm");
   }
 };

@@ -52,3 +52,14 @@ Blockly.Constants.Math.CUSTOM_TOOLTIPS_BY_OP = {
 Blockly.Extensions.register('custom_math_op_tooltip',
   Blockly.Extensions.buildTooltipForDropdown(
     'OP', Blockly.Constants.Math.CUSTOM_TOOLTIPS_BY_OP));
+
+Blockly.Blocks['random'] = {
+  init: function() {
+    this.appendDummyInput()
+        .appendField("random number");
+    this.setOutput(true, null);
+    this.setColour(75);
+    this.setTooltip("The system task returns a 32-bit signed integer.");
+    this.setHelpUrl("");
+  }
+};

@@ -3,13 +3,46 @@
  */
 
 /**
- * $display
+ * $write(messages[ ,variables]);
+ * @param block
+ * @returns {string}
+ */
+Blockly.Verilog['write_sys'] = function(block) {
+  const message = block.getFieldValue('message');
+  const variables = Blockly.Verilog.valueToCode(block, 'variables', Blockly.Verilog.ORDER_ATOMIC);
+  let code;
+  if (variables === '')
+    code = `\t$write("${message}");\n`;
+  else
+    code = `\t$write("${message}", ${variables});\n`;
+  return code;
+};
+
+/**
+ * $display(messages[ ,variables]);
  * @param block
  * @returns {string}
  */
 Blockly.Verilog['display_sys'] = function(block) {
-  const text_text = block.getFieldValue('text');
-  const code = '\t$display (' + '"' + text_text + '")' + ';\n';
+  const message = block.getFieldValue('message');
+  const variables = Blockly.Verilog.valueToCode(block, 'variables', Blockly.Verilog.ORDER_ATOMIC);
+  let code;
+  if (variables === '')
+    code = `\t$display("${message}");\n`;
+  else
+    code = `\t$display("${message}", ${variables});\n`;
+  return code;
+};
+
+/**
+ * $monitor(messages[ ,variables]);
+ * @param block
+ * @returns {string}
+ */
+Blockly.Verilog['monitor_sys'] = function(block) {
+  const message = block.getFieldValue('message');
+  const variables = Blockly.Verilog.valueToCode(block, 'variables', Blockly.Verilog.ORDER_ATOMIC);
+  const code = `\t$monitor("${message}", ${variables});\n`;
   return code;
 };
 
@@ -38,22 +71,21 @@ Blockly.Verilog['readmemh'] = function(block) {
 };
 
 /**
- * $monitor
- * @param block
- * @returns {string}
- */
-Blockly.Verilog['monitor_sys'] = function(block) {
-  const text_names = block.getFieldValue('names');    // todo: monitor
-  const code = '\t$monitor ( ' + text_names + ' );\n';
-  return code;
-};
-
-/**
- * $finish
+ * $finish;
  * @param block
  * @returns {string}
  */
 Blockly.Verilog['finish_sys'] = function(block) {
   const code = '\t$finish;\n';
+  return code;
+};
+
+/**
+ * $stop
+ * @param block
+ * @returns {string}
+ */
+Blockly.Verilog['stop_sys'] = function(block) {
+  const code = '\t$stop;\n';
   return code;
 };

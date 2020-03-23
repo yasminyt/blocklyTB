@@ -15,35 +15,40 @@ Blockly.Verilog['math_number'] = function(block) {
 };
 
 /**
- * decimal to binary
+ *
  * @param block
  * @returns {[string, number]}
  */
-Blockly.Verilog['decimal_binary_return'] = function(block) {
-  const value = Blockly.Verilog.valueToCode(block, 'number', Blockly.Verilog.ORDER_ATOMIC);
-  const code = convertBase(value, 'b', 2);
+Blockly.Verilog['constants'] = function(block) {
+  const number = block.getFieldValue('number');
+  let bits = block.getFieldValue('bits');
+  const base = block.getFieldValue('base');
+  let unsignedNumber = number;
+  let code = '';
+  if (/^-/.test(number)) {  // signed number
+    code = '-';
+    unsignedNumber = number.substring(1);
+  }
+  if (bits === 'default')
+    bits = '';
+  code += `${bits}'${base} ${unsignedNumber}`;
   return [code, Blockly.Verilog.ORDER_ATOMIC];
 };
 
 /**
- * decimal to hex
+ * decimal to binary/hex/octal
  * @param block
  * @returns {[string, number]}
  */
-Blockly.Verilog['decimal_hex_return'] = function(block) {
-  const value = Blockly.Verilog.valueToCode(block, 'number', Blockly.Verilog.ORDER_ATOMIC);
-  const code = convertBase(value, 'h', 16);
-  return [code, Blockly.Verilog.ORDER_ATOMIC];
-};
-
-/**
- * decimal to octal
- * @param block
- * @returns {[string, number]}
- */
-Blockly.Verilog['decimal_octal_return'] = function(block) {
-  const value = Blockly.Verilog.valueToCode(block, 'number', Blockly.Verilog.ORDER_ATOMIC);
-  const code = convertBase(value, 'o', 8);
+Blockly.Verilog['decimal_change'] = function(block) {
+  const number = block.getFieldValue('number');
+  const base = block.getFieldValue('base');
+  let code;
+  switch (base) {
+    case 'b': code = convertBase(number, 'b', 2); break;
+    case 'o': code = convertBase(number, 'o', 8); break;
+    case 'h': code = convertBase(number, 'h', 16);
+  }
   return [code, Blockly.Verilog.ORDER_ATOMIC];
 };
 

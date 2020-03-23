@@ -1,13 +1,47 @@
-Blockly.Blocks['display_sys'] = {
+Blockly.Blocks['write_sys'] = {
   init: function() {
-    this.appendDummyInput()
-        .appendField("Print ")
-        .appendField(new Blockly.FieldTextInput("text"), "text");
+    this.appendValueInput("variables")
+        .setCheck(null)
+        .appendField("Write")
+        .appendField(new Blockly.FieldTextInput("messages"), "message")
+        .appendField("with variables");
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
     this.setColour(0);
-    this.setTooltip('Used to display some text');
-    this.setHelpUrl('');
+    this.setTooltip("System task \"write\" displays specific information from the simulator.");
+    this.setHelpUrl("http://www.verilog.renerta.com/source/vrg00013.htm");
+  }
+};
+
+Blockly.Blocks['display_sys'] = {
+  init: function() {
+    this.appendValueInput("variables")
+        .setCheck(null)
+        .appendField("Display")
+        .appendField(new Blockly.FieldTextInput("messages"), "message")
+        .appendField("with variables");
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+    this.setColour(0);
+    this.setTooltip("System task \"display\" displays specific information from the simulator, and " +
+      "adds a new line character at the end of the output");
+    this.setHelpUrl("http://www.verilog.renerta.com/source/vrg00013.htm");
+  }
+};
+
+Blockly.Blocks['monitor_sys'] = {
+  init: function() {
+    this.appendValueInput("variables")
+        .setCheck(null)
+        .appendField("Monitor")
+        .appendField(new Blockly.FieldTextInput("messages"), "message")
+        .appendField("with variables");
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+    this.setColour(0);
+    this.setTooltip("The $monitor task provides the ability to monitor and display the" +
+      " values of any variables or expressions specified as arguments to the task.");
+    this.setHelpUrl("http://www.verilog.renerta.com/source/vrg00013.htm");
   }
 };
 
@@ -41,19 +75,6 @@ Blockly.Blocks['readmemh'] = {
   }
 };
 
-Blockly.Blocks['monitor_sys'] = {
-  init: function() {
-    this.appendValueInput("NAME")
-        .setCheck(null)
-        .appendField("Monitor variables");
-    this.setPreviousStatement(true, null);
-    this.setNextStatement(true, null);
-    this.setColour(0);
-    this.setTooltip("");
-    this.setHelpUrl("");
-  }
-};
-
 Blockly.Blocks['finish_sys'] = {
   init: function() {
     this.appendDummyInput()
@@ -61,7 +82,21 @@ Blockly.Blocks['finish_sys'] = {
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
     this.setColour(0);
-    this.setTooltip('Finish the simulation by appending this block');
-    this.setHelpUrl('');
+    this.setTooltip("Finishes a simulation and exits the simulation process.");
+    this.setHelpUrl("https://www.eg.bucknell.edu/~csci320/2016-fall/wp-content/uploads/2015/08/verilog-std-1364-2005.pdf");
   }
 };
+
+Blockly.Blocks['stop_sys'] = {
+  init: function() {
+    this.appendDummyInput()
+        .appendField("Stop simulation");
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+    this.setColour(0);
+    this.setTooltip("Halts a simulation and enters an interactive debug mode.");
+    this.setHelpUrl("https://www.eg.bucknell.edu/~csci320/2016-fall/wp-content/uploads/2015/08/verilog-std-1364-2005.pdf");
+  }
+};
+
+// todo: $time, $fopen, $fdisplay

@@ -38,13 +38,17 @@ Blockly.Verilog['task_call'] = function(block) {
  * @returns {string}
  */
 Blockly.Verilog['input_new'] = function(block) {
-  const variable_name = Blockly.Verilog.variableDB_.getName(block.getFieldValue('VAR'), Blockly.Variables.NAME_TYPE);
-  const bits = block.getFieldValue('bits');
+  const variable = Blockly.Verilog.variableDB_.getName(block.getFieldValue('VAR'), Blockly.Variables.NAME_TYPE);
+  const bits_range = Blockly.Verilog.valueToCode(block, 'bits_range', Blockly.Verilog.ORDER_ATOMIC) || '1';
   let code = '';
-  if (bits === 1)
-    code = `\tinput ${variable_name};\n`;
+  const numberBit = Number(bits_range);
+  if (!isNaN(numberBit))
+    if (numberBit <= 1)
+      code = `\tinput ${variable};\n`;
+    else
+      code = `\tinput [${bits_range}:0] ${variable};\n`;
   else
-    code = `\tinput [${bits - 1}:0] ${variable_name};\n`;
+    code = `\tinput [${bits_range}] ${variable};\n`;
   return code;
 };
 

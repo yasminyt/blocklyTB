@@ -41,3 +41,33 @@ Blockly.Blocks['uncertainty'] = {
     this.setHelpUrl("https://www.csee.umbc.edu/portal/help/VHDL/verilog/types.html");
   }
 };
+
+Blockly.Blocks['bits_range'] = {
+  init: function() {
+    this.appendValueInput("high_bit")
+        .setCheck(null)
+        .appendField("bits between high");
+    this.appendValueInput("low_bit")
+        .setCheck(null)
+        .appendField("and low");
+    this.setInputsInline(true);
+    this.setOutput(true, null);
+    this.setColour(260);
+    this.setTooltip("");
+    this.setHelpUrl("");
+  }
+};
+
+Blockly.Blocks['repeat_concat'] = {
+  init: function() {
+    this.appendValueInput("concatenation")
+        .setCheck(null)
+        .appendField("repeat")
+        .appendField(new Blockly.FieldNumber(2, 1, Infinity, 1), "times")
+        .appendField("times to");
+    this.setOutput(true, null);
+    this.setColour(260);
+    this.setTooltip("");
+    this.setHelpUrl("http://verilog.renerta.com/source/vrg00009.htm");
+  }
+};

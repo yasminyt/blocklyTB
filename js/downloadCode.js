@@ -1,7 +1,9 @@
 const saveButton = document.querySelector('.saveButton');
 saveButton.onclick = () => {
-  const code = document.getElementById('codeArea').innerText;
+  let code = document.getElementById('codeArea').innerText;
   if (code) {
+    const idx = code.indexOf('Copy');
+    code = code.substring(0, idx);
     const filename = inputFileName();
     filename && doSave(code, filename);
   }
@@ -35,12 +37,11 @@ function doSave(code, filename) {
 
 function saveAs(code, filename) {
   const a = document.createElement('a');
-  a.setAttribute('href', 'data:text/html;gb2312,' + code);
-  a.setAttribute('download', filename);
-  a.setAttribute('target', '_blank');
-  a.style.display = 'none';
-  document.body.appendChild(a);
+  const blob = new Blob([code], {type: 'text/plain'});
+  a.download = filename;
+  a.href = URL.createObjectURL(blob);
   a.click();
+  URL.revokeObjectURL(blob);
 }
 
 function isIE() {

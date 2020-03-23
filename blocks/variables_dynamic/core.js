@@ -147,11 +147,14 @@ Blockly.VariablesDynamic.CreateVariables.dutCategoryBlocks = function () {
 Blockly.VariablesDynamic.CreateVariables.newVariableBlock = function(text, workspace, variableType) {
   const variable = workspace.getVariable(text, variableType);
   const id = variable.id_;
-  const field = `<field name="VAR" id="${id}" variabletype="${variableType}">${text}</field>`;
+  let field = `<field name="VAR" id="${id}" variabletype="${variableType}">${text}</field>`;
   let blockType = '';
   switch (variableType) {
-    case REGISTER: blockType = 'reg_new'; break;
-    case WIRE: blockType = 'wire_new'; break;
+    case REGISTER: blockType = 'reg_new';
+    case WIRE:
+      (blockType === '') && (blockType = 'wire_new');
+      field += `<value name="bits_range"><shadow type="math_number"><field name="NUM">1</field></shadow></value>`;
+      break;
     case PARAMETER: blockType = 'parameter_new'; break;
     case LOCALPARAM: blockType = 'localparam_new'; break;
     case INTEGER: blockType = 'integer_new'; break;

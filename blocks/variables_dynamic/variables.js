@@ -83,7 +83,7 @@ Blockly.defineBlocksWithJsonArray([ // BEGIN JSON EXTRACT
 Blockly.defineBlocksWithJsonArray([
   {
     "type": "reg_new",
-    "message0": "new register %1 with %2 bits",
+    "message0": "new register %1 with bits %2",
     "args0": [
       {
         "type": "field_variable",
@@ -93,22 +93,19 @@ Blockly.defineBlocksWithJsonArray([
         "defaultType": REGISTER
       },
       {
-        "type": "field_number",
-        "name": "bits",
-        "value": 1,
-        "min": 1,
-        "precision": 1
+        "type": "input_value",
+        "name": "bits_range"
       }
     ],
     "previousStatement": null,
     "nextStatement": null,
     "colour": 330,
-    "tooltip": "Declare a new variable of wire type.",
+    "tooltip": "Declare a new variable of register type.",
     "helpUrl": ""
   },
   {
     "type": "wire_new",
-    "message0": "new wire %1 with %2 bits",
+    "message0": "new register %1 with bits %2",
     "args0": [
       {
         "type": "field_variable",
@@ -118,11 +115,8 @@ Blockly.defineBlocksWithJsonArray([
         "defaultType": WIRE
       },
       {
-        "type": "field_number",
-        "name": "bits",
-        "value": 1,
-        "min": 1,
-        "precision": 1
+        "type": "input_value",
+        "name": "bits_range"
       }
     ],
     "previousStatement": null,
