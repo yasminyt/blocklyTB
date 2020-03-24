@@ -3,6 +3,7 @@ import generateXML from "./dut/generateXML.js";
 window.onload = () => {
   const workspace = Blockly.inject('blocklyDiv', {
     toolbox: document.getElementById('toolbox'),
+    media: 'static/media/',
     grid:
       {
         spacing: 20,
@@ -23,7 +24,14 @@ window.onload = () => {
   });
 
   // init the workspace
-  const xml = generateXML();
+  const url = document.URL;
+  const type = url.split('=')[1];
+
+  let xml;
+  if (type === 'digital')
+    xml = generateXML();
+  if (type === 'blockly')
+    xml = window.sessionStorage.getItem('blocklyXML');
   Blockly.Xml.domToWorkspace(Blockly.Xml.textToDom(xml), workspace);
 
   // realtime generator code
@@ -39,6 +47,12 @@ window.onload = () => {
     workspace.registerToolboxCategoryCallback("create_task",
       () => Blockly.VariablesDynamic.CreateTask.taskCategory(workspace));
   }
+
+  // 注册保存工作区事件
+  workspace.registerButtonCallback('saveWorkspace',
+    () => saveWorkspace(workspace));
+  // 注册返回首页事件
+  workspace.registerButtonCallback('back2index', back2index);
 };
 
 function realtimeGenerate(event, workspace) {
@@ -46,5 +60,18 @@ function realtimeGenerate(event, workspace) {
   const htmlCode = `<pre><code class="language-verilog">${code}</code></pre>`;
   document.getElementById('codeArea').innerHTML = htmlCode;
   Prism.highlightElement(document.querySelector('code'));
-  // Prism.highlight(htmlCode, Prism.languages['verilog'], 'verilog')
+}
+
+function saveWorkspace(workspace) {
+  const xml = Blockly.Xml.workspaceToDom(workspace);
+  const xml_text = Blockly.Xml.domToText(xml);
+  const filename = inputFileName('.xml');
+  filename && doSave(xml_text, filename);
+}
+
+function back2index() {
+  const result = confirm("\nAre you sure you want to back to the index page?\n\n" +
+    "The changes will not be retained!");
+  if (result)
+    window.location.href = "index.html";
 }

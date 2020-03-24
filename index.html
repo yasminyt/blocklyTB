@@ -20,7 +20,7 @@
         <div class="col-md-6 col-xs-12 text-center">
           <div class="sign-in-detail text-white">
             <a class="sign-in-logo mb-3" href="#">
-              <img src="static/img/logo.png" class="img-fluid" alt="blocklyTB">
+              <img src="static/img/logo.png" alt="blocklyTB">
             </a>
             <div class="owl-item">
               <div class="item">
@@ -33,12 +33,22 @@
         </div>
         <div class="col-md-6 col-xs-12">
           <div class="sign-in-form">
-            <h1 class="mb-0">Upload DUT File</h1>
-            <p>Upload your design under test to do automatic instantiation.</p>
-            <form class="mt-5 was-validated">
-              <div class="custom-file">
-                <input type="file" class="custom-file-input" id="uploadFile" required>
-                <label class="custom-file-label" for="uploadFile">Choose a DUT file...</label>
+            <h1 class="mb-0">Upload file</h1>
+            <p>Upload a digital or blockly design to access editor panel.</p>
+            <form class="mt-4">
+              <div class="form-group">
+                <label>Digital design (.v)</label>
+                <div class="custom-file">
+                  <input type="file" class="custom-file-input" id="digitalFile">
+                  <label class="custom-file-label" for="digitalFile"></label>
+                </div>
+              </div>
+              <div class="form-group">
+                <label>Blockly design (.xml)</label>
+                <div class="custom-file">
+                  <input type="file" class="custom-file-input" id="blocklyFile">
+                  <label class="custom-file-label" for="blocklyFile"></label>
+                </div>
               </div>
               <div class="submit-div">
                 <button type="submit" class="btn btn-primary" name="uploadBtn">Submit</button>

@@ -4,22 +4,30 @@ saveButton.onclick = () => {
   if (code) {
     const idx = code.indexOf('Copy');
     code = code.substring(0, idx);
-    const filename = inputFileName();
+    const filename = inputFileName('.v');
     filename && doSave(code, filename);
   }
   else
     alert('There is nothing to save!')
 };
 
-function inputFileName() {
+function inputFileName(fileType) {
   let filename = prompt('Please enter a filename...');
   if (filename === '')
     return inputFileName();
   else if (filename !== null) {
-    if (/\.v$/.test(filename))
-      return filename;
-    else
-      return filename + '.v';
+    if (fileType === '.v') {
+      if (/(\.v)$/.test(filename))
+        return filename;
+      else
+        return filename + '.v';
+    } else {
+      if (/(\.xml)$/.test(filename))
+        return filename;
+      else
+        return filename + '.xml';
+    }
+
   }
   return null;
 }
