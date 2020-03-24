@@ -1,3 +1,15 @@
+Blockly.Blocks['time_sys'] = {
+  init: function() {
+    this.appendDummyInput()
+        .appendField("Current simulation time");
+    this.setInputsInline(true);
+    this.setOutput(true, null);
+    this.setColour(0);
+    this.setTooltip("The $time system function returns an integer that is a 64-bit time, scaled to the timescale unit of the module that invoked it. ");
+    this.setHelpUrl("https://www.eg.bucknell.edu/~csci320/2016-fall/wp-content/uploads/2015/08/verilog-std-1364-2005.pdf");
+  }
+};
+
 Blockly.Blocks['write_sys'] = {
   init: function() {
     this.appendValueInput("variables")
@@ -45,36 +57,6 @@ Blockly.Blocks['monitor_sys'] = {
   }
 };
 
-Blockly.Blocks['readmemb'] = {
-  init: function() {
-    this.appendValueInput("readmemb")
-      .setCheck(null)
-      .appendField("Read binary file")
-      .appendField(new Blockly.FieldTextInput("fileName"), "fileName")
-      .appendField("to");
-    this.setPreviousStatement(true, null);
-    this.setNextStatement(true, null);
-    this.setColour(0);
-    this.setTooltip("The system task reads binary data from file, and saves to the memory.");
-    this.setHelpUrl("");
-  }
-};
-
-Blockly.Blocks['readmemh'] = {
-  init: function() {
-    this.appendValueInput("readmemh")
-      .setCheck(null)
-      .appendField("Read hexadecimal file")
-      .appendField(new Blockly.FieldTextInput("fileName"), "fileName")
-      .appendField("to");
-    this.setPreviousStatement(true, null);
-    this.setNextStatement(true, null);
-    this.setColour(0);
-    this.setTooltip("The system task reads hexadecimal data from file, and saves to the memory.");
-    this.setHelpUrl("");
-  }
-};
-
 Blockly.Blocks['finish_sys'] = {
   init: function() {
     this.appendDummyInput()
@@ -99,4 +81,86 @@ Blockly.Blocks['stop_sys'] = {
   }
 };
 
-// todo: $time, $fopen, $fdisplay
+/**
+ * File I/O
+ */
+
+Blockly.Blocks['fopen'] = {
+  init: function() {
+    this.appendValueInput("fileName")
+        .setCheck(null)
+        .appendField("Open a file");
+    this.setOutput(true, null);
+    this.setColour(10);
+    this.setTooltip("Opens a file and returns a multi-channel descriptor in the format of an unsized integer.");
+    this.setHelpUrl("http://verilog.renerta.com/source/vrg00016.htm");
+  }
+};
+
+Blockly.Blocks['fclose'] = {
+  init: function() {
+    this.appendValueInput("fileName")
+        .setCheck(null)
+        .appendField("Close all file or choose one");
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+    this.setColour(10);
+    this.setTooltip("To close an opened file use the $fclose function. This function is called without any arguments, it simply closes all opened files. If an argument is specified it will close only a file in which the descriptor is given.");
+    this.setHelpUrl("http://verilog.renerta.com/source/vrg00016.htm");
+  }
+};
+
+
+Blockly.Blocks['readmemb'] = {
+  init: function() {
+    this.appendValueInput("fileName")
+        .setCheck(null)
+        .appendField("Read binary file");
+    this.appendValueInput("memory")
+        .setCheck(null)
+        .appendField("to");
+    this.setInputsInline(true);
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+    this.setColour(10);
+    this.setTooltip("The system task reads binary data from file, and saves to the memory.");
+    this.setHelpUrl("http://verilog.renerta.com/source/vrg00016.htm");
+  }
+};
+
+Blockly.Blocks['readmemh'] = {
+  init: function() {
+    this.appendValueInput("fileName")
+        .setCheck(null)
+        .appendField("Read hexadecimal file");
+    this.appendValueInput("memory")
+        .setCheck(null)
+        .appendField("to");
+    this.setInputsInline(true);
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+    this.setColour(10);
+    this.setTooltip("The system task reads hexadecimal data from file, and saves to the memory.");
+    this.setHelpUrl("");
+  }
+};
+
+Blockly.Blocks['fdisplay'] = {
+  init: function() {
+    this.appendDummyInput()
+        .appendField("Print message")
+        .appendField(new Blockly.FieldTextInput("default"), "message");
+    this.appendValueInput("variables")
+        .setCheck(null)
+        .appendField("with variables(opt)");
+    this.appendValueInput("fileName")
+        .setCheck(null)
+        .appendField("to file");
+    this.setInputsInline(true);
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+    this.setColour(10);
+    this.setTooltip("Write content to specified file. Variable list is optional.");
+    this.setHelpUrl("http://verilog.renerta.com/source/vrg00016.htm");
+  }
+};

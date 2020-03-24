@@ -101,7 +101,7 @@
       <block type="logic_operation"></block>
       <block type="logic_compare"></block>
       <block type="logic_ternary"></block>
-      <category name="Bitwise" colour="215">
+      <category name="Bitwise">
         <block type="bitwise_negate"></block>
         <block type="bitwise"></block>
       </category>
@@ -197,6 +197,7 @@
     <sep gap="40"></sep>
     <category name="Task" colour="180" custom="create_task"></category>
     <category name="Functions" colour="0">
+      <block type="time_sys"></block>
       <block type="write_sys"></block>
       <block type="display_sys"></block>
       <block type="monitor_sys">
@@ -206,10 +207,15 @@
           </block>
         </value>
       </block>
-      <block type="readmemb"></block>
-      <block type="readmemh"></block>
       <block type="finish_sys"></block>
       <block type="stop_sys"></block>
+      <category name="File I/O">
+        <block type="fopen"></block>
+        <block type="fclose"></block>
+        <block type="readmemb"></block>
+        <block type="readmemh"></block>
+        <block type="fdisplay"></block>
+      </category>
     </category>
   </xml>
 
