@@ -4,17 +4,17 @@ export default function () {
   const instanceFiled = `<field name="MODULENAME">${moduleName}</field>`;
 
   return `
-    <xml xmlns="https://developers.google.com/blockly/xml" id="workspaceBlocks" style="display: none">
-      <block type="module_name" id="zS/c.u]_mYJ?AFjZVk1R" x="63" y="63">
+    <xml xmlns="https://developers.google.com/blockly/xml" style="display: none">
+      <block type="module_name" x="63" y="63">
         ${tbField}
         <next>
-          <block type="input_port" id="Re!VCJOwA|/$C(}Pu+U|">
+          <block type="input_port">
             <field name="REG">...</field>
             <next>
-              <block type="output_port" id="w3QByJ;7#6n%v2D2j)_s">
+              <block type="output_port">
                 <field name="WIRE">...</field>
                 <next>
-                  <block type="instance" id="/39?N{^F,(wzDnfGoeyn">
+                  <block type="instance">
                     ${instanceFiled}
                     <field name="PARAMS">(...)</field>
                   </block>

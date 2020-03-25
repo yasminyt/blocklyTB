@@ -137,6 +137,35 @@ a, button, input, .btn {
     border-color: #0db5c8;
 }
 
+.sign-info {
+    margin-top: 30px;
+}
+.iq-social-media {
+    margin: 0;
+    padding: 0;
+    float: right;
+}
+.iq-social-media li {
+    list-style: none;
+}
+.iq-social-media li a {
+    height: 35px;
+    width: 35px;
+    text-align: center;
+    line-height: 30px;
+    display: inline-block;
+    -webkit-border-radius: 7px;
+    -moz-border-radius: 7px;
+    border-radius: 7px;
+    background: #eff7f8;
+}
+
+.iq-social-media li a img {
+    width: 25px;
+    color: #089bab !important;
+
+}
+
 @media (min-width: 1200px) {
     .sign-in-form {
         padding: 30px 60px;
@@ -152,8 +181,15 @@ a, button, input, .btn {
     .sign-in-detail {
         height: 70vh;
     }
+    .sign-in-form {
+        top: 8%;
+        bottom: 8%;
+    }
     h1 {
         font-size: 2.5rem;
+    }
+    .sign-info {
+        margin-top: 10px;
     }
 }
 
@@ -176,6 +212,7 @@ a, button, input, .btn {
     }
     .sign-in-form{
         position: static;
+        overflow: auto;
     }
     .sign-in-logo img {
         max-width: 90%;
