@@ -45,9 +45,11 @@ Blockly.Blocks['monitor_sys'] = {
   init: function() {
     this.appendValueInput("variables")
         .setCheck(null)
-        .appendField("Monitor")
-        .appendField(new Blockly.FieldTextInput("messages"), "message")
-        .appendField("with variables");
+        .appendField("Monitor variables");
+    this.appendDummyInput()
+        .appendField("with")
+        .appendField(new Blockly.FieldTextInput("messages"), "message");
+    this.setInputsInline(true);
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
     this.setColour(0);
@@ -101,7 +103,7 @@ Blockly.Blocks['fclose'] = {
   init: function() {
     this.appendValueInput("fileName")
         .setCheck(null)
-        .appendField("Close all file or choose one");
+        .appendField("Close all files or choose one");
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
     this.setColour(10);
@@ -161,6 +163,26 @@ Blockly.Blocks['fdisplay'] = {
     this.setNextStatement(true, null);
     this.setColour(10);
     this.setTooltip("Write content to specified file. Variable list is optional.");
+    this.setHelpUrl("http://verilog.renerta.com/source/vrg00016.htm");
+  }
+};
+
+Blockly.Blocks['fmonitor'] = {
+  init: function() {
+    this.appendValueInput("variables")
+        .setCheck(null)
+        .appendField("Monitor variables");
+    this.appendValueInput("fileName")
+        .setCheck(null)
+        .appendField("in file");
+    this.appendDummyInput()
+        .appendField("and print")
+        .appendField(new Blockly.FieldTextInput("messages"), "message");
+    this.setInputsInline(true);
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+    this.setColour(10);
+    this.setTooltip("");
     this.setHelpUrl("http://verilog.renerta.com/source/vrg00016.htm");
   }
 };

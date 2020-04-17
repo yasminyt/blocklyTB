@@ -62,7 +62,7 @@ Blockly.Verilog['instance'] = function(block) {
   const text_name = block.getFieldValue('NAME');
   const moduleName = window.sessionStorage.getItem('moduleName');
   const params = `${generateParams('inputObj')}, ${generateParams('outputObj')}`;
-  const code = `\t${moduleName} ${text_name} (${params});\n`;
+  const code = `\t${moduleName} ${text_name}(${params});\n`;
   return code;
 };
 

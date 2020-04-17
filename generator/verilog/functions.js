@@ -128,8 +128,13 @@ Blockly.Verilog['readmemh'] = function(block) {
   return code;
 };
 
+/**
+ * $fdisplay([fileName], [message], [variables]);
+ * @param block
+ * @returns {*}
+ */
 Blockly.Verilog['fdisplay'] = function(block) {
-  const message = block.getFieldValue('message');;
+  const message = block.getFieldValue('message');
   const variables = Blockly.Verilog.valueToCode(block, 'variables', Blockly.Verilog.ORDER_ATOMIC);
   const filename = Blockly.Verilog.valueToCode(block, 'fileName', Blockly.Verilog.ORDER_ATOMIC) || null;
   let code;
@@ -137,5 +142,22 @@ Blockly.Verilog['fdisplay'] = function(block) {
     code = `\t$fdisplay(${filename}, "${message}", ${variables});\n`;
   else
     code = `\t$fdisplay(${filename}, "${message}");\n`;
+  return code;
+};
+
+/**
+ * $fmonitor([fileName], [message], [variables]);
+ * @param block
+ * @returns {*}
+ */
+Blockly.Verilog['fmonitor'] = function(block) {
+  const variables = Blockly.Verilog.valueToCode(block, 'variables', Blockly.Verilog.ORDER_ATOMIC);
+  const filename = Blockly.Verilog.valueToCode(block, 'fileName', Blockly.Verilog.ORDER_ATOMIC) || null;
+  const message = block.getFieldValue('message');
+  let code;
+  if (variables)
+    code = `\t$fmonitor(${filename}, "${message}", ${variables});\n`;
+  else
+    code = `\t$fmonitor(${filename}, "${message}");\n`;
   return code;
 };

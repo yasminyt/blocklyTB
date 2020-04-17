@@ -1,4 +1,4 @@
-import { TASK, INPUT } from '../../js/typeKeys.js';
+import { TASK, INPUT, OUTPUT } from '../../js/typeKeys.js';
 
 /**
  * For task
@@ -85,7 +85,7 @@ Blockly.defineBlocksWithJsonArray([
     "output": null,
     "colour": 185,
     "helpUrl": "%{BKY_VARIABLES_GET_HELPURL}",
-    "tooltip": "Select a register variable",
+    "tooltip": "Select a input variable",
   },
   // define input
   {
@@ -108,6 +108,51 @@ Blockly.defineBlocksWithJsonArray([
     "nextStatement": null,
     "colour": 185,
     "tooltip": "Declare a new variable of input type being used by task.",
+    "helpUrl": ""
+  },
+]);
+
+/**
+ * For output
+ */
+Blockly.defineBlocksWithJsonArray([
+  // output getter
+  {
+    "type": "variables_get_output",
+    "message0": "output %1",
+    "args0": [{
+      "type": "field_variable",
+      "name": "VAR",
+      "variable": "",
+      "variableTypes": [OUTPUT],
+      "defaultType": OUTPUT
+    }],
+    "output": null,
+    "colour": 185,
+    "helpUrl": "%{BKY_VARIABLES_GET_HELPURL}",
+    "tooltip": "Select a output variable",
+  },
+  // define output
+  {
+    "type": "output_new",
+    "message0": "new output %1 with bits %2",
+    "args0": [
+      {
+        "type": "field_variable",
+        "name": "VAR",
+        "variable": "",
+        "variableTypes": [OUTPUT],
+        "defaultType": OUTPUT
+      },
+      {
+        "type": "input_value",
+        "name": "bits_range"
+      }
+    ],
+    "previousStatement": null,
+    "nextStatement": null,
+    "colour": 185,
+    "tooltip": "Declare a new variable of output type being used by task.",
     "helpUrl": ""
   },
 ]);
@@ -217,7 +262,6 @@ Blockly.Constants.Task.TASK_CALL_MUTATOR_MIXIN = {
     const ADD = 'ADD';
 
     // Get task type variables, and set a default one to new FieldVariable.
-    // todo: get the selected value, rather than a random one
     const variableModelList = this.workspace.variableMap_.getVariablesOfType(TASK);
     variableModelList.sort(Blockly.VariableModel.compareByName);
     const variable = variableModelList[0];
@@ -234,12 +278,14 @@ Blockly.Constants.Task.TASK_CALL_MUTATOR_MIXIN = {
     let i = 0;
     for (; i < this.itemCount_; i++) {
       if (!this.getInput(ADD + i)) {
+        Blockly.Events.disable();
         const input = this.appendValueInput('ADD' + i);
         if (i === 0) {
           input.appendField("task")
             .appendField(new Blockly.FieldVariable(varName, null, [TASK], TASK), "VAR")
             .appendField('with');
         }
+        Blockly.Events.enable();
       }
     }
     // Remove deleted inputs.
