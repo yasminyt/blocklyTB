@@ -27,12 +27,18 @@ window.onload = () => {
   const url = document.URL;
   const type = url.split('=')[1];
 
-  let xml;
-  if (type === 'digital')
-    xml = generateXML();
+  let xml, parameter = false;
+  if (type === 'digital') {
+    const result = generateXML();
+    xml = result.xml;
+    parameter = result.parameter;
+  }
   if (type === 'blockly')
     xml = window.sessionStorage.getItem('blocklyXML');
   Blockly.Xml.domToWorkspace(Blockly.Xml.textToDom(xml), workspace);
+  if (parameter)
+    alert("\nPlease first create the parameters required in the instance call and connect it to the module block, " +
+      "otherwise an error will occur!");
 
   // realtime generator code
   workspace.addChangeListener(() => realtimeGenerate(null, workspace));
@@ -72,6 +78,8 @@ function saveWorkspace(workspace) {
 function back2index() {
   const result = confirm("\nAre you sure you want to back to the index page?\n\n" +
     "The changes will not be retained!");
-  if (result)
+  if (result) {
     window.location.href = "index.html";
+    sessionStorage.clear();
+  }
 }

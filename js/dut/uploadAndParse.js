@@ -1,3 +1,5 @@
+import Parser from './parser.js';
+
 const uploadBtn = document.querySelector("button");
 const inputs = document.querySelectorAll('.custom-file-input');
 const labels = document.querySelectorAll('.custom-file-label');
@@ -27,7 +29,7 @@ function readFile() {
     reader.readAsText(digitalFile, 'UTF-8');
     reader.onload = function (e) {
       const data = this.result;
-      getExpressions(data);
+      parseModule(data);
     }
   }
   if (blocklyFile) {
@@ -43,65 +45,41 @@ function readFile() {
   }
 }
 
-function getExpressions(contents) {
-  const moduleReg = /module\s+[A-Za-z][\w$]*(?=\s?\()/;
-  const inputReg = /input(.)+(?=;)/g;
-  const outputReg = /output(.)+(?=;)/g;
+function parseModule(contents) {
+  const parser = new Parser(contents);
 
-  let moduleName = contents.match(moduleReg)[0];
+  const moduleName = parser.getModule();
   if (!moduleName)
     return alertEmpty('The module name could not be found, or it was not defined correctly, please recheck!');
+  window.sessionStorage.setItem("moduleName", moduleName);
 
-  const inputs = contents.match(inputReg);
-  const outputs = contents.match(outputReg);
-  if (!inputs && !outputs)
-    return alertEmpty('The input and output port definitions cannot be found or\n' +
-      'cannot be defined in the parameters of the module, please check the file!');
+  // get variables of parameter type in module definition
+  const parameters = parser.getParameter();
+  if (parameters)
+    window.sessionStorage.setItem("parameterObj", JSON.stringify(parameters));
+
+  let in_outExpress = contents;
+  if (parser.isModuleDefineHasIn_Out()) {
+    in_outExpress = parser.regenerateIn_Out();
+  }
+  const { inputs, outputs } = parser.getIn_Out(in_outExpress);
+
+  // if (!inputs && !outputs)
+  //   return alertEmpty('The input and output port definitions cannot be found or\n' +
+  //     'cannot be defined in the parameters of the module, please check the file!');
 
   if (inputs) {
     const inputObj = {params: [], pairs: {}};
-    getParameters(inputs, inputObj);
+    parser.parseIn_OutExpressions(inputs, inputObj);
     window.sessionStorage.setItem("inputObj", JSON.stringify(inputObj));
   }
   if (outputs) {
     const outputObj  = {params: [], pairs: {}};
-    getParameters(outputs, outputObj);
+    parser.parseIn_OutExpressions(outputs, outputObj);
     window.sessionStorage.setItem("outputObj", JSON.stringify(outputObj));
   }
 
-  moduleName = moduleName.split(' ')[1];
-  window.sessionStorage.setItem("moduleName", moduleName);
   window.location.href = "blockly-edit.html?file=digital";
-}
-
-function getParameters(express, obj) {
-  express.forEach(e => {
-    const idx = e.indexOf('[');
-    if (idx !== -1) {
-      const lastIdx = e.indexOf(']');
-      const bits = e.substring(idx, lastIdx + 1);
-      const paramStr = e.substring(lastIdx + 1).trim(); // avoid there is no space between bits and parameters
-      combineParams(paramStr, bits, obj);
-    } else {
-      let paramStr = e.substr(6);
-
-      let reg_wire = e.indexOf('reg ');
-      if (reg_wire !== -1)
-        paramStr = e.substr(reg_wire + 3);
-
-      reg_wire = e.indexOf('wire ');
-      if (reg_wire !== -1)
-        paramStr = e.substr(reg_wire + 4);
-
-      combineParams(paramStr.trim(), '', obj);
-    }
-  });
-}
-
-function combineParams(paramStr, bits, obj) {
-  const paramsName = paramStr.split(/,\s?/);
-  paramsName.forEach(e => obj.params.push(e));
-  obj.pairs[paramStr] = bits;
 }
 
 function alertEmpty(str) {

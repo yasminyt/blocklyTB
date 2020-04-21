@@ -9,7 +9,7 @@
  */
 Blockly.Verilog['module_name'] = function(block) {
   const text_name = block.getFieldValue('NAME');
-  let code = `module ${text_name}();\n`;
+  let code = `module ${text_name};\n`;
   return code;
 };
 
@@ -63,6 +63,24 @@ Blockly.Verilog['instance'] = function(block) {
   const moduleName = window.sessionStorage.getItem('moduleName');
   const params = `${generateParams('inputObj')}, ${generateParams('outputObj')}`;
   const code = `\t${moduleName} ${text_name}(${params});\n`;
+  return code;
+};
+
+/**
+ * [moduleName] #(...parameters list...) [instanceName] (...variables list...);
+ * @param block
+ * @returns {string}
+ */
+Blockly.Verilog['instance_parameter'] = function(block) {
+  const moduleName = window.sessionStorage.getItem('moduleName');
+  const parameters = JSON.parse(window.sessionStorage.getItem('parameterObj'));
+  const dutParams = parameters.map(e => {
+    const value = Blockly.Verilog.valueToCode(block, e, Blockly.Verilog.ORDER_NONE) || null;
+    return `.${e}(${value})`;
+  });
+  const dut = block.getFieldValue('dut');
+  const in_out = `${generateParams('inputObj')}, ${generateParams('outputObj')}`;
+  const code = `\t${moduleName} #(${dutParams.join(', ')}) ${dut}(${in_out});\n`;
   return code;
 };
 
