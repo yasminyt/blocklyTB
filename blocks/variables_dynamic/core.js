@@ -1,5 +1,5 @@
 // todo: 变量命名检查
-import { REGISTER, WIRE, LOCALPARAM, PARAMETER, INTEGER } from "../../js/typeKeys.js";
+import { REGISTER, WIRE, LOCALPARAM, PARAMETER, INTEGER, TASK, INPUT, OUTPUT } from "../../js/typeKeys.js";
 
 Blockly.VariablesDynamic.CreateVariables = {
   onCreateVariableButtonClick: null,
@@ -22,31 +22,31 @@ Blockly.VariablesDynamic.CreateVariables.onCreateVariableButtonClick = {
   REGISTER: function (button) {
     const workspace = button.getTargetWorkspace();
     const this_ = Blockly.VariablesDynamic.CreateVariables;
-    Blockly.Variables.createVariableButtonHandler(workspace,
+    Blockly.Variables.createMoreVariablesButtonHandler(workspace,
       text => this_.newVariableBlock(text, workspace, REGISTER), REGISTER);
   },
   WIRE: function (button) {
     const workspace = button.getTargetWorkspace();
     const this_ = Blockly.VariablesDynamic.CreateVariables;
-    Blockly.Variables.createVariableButtonHandler(workspace,
+    Blockly.Variables.createMoreVariablesButtonHandler(workspace,
       text => this_.newVariableBlock(text, workspace, WIRE), WIRE);
   },
   PARAMETER: function (button) {
     const workspace = button.getTargetWorkspace();
     const this_ = Blockly.VariablesDynamic.CreateVariables;
-    Blockly.Variables.createVariableButtonHandler(workspace,
+    Blockly.Variables.createMoreVariablesButtonHandler(workspace,
       text => this_.newVariableBlock(text, workspace, PARAMETER), PARAMETER);
   },
   LOCALPARAM: function (button) {
     const workspace = button.getTargetWorkspace();
     const this_ = Blockly.VariablesDynamic.CreateVariables;
-    Blockly.Variables.createVariableButtonHandler(workspace,
+    Blockly.Variables.createMoreVariablesButtonHandler(workspace,
       text => this_.newVariableBlock(text, workspace, LOCALPARAM), LOCALPARAM);
   },
   INTEGER: function (button) {
     const workspace = button.getTargetWorkspace();
     const this_ = Blockly.VariablesDynamic.CreateVariables;
-    Blockly.Variables.createVariableButtonHandler(workspace,
+    Blockly.Variables.createMoreVariablesButtonHandler(workspace,
       text => this_.newVariableBlock(text, workspace, INTEGER), INTEGER);
   }
 };
@@ -145,25 +145,58 @@ Blockly.VariablesDynamic.CreateVariables.dutCategoryBlocks = function () {
  * @param variableType
  */
 Blockly.VariablesDynamic.CreateVariables.newVariableBlock = function(text, workspace, variableType) {
-  const variable = workspace.getVariable(text, variableType);
-  const id = variable.id_;
-  let field = `<field name="VAR" id="${id}" variabletype="${variableType}">${text}</field>`;
-  let blockType = '';
-  switch (variableType) {
-    case REGISTER: blockType = 'reg_new';
-    case WIRE:
-      (blockType === '') && (blockType = 'wire_new');
-      field += `<value name="bits_range"><shadow type="math_number"><field name="NUM">1</field></shadow></value>`;
-      break;
-    case PARAMETER: blockType = 'parameter_new'; break;
-    case LOCALPARAM: blockType = 'localparam_new'; break;
-    case INTEGER: blockType = 'integer_new'; break;
-  }
-  const xml = `
-    <xml>
-      <block type="${blockType}">
+  const type = typeof text;
+  const blocks = [];
+  let index = 0;
+
+  const generateBlock = text => {
+    const variable = workspace.getVariable(text, variableType);
+    const id = variable.id_;
+    let field = `<field name="VAR" id="${id}" variabletype="${variableType}">${text}</field>`;
+    let blockType = '';
+    switch (variableType) {
+      case REGISTER:
+        blockType = 'reg_new';
+        field += `
+        <value name="bits_range"><shadow type="math_number"><field name="NUM">1</field></shadow></value>
+        <value name="numbers"><shadow type="math_number"><field name="NUM">1</field></shadow></value>
+      `;
+        break;
+      case WIRE:
+        blockType = 'wire_new';
+        field += `<value name="bits_range"><shadow type="math_number"><field name="NUM">1</field></shadow></value>`;
+        break;
+      case PARAMETER: blockType = 'parameter_new'; break;
+      case LOCALPARAM: blockType = 'localparam_new'; break;
+      case INTEGER: blockType = 'integer_new'; break;
+
+      case TASK: blockType = 'task_content'; break;
+      case INPUT: blockType = 'input_new';
+      case OUTPUT:
+        (blockType === '') && (blockType = 'output_new');
+        field += `<value name="bits_range"><shadow type="math_number"><field name="NUM">1</field></shadow></value>`
+        break;
+    }
+    const block = `
+      <block type="${blockType}" x="38" y="${500 + index}">
         ${field}
       </block>
+    `;
+    blocks.push(block);
+  }
+
+  if (type === 'string') {
+    generateBlock(text);
+  } else if (text){
+    text.forEach(e => {
+      generateBlock(e);
+      index += 25;
+    });
+  }
+
+  const xml = `
+    <xml>
+      ${blocks.join('\n')}
     </xml>
   `;
   const dom = Blockly.Xml.textToDom(xml);

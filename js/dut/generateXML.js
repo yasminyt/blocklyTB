@@ -14,7 +14,7 @@ export default function () {
   if (!parameters) {
     const xml = `
       <xml xmlns="https://developers.google.com/blockly/xml" style="display: none">
-        <block type="module_name" x="63" y="63">
+        <block type="module_name" x="38" y="37">
           <field name="NAME">tb_${module}</field>
           <next>
             <block type="input_port">

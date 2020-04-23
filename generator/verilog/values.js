@@ -54,15 +54,15 @@ Blockly.Verilog['text'] = function(block) {
 };
 
 /**
- * [high : low]
+ * [value1 : value2]
  * @param block
  * @returns {[string, number]}
  */
-Blockly.Verilog['bits_range'] = function(block) {
-  const high_bit = Blockly.Verilog.valueToCode(block, 'high_bit', Blockly.Verilog.ORDER_ATOMIC) || 'null';
-  const low_bit = Blockly.Verilog.valueToCode(block, 'low_bit', Blockly.Verilog.ORDER_ATOMIC) || '0';
-  const code = `${high_bit}:${low_bit}`;
-  return [code, Blockly.Verilog.ORDER_ATOMIC];
+Blockly.Verilog['range'] = function(block) {
+  const value1 = Blockly.Verilog.valueToCode(block, 'value1', Blockly.Verilog.ORDER_NONE) || 'null';
+  const value2 = Blockly.Verilog.valueToCode(block, 'value2', Blockly.Verilog.ORDER_NONE) || '0';
+  const code = `[${value1}:${value2}]`;
+  return [code, Blockly.Verilog.ORDER_NONE];
 };
 
 /**

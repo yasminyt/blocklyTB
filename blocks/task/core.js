@@ -15,13 +15,13 @@ Blockly.VariablesDynamic.CreateTask = {
   onCreateInputButtonClick: function(button) {
     const workspace = button.getTargetWorkspace();
     const this_ = Blockly.VariablesDynamic.CreateTask;
-    Blockly.Variables.createVariableButtonHandler(workspace,
+    Blockly.Variables.createMoreVariablesButtonHandler(workspace,
       text => this_.newBlock2Workspace(text, workspace, INPUT), INPUT);
   },
   onCreateOutputButtonClick: function(button) {
     const workspace = button.getTargetWorkspace();
     const this_ = Blockly.VariablesDynamic.CreateTask;
-    Blockly.Variables.createVariableButtonHandler(workspace,
+    Blockly.Variables.createMoreVariablesButtonHandler(workspace,
       text => this_.newBlock2Workspace(text, workspace, OUTPUT), OUTPUT);
   },
   /**
@@ -80,22 +80,6 @@ Blockly.VariablesDynamic.CreateTask = {
    * @param type
    */
   newBlock2Workspace: function(text, workspace, type) {
-    const variable = workspace.getVariable(text, type);
-    const id = variable.id_;
-    let field = `<field name="VAR" id="${id}" variabletype="${type}">${text}</field>`;
-    let blockType = 'task_content';
-    if ((type !== TASK)) {
-      blockType = (type === INPUT) ? 'input_new' : 'output_new';
-      field += `<value name="bits_range"><shadow type="math_number"><field name="NUM">1</field></shadow></value>`
-    }
-    const xml = `
-      <xml>
-        <block type="${blockType}">
-          ${field}
-        </block>
-      </xml>
-    `;
-    const dom = Blockly.Xml.textToDom(xml);
-    Blockly.Xml.domToWorkspace(dom, workspace);
+    Blockly.VariablesDynamic.CreateVariables.newVariableBlock(text, workspace, type);
   }
 };

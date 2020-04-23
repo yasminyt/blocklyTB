@@ -34,7 +34,7 @@ Blockly.Blocks['input_port'] = {
     this.setHelpUrl("");
     this.setEditable(false);
     this.setDeletable(false);
-    this.setMovable(false);
+    // this.setMovable(false);
   },
   extensions: ["break_warning_extension"]
 };

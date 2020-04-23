@@ -42,14 +42,14 @@ Blockly.Blocks['uncertainty'] = {
   }
 };
 
-Blockly.Blocks['bits_range'] = {
+Blockly.Blocks['range'] = {
   init: function() {
-    this.appendValueInput("high_bit")
+    this.appendValueInput("value1")
         .setCheck(null)
-        .appendField("bits between high");
-    this.appendValueInput("low_bit")
+        .appendField("range between");
+    this.appendValueInput("value2")
         .setCheck(null)
-        .appendField("and low");
+        .appendField("and");
     this.setInputsInline(true);
     this.setOutput(true, null);
     this.setColour(260);

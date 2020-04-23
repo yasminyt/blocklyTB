@@ -59,16 +59,27 @@ Blockly.Verilog['variables_get_integer'] = function(block) {
  */
 Blockly.Verilog['reg_new'] = function(block) {
   const variable = Blockly.Verilog.variableDB_.getName(block.getFieldValue('VAR'), Blockly.Variables.NAME_TYPE);
-  const bits_range = Blockly.Verilog.valueToCode(block, 'bits_range', Blockly.Verilog.ORDER_ATOMIC) || '1';
+  const bits_range = Blockly.Verilog.valueToCode(block, 'bits_range', Blockly.Verilog.ORDER_NONE) || '1';
+  const isAdd = block.isAdd_;
   let code = '';
   const numberBit = Number(bits_range);
   if (!isNaN(numberBit))
     if (numberBit <= 1)
-      code = `\treg ${variable};\n`;
+      code = `\treg ${variable}`;
     else
-      code = `\treg [${bits_range}:0] ${variable};\n`;
+      code = `\treg [${numberBit - 1}:0] ${variable}`;
   else
-    code = `\treg [${bits_range}] ${variable};\n`;
+    code = `\treg ${bits_range} ${variable}`;
+  if (isAdd) {
+    const numbers = Blockly.Verilog.valueToCode(block, 'numbers', Blockly.Verilog.ORDER_NONE);
+    const numberReg = Number(numbers);
+    if (!isNaN(numberReg)) {
+      if (numberReg > 1)
+        code += `[0:${numbers - 1}]`;
+    } else
+      code += numbers;
+  }
+  code += ';\n';
   return code;
 };
 
@@ -86,7 +97,7 @@ Blockly.Verilog['wire_new'] = function(block) {
     if (numberBit <= 1)
       code = `\twire ${variable};\n`;
     else
-      code = `\twire [${bits_range}:0] ${variable};\n`;
+      code = `\twire [${numberBit - 1}:0] ${variable};\n`;
   else
     code = `\twire [${bits_range}] ${variable};\n`;
   return code;
@@ -123,7 +134,13 @@ Blockly.Verilog['localparam_new'] = function(block) {
  */
 Blockly.Verilog['integer_new'] = function(block) {
   const variable_name = Blockly.Verilog.variableDB_.getName(block.getFieldValue('VAR'), Blockly.Variables.NAME_TYPE);
-  const code = `\tinteger ${variable_name};\n`;
+  const isAdd = block.isAdd_;
+  let code = '';
+  if (isAdd) {
+    const value = Blockly.Verilog.valueToCode(block, 'value', Blockly.Verilog.ORDER_ATOMIC) || '0';
+    code = `\tinteger ${variable_name}=${value};\n`;
+  } else
+    code = `\tinteger ${variable_name};\n`;
   return code;
 };
 

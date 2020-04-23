@@ -101,11 +101,12 @@ Blockly.defineBlocksWithJsonArray([
     "nextStatement": null,
     "colour": 330,
     "tooltip": "Declare a new variable of register type.",
-    "helpUrl": ""
+    "helpUrl": "",
+    "mutator": "create_array"
   },
   {
     "type": "wire_new",
-    "message0": "new register %1 with bits %2",
+    "message0": "new wire %1 with bits %2",
     "args0": [
       {
         "type": "field_variable",
@@ -180,18 +181,124 @@ Blockly.defineBlocksWithJsonArray([
         "variableTypes": [INTEGER],
         "defaultType": INTEGER
       },
-      // {  先去掉赋值，默认只是声明
-      //   "type": "input_value",
-      //   "name": "VALUE"
-      // }
     ],
     "previousStatement": null,
     "nextStatement": null,
     "colour": 330,
     "tooltip": "Define a new integer and set value. Remove to trash if not needed.",
-    "helpUrl": ""
+    "helpUrl": "",
+    "mutator": "add_assignment"
   }
 ]);
+
+Blockly.Blocks['add_assignment_container'] = {
+  init: function() {
+    this.appendDummyInput()
+      .appendField("Add assignment")
+      .appendField(new Blockly.FieldCheckbox("false"), "do");
+    this.setColour(330);
+    this.setTooltip("");
+    this.setHelpUrl("");
+  }
+};
+
+Blockly.Blocks['create_array_container'] = {
+  init: function() {
+    this.appendDummyInput()
+      .appendField("Create array")
+      .appendField(new Blockly.FieldCheckbox("false"), "do");
+    this.setColour(330);
+    this.setTooltip("");
+    this.setHelpUrl("");
+  }
+};
+
+Blockly.Constants.CustomMenu = {
+  "ADD_ASSIGNMENT": null,
+  "CREATE_ARRAY": null,
+  "EXTENSIONS": null
+}
+
+Blockly.Constants.CustomMenu.ADD_ASSIGNMENT = {
+  mutationToDom() {
+    const container = Blockly.utils.xml.createElement('mutation');
+    container.setAttribute('do', this.isAdd_);
+    return container;
+  },
+  domToMutation(xmlElement) {
+    this.isAdd_ = xmlElement.getAttribute('do') === 'true';
+    this.updateShape_();
+  },
+  decompose(workspace) {
+    const containerBlock = workspace.newBlock('add_assignment_container');
+    containerBlock.initSvg();
+    containerBlock.setFieldValue(this.isAdd_, 'do');
+    return containerBlock;
+  },
+  compose(containerBlock) {
+    this.isAdd_ = containerBlock.getFieldValue('do') === 'TRUE';
+    this.updateShape_();
+  },
+  updateShape_() {
+    const valueInput = this.getInput('value');
+    if (this.isAdd_ && !valueInput) {
+      Blockly.Events.disable();
+      this.appendValueInput('value')
+        .setAlign(Blockly.ALIGN_RIGHT)
+        .appendField('with value');
+      this.setInputsInline(true);
+      Blockly.Events.enable();
+    }
+    if (!this.isAdd_ && valueInput)
+      this.removeInput('value');
+  }
+}
+
+Blockly.Constants.CustomMenu.CREATE_ARRAY = {
+  mutationToDom() {
+    const container = Blockly.utils.xml.createElement('mutation');
+    container.setAttribute('do', this.isAdd_);
+    return container;
+  },
+  domToMutation(xmlElement) {
+    this.isAdd_ = xmlElement.getAttribute('do') === 'true';
+    this.updateShape_();
+  },
+  decompose(workspace) {
+    const containerBlock = workspace.newBlock('create_array_container');
+    containerBlock.initSvg();
+    containerBlock.setFieldValue(this.isAdd_, 'do');
+    return containerBlock;
+  },
+  compose(containerBlock) {
+    this.isAdd_ = containerBlock.getFieldValue('do') === 'TRUE';
+    this.updateShape_();
+  },
+  updateShape_() {
+    const valueInput = this.getInput('value');
+    if (this.isAdd_ && !valueInput) {
+      Blockly.Events.disable();
+      this.appendValueInput('numbers')
+        .setAlign(Blockly.ALIGN_RIGHT)
+        .appendField('and numbers');
+      Blockly.Events.enable();
+    }
+    if (!this.isAdd_ && valueInput)
+      this.removeInput('value');
+  }
+}
+
+Blockly.Constants.CustomMenu.EXTENSIONS = function() {
+  this.isAdd_ = false;
+}
+
+Blockly.Extensions.registerMutator('add_assignment',
+  Blockly.Constants.CustomMenu.ADD_ASSIGNMENT,
+  Blockly.Constants.CustomMenu.EXTENSIONS, ['']);
+
+Blockly.Extensions.registerMutator('create_array',
+  Blockly.Constants.CustomMenu.CREATE_ARRAY,
+  Blockly.Constants.CustomMenu.EXTENSIONS, ['']);
 
 // static dut variables
 Blockly.Blocks['reg_dut'] = {
