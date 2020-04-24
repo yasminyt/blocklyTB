@@ -87,7 +87,7 @@ Blockly.Verilog['stop_sys'] = function(block) {
  */
 Blockly.Verilog['fopen'] = function(block) {
   const filename = Blockly.Verilog.valueToCode(block, 'fileName', Blockly.Verilog.ORDER_ATOMIC) || 'null';
-  const code = `\t$fopen(${filename})`;
+  const code = `$fopen(${filename})`;
   return [code, Blockly.Verilog.ORDER_ATOMIC];
 };
 

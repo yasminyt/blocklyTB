@@ -1,6 +1,8 @@
+import { MODULENAME, PARAMETEROBJ } from "../typeKeys.js";
+
 function getValues() {
-  const moduleName = window.sessionStorage.getItem('moduleName');
-  let parameters = window.sessionStorage.getItem('parameterObj');
+  const moduleName = window.sessionStorage.getItem(MODULENAME);
+  let parameters = window.sessionStorage.getItem(PARAMETEROBJ);
   if (parameters) {
     parameters = JSON.parse(parameters);
     generateBlock(parameters);
@@ -8,7 +10,7 @@ function getValues() {
   return { module: moduleName, parameters };
 }
 
-export default function () {
+function generateXML() {
   const { module, parameters } = getValues();
 
   if (!parameters) {
@@ -100,3 +102,26 @@ function generateField(parameters) {
   });
   return fields.join('\n');
 }
+
+function storageVariables(text) {
+  const idx = text.indexOf('<VARIABLES>');
+  if (idx !== -1) {
+    const str = text.substring(idx);
+    const variablesStr = str.match(/\{(.)+\}/)[0];
+    const variableObj = JSON.parse(variablesStr);
+    for (let key in variableObj) {
+      if (variableObj.hasOwnProperty(key)) {
+        const value = variableObj[key];
+        if (value) {
+          window.sessionStorage.setItem(key, value);
+          if (key === PARAMETEROBJ)
+            generateBlock(JSON.parse(value));
+        }
+      }
+    }
+    return text.substring(0, idx);
+  }
+  return text;
+}
+
+export { generateXML, generateBlock, storageVariables }

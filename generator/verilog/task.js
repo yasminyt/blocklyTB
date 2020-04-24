@@ -46,7 +46,7 @@ Blockly.Verilog['input_new'] = function(block) {
     if (numberBit <= 1)
       code = `\tinput ${variable};\n`;
     else
-      code = `\tinput [${bits_range}:0] ${variable};\n`;
+      code = `\tinput [${numberBit - 1}:0] ${variable};\n`;
   else
     code = `\tinput [${bits_range}] ${variable};\n`;
   return code;
@@ -76,7 +76,7 @@ Blockly.Verilog['output_new'] = function(block) {
     if (numberBit <= 1)
       code = `\toutput ${variable};\n`;
     else
-      code = `\toutput [${bits_range}:0] ${variable};\n`;
+      code = `\toutput [${numberBit - 1}:0] ${variable};\n`;
   else
     code = `\toutput [${bits_range}] ${variable};\n`;
   return code;

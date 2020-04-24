@@ -7,7 +7,6 @@ Blockly.Variables.createMoreVariablesButtonHandler = function(
   const promptAndCheckWithAlert = function (defaultName) {
     Blockly.Variables.promptName(NEW_VARIABLE_TITLE, defaultName,
       function (text) {
-        console.log(text);
         if (text) {
           const variables = text.replace(/(,\s*)$/, '').split(/,\s*/);
           const len = variables.length;

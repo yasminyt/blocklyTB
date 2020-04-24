@@ -9,4 +9,22 @@ const INPUT = "Input";
 const OUTPUT = "Output";
 const TASK = "Task";
 
-export { REGISTER, WIRE, LOCALPARAM, PARAMETER, INTEGER, INPUT, OUTPUT, TASK };
+const MODULENAME = 'moduleName';
+const INPUTOBJ = 'inputObj';
+const OUTPUTOBJ = 'outputObj';
+const PARAMETEROBJ = 'parameterObj';
+
+export {
+  REGISTER,
+  WIRE,
+  LOCALPARAM,
+  PARAMETER,
+  INTEGER,
+  INPUT,
+  OUTPUT,
+  TASK,
+  MODULENAME,
+  INPUTOBJ,
+  OUTPUTOBJ,
+  PARAMETEROBJ
+};

@@ -10,36 +10,45 @@ Blockly.Blocks['time_sys'] = {
   }
 };
 
-Blockly.Blocks['write_sys'] = {
-  init: function() {
-    this.appendValueInput("variables")
-        .setCheck(null)
-        .appendField("Write")
-        .appendField(new Blockly.FieldTextInput("messages"), "message")
-        .appendField("with variables");
-    this.setPreviousStatement(true, null);
-    this.setNextStatement(true, null);
-    this.setColour(0);
-    this.setTooltip("System task \"write\" displays specific information from the simulator.");
-    this.setHelpUrl("http://www.verilog.renerta.com/source/vrg00013.htm");
-  }
-};
-
-Blockly.Blocks['display_sys'] = {
-  init: function() {
-    this.appendValueInput("variables")
-        .setCheck(null)
-        .appendField("Display")
-        .appendField(new Blockly.FieldTextInput("messages"), "message")
-        .appendField("with variables");
-    this.setPreviousStatement(true, null);
-    this.setNextStatement(true, null);
-    this.setColour(0);
-    this.setTooltip("System task \"display\" displays specific information from the simulator, and " +
-      "adds a new line character at the end of the output");
-    this.setHelpUrl("http://www.verilog.renerta.com/source/vrg00013.htm");
-  }
-};
+Blockly.defineBlocksWithJsonArray([
+  {
+    "type": "write_sys",
+    "message0": "Write %1",
+    "args0": [
+      {
+        "type": "field_input",
+        "name": "message",
+        "text": "messages"
+      }
+    ],
+    "inputsInline": false,
+    "previousStatement": null,
+    "nextStatement": null,
+    "colour": 0,
+    "tooltip": "System task \"Write\" displays specific information from the simulator.",
+    "helpUrl": "http://www.verilog.renerta.com/source/vrg00013.htm",
+    "mutator": "add_variables"
+  },
+  {
+    "type": "display_sys",
+    "message0": "Display %1",
+    "args0": [
+      {
+        "type": "field_input",
+        "name": "message",
+        "text": "messages"
+      }
+    ],
+    "inputsInline": false,
+    "previousStatement": null,
+    "nextStatement": null,
+    "colour": 0,
+    "tooltip": "System task \"display\" displays specific information from the simulator, and " +
+      "adds a new line character at the end of the output",
+    "helpUrl": "http://www.verilog.renerta.com/source/vrg00013.htm",
+    "mutator": "add_variables"
+  },
+]);
 
 Blockly.Blocks['monitor_sys'] = {
   init: function() {
@@ -99,19 +108,19 @@ Blockly.Blocks['fopen'] = {
   }
 };
 
-Blockly.Blocks['fclose'] = {
-  init: function() {
-    this.appendValueInput("fileName")
-        .setCheck(null)
-        .appendField("Close all files or choose one");
-    this.setPreviousStatement(true, null);
-    this.setNextStatement(true, null);
-    this.setColour(10);
-    this.setTooltip("To close an opened file use the $fclose function. This function is called without any arguments, it simply closes all opened files. If an argument is specified it will close only a file in which the descriptor is given.");
-    this.setHelpUrl("http://verilog.renerta.com/source/vrg00016.htm");
+Blockly.defineBlocksWithJsonArray([
+  {
+    "type": "fclose",
+    "message0": "",
+    "inputsInline": false,
+    "previousStatement": null,
+    "nextStatement": null,
+    "colour": 10,
+    "tooltip": "To close an opened file use the $fclose function. This function is called without any arguments, it simply closes all opened files. If an argument is specified it will close only a file in which the descriptor is given.",
+    "helpUrl": "http://verilog.renerta.com/source/vrg00016.htm",
+    "mutator": "add_file"
   }
-};
-
+]);
 
 Blockly.Blocks['readmemb'] = {
   init: function() {
@@ -147,25 +156,30 @@ Blockly.Blocks['readmemh'] = {
   }
 };
 
-Blockly.Blocks['fdisplay'] = {
-  init: function() {
-    this.appendDummyInput()
-        .appendField("Print message")
-        .appendField(new Blockly.FieldTextInput("default"), "message");
-    this.appendValueInput("variables")
-        .setCheck(null)
-        .appendField("with variables(opt)");
-    this.appendValueInput("fileName")
-        .setCheck(null)
-        .appendField("to file");
-    this.setInputsInline(true);
-    this.setPreviousStatement(true, null);
-    this.setNextStatement(true, null);
-    this.setColour(10);
-    this.setTooltip("Write content to specified file. Variable list is optional.");
-    this.setHelpUrl("http://verilog.renerta.com/source/vrg00016.htm");
+Blockly.defineBlocksWithJsonArray([
+  {
+    "type": "fdisplay",
+    "message0": "Print message %1 to file %2",
+    "args0": [
+      {
+        "type": "field_input",
+        "name": "message",
+        "text": "default"
+      },
+      {
+        "type": "input_value",
+        "name": "fileName"
+      }
+    ],
+    "inputsInline": false,
+    "previousStatement": null,
+    "nextStatement": null,
+    "colour": 10,
+    "tooltip": "Write content to specified file. Variable list is optional.",
+    "helpUrl": "http://verilog.renerta.com/source/vrg00016.htm",
+    "mutator": "add_variables"
   }
-};
+]);
 
 Blockly.Blocks['fmonitor'] = {
   init: function() {
@@ -186,3 +200,12 @@ Blockly.Blocks['fmonitor'] = {
     this.setHelpUrl("http://verilog.renerta.com/source/vrg00016.htm");
   }
 };
+
+Blockly.Extensions.registerMutator('add_variables',
+  Blockly.Constants.CustomMenu.ADD_VARIABLES,
+  Blockly.Constants.CustomMenu.EXTENSIONS, ['']);
+
+
+Blockly.Extensions.registerMutator('add_file',
+  Blockly.Constants.CustomMenu.ADD_FILE,
+  Blockly.Constants.CustomMenu.EXTENSIONS2, ['']);

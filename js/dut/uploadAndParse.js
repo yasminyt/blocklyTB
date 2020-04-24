@@ -1,4 +1,5 @@
 import Parser from './parser.js';
+import { MODULENAME, INPUTOBJ, OUTPUTOBJ, PARAMETEROBJ } from "../typeKeys.js";
 
 const uploadBtn = document.querySelector("button");
 const inputs = document.querySelectorAll('.custom-file-input');
@@ -51,12 +52,12 @@ function parseModule(contents) {
   const moduleName = parser.getModule();
   if (!moduleName)
     return alertEmpty('The module name could not be found, or it was not defined correctly, please recheck!');
-  window.sessionStorage.setItem("moduleName", moduleName);
+  window.sessionStorage.setItem(MODULENAME, moduleName);
 
   // get variables of parameter type in module definition
   const parameters = parser.getParameter();
   if (parameters)
-    window.sessionStorage.setItem("parameterObj", JSON.stringify(parameters));
+    window.sessionStorage.setItem(PARAMETEROBJ, JSON.stringify(parameters));
 
   let in_outExpress = contents;
   if (parser.isModuleDefineHasIn_Out()) {
@@ -71,12 +72,12 @@ function parseModule(contents) {
   if (inputs) {
     const inputObj = {params: [], pairs: {}};
     parser.parseIn_OutExpressions(inputs, inputObj);
-    window.sessionStorage.setItem("inputObj", JSON.stringify(inputObj));
+    window.sessionStorage.setItem(INPUTOBJ, JSON.stringify(inputObj));
   }
   if (outputs) {
     const outputObj  = {params: [], pairs: {}};
     parser.parseIn_OutExpressions(outputs, outputObj);
-    window.sessionStorage.setItem("outputObj", JSON.stringify(outputObj));
+    window.sessionStorage.setItem(OUTPUTOBJ, JSON.stringify(outputObj));
   }
 
   window.location.href = "blockly-edit.html?file=digital";

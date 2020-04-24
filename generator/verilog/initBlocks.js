@@ -2,6 +2,8 @@
  * Generator Verilog codes for initial blocks.
  */
 
+import { MODULENAME, INPUTOBJ, OUTPUTOBJ, PARAMETEROBJ } from "../../js/typeKeys.js";
+
 /**
  * module [moduleName];
  * @param block
@@ -19,7 +21,7 @@ Blockly.Verilog['module_name'] = function(block) {
  * @returns {string}
  */
 Blockly.Verilog['input_port'] = function(block) {
-  return generateCodes('inputObj', 'reg');
+  return generateCodes(INPUTOBJ, 'reg');
 };
 
 /**
@@ -28,7 +30,7 @@ Blockly.Verilog['input_port'] = function(block) {
  * @returns {string}
  */
 Blockly.Verilog['output_port'] = function (block) {
-  return generateCodes('outputObj', 'wire');
+  return generateCodes(OUTPUTOBJ, 'wire');
 };
 
 /**
@@ -60,8 +62,8 @@ function generateCodes(objName, type) {
  */
 Blockly.Verilog['instance'] = function(block) {
   const text_name = block.getFieldValue('NAME');
-  const moduleName = window.sessionStorage.getItem('moduleName');
-  const params = `${generateParams('inputObj')}, ${generateParams('outputObj')}`;
+  const moduleName = window.sessionStorage.getItem(MODULENAME);
+  const params = `${generateParams(INPUTOBJ)}, ${generateParams(OUTPUTOBJ)}`;
   const code = `\t${moduleName} ${text_name}(${params});\n`;
   return code;
 };
@@ -72,14 +74,14 @@ Blockly.Verilog['instance'] = function(block) {
  * @returns {string}
  */
 Blockly.Verilog['instance_parameter'] = function(block) {
-  const moduleName = window.sessionStorage.getItem('moduleName');
-  const parameters = JSON.parse(window.sessionStorage.getItem('parameterObj'));
+  const moduleName = window.sessionStorage.getItem(MODULENAME);
+  const parameters = JSON.parse(window.sessionStorage.getItem(PARAMETEROBJ));
   const dutParams = parameters.map(e => {
     const value = Blockly.Verilog.valueToCode(block, e, Blockly.Verilog.ORDER_NONE) || null;
     return `.${e}(${value})`;
   });
   const dut = block.getFieldValue('dut');
-  const in_out = `${generateParams('inputObj')}, ${generateParams('outputObj')}`;
+  const in_out = `${generateParams(INPUTOBJ)}, ${generateParams(OUTPUTOBJ)}`;
   const code = `\t${moduleName} #(${dutParams.join(', ')}) ${dut}(${in_out});\n`;
   return code;
 };

@@ -1,4 +1,5 @@
-import generateXML from "./dut/generateXML.js";
+import { generateXML, storageVariables } from "./dut/generateXML.js";
+import { MODULENAME, INPUTOBJ, OUTPUTOBJ, PARAMETEROBJ } from "./typeKeys.js";
 
 window.onload = () => {
   const workspace = Blockly.inject('blocklyDiv', {
@@ -33,8 +34,11 @@ window.onload = () => {
     xml = result.xml;
     parameter = result.parameter;
   }
-  if (type === 'blockly')
-    xml = window.sessionStorage.getItem('blocklyXML');
+  if (type === 'blockly') {
+    const text = window.sessionStorage.getItem('blocklyXML');
+    xml = storageVariables(text);
+  }
+
   Blockly.Xml.domToWorkspace(Blockly.Xml.textToDom(xml), workspace);
   if (parameter)
     alert("\nPlease first create the parameters required in the instance call and connect it to the module block, " +
@@ -70,7 +74,17 @@ function realtimeGenerate(event, workspace) {
 
 function saveWorkspace(workspace) {
   const xml = Blockly.Xml.workspaceToDom(workspace);
-  const xml_text = Blockly.Xml.domToText(xml);
+  let xml_text = Blockly.Xml.domToText(xml);
+
+  const getValue = key => window.sessionStorage.getItem(key);
+  const VARIABLES = {
+    [MODULENAME]: getValue(MODULENAME),
+    [INPUTOBJ]: getValue(INPUTOBJ),
+    [OUTPUTOBJ]: getValue(OUTPUTOBJ),
+    [PARAMETEROBJ]: getValue(PARAMETEROBJ)
+  }
+  const variableStr = JSON.stringify(VARIABLES);
+  xml_text += `\n<VARIABLES>${variableStr}</VARIABLES>`;
   const filename = inputFileName('.xml');
   filename && doSave(xml_text, filename);
 }

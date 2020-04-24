@@ -46,7 +46,7 @@ h3 {
 }
 
 .saveButton {
-    position: absolute;
+    position: fixed;
     bottom: 15px;
     right: 15px;
     border-radius: 100%;
